@@ -1,0 +1,7 @@
+= Roles
+[[main-title]]
+
+Roles are created using the standard galaxy command `molecule init role --driver-name vagrant --role-name docker --verifier-name testinfra`
+
+Plus some tweaking letting it running on CentOS (basic generation let it running on ubuntu)
+Take the diff between the docker sample `molecule/default/molecule.yml` file and the one generated, as well as the `molecule/default/prepare.yml` one.

@@ -1,0 +1,13 @@
+= Tests
+[[main-title]]
+
+
+Running test is fairly easy if you've installed the prerequisites.
+
+First, start your machine using the `molecule create` command.
+
+Once started, you can deploy your tasks using `molecule converge`
+
+Once converged, you can `molecule verify` executing your tests on the machine.
+
+TIP: Be sure to write your test before implementing so that you can see it failing, so to ensure that you are writing your test the good way !

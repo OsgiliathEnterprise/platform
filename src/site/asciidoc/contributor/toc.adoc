@@ -1,0 +1,13 @@
+= Contributor guide
+
+== Setup
+
+ * <<setup/install.adoc#main-title, Install all prerequisites to run the project>>
+
+== Create role
+
+ * <<implement/role.adoc#main-title, Create a new role>>
+
+== Testing
+
+ * <<run/role-test.adoc#main-title, Execute integration tests>>

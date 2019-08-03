@@ -1,0 +1,29 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+platforms:
+  - name: CentOS
+    box: bento/centos-7.6
+    box-url: ${platform_root}/packer/bento/builds/centos-7.6-x86_64.virtualbox.box
+provisioner:
+  name: ansible
+  inventory:
+    links:
+      group_vars: ../../../../environments/dev/group_vars
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
+  options:
+    # show which tests where executed in test output
+    v: 1
+  lint:
+    name: flake8

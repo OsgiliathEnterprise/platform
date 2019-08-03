@@ -1,0 +1,17 @@
+= Installation
+[[main-title]]
+
+== Prerequisite
+
+Install your favorite package manager: brew for Mac, Chocolatey for windows, Aptitude for Debian based distro, Etc.
+
+== Install virtualization stack
+
+This stack is using Virtualbox and Vagrant underneath to be CI ready and test your scripts.
+There's a script for Mac installing these prerequisite (mac-install.sh), feel free to contribute the same kind of file for your own distro
+
+== Configure your environment
+
+You can then configure your environment that will pack a new distribution to run with virtualbox and set the according environment variable running the `/setup-platform.sh` script.
+By default, it will build a CentOS7 machine, but you can generate another platform looking at the according name in the `packer/bento/test_templates` folder and updating `/platform-properties.sh` accordingly.
+

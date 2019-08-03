@@ -1,0 +1,37 @@
+---
+# tasks file for docker
+- name: add Docker yum key
+  yum_repository:
+    name: docker-ce
+    description: Docker Community repository
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    state: present
+  ignore_errors: true
+  become: true
+
+- name: Install docker-ce
+  yum:
+    enablerepo: docker-ce
+    name: docker-ce
+    state: present
+  become: true
+
+- name: Ensure group {{ docker_group }} exists
+  group:
+    name: "{{ docker_group }}"
+    state: present
+  become: true
+
+- name: Add {{ docker_user }} user to {{ docker_group }} group.
+  user:
+    name: "{{ docker_user }}"
+    groups: "{{ docker_group }}"
+    append: yes
+  become: true
+
+- name: Starts service docker
+  service:
+    name: docker
+    state: started
+  become: true

@@ -1,0 +1,18 @@
+---
+# tasks file for lvm
+
+- name: lvm | convert thinpool
+  loop: "{{ lvm_groups|subelements('lvnames') }}"
+  shell: lvconvert -y --zero n -c 512K --thinpool {{ item.0.vgname }}/{{ item.1.lvname }} --poolmetadata {{ item.1.metadata }}
+  become: yes
+  when: >
+    (
+    (
+    item.1 is defined and
+    item.1 != 'None'
+    ) and
+    (item.1.metadata is defined)
+    )
+
+- include: autoextends.yml
+

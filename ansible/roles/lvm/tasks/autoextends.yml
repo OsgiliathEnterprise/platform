@@ -1,0 +1,34 @@
+---
+# tasks file for thinpool autoextends
+
+- name: lvm | configure lvm autoextends
+  template:
+    src: thinpool-profile.j2
+    dest: /etc/lvm/profile/{{ item.0.vgname }}-{{ item.1.lvname }}.profile
+    owner: root
+    group: root
+  become: yes
+  loop: "{{ lvm_groups|subelements('lvnames') }}"
+  when: >
+    (
+    (item.1 is defined and
+    item.1 != 'None') and
+    (
+    item.1.autoextendtreshold is defined and
+    item.1.autoextendpercent is defined
+    )
+    )
+
+- name: lvm | convert thinpool
+  shell: lvchange --metadataprofile {{ item.0.vgname }}-{{ item.1.lvname }} {{ item.0.vgname }}/{{ item.1.lvname }}
+  become: yes
+  loop: "{{ lvm_groups|subelements('lvnames') }}"
+  when: >
+    (
+    (item.1 is defined and
+    item.1 != 'None') and
+    (
+    item.1.autoextendtreshold is defined and
+    item.1.autoextendpercent is defined
+    )
+    )

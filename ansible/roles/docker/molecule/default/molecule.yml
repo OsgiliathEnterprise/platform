@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint: yamllint
+platforms:
+  - name: Fedora-Molecule-Docker
+    box: bento/fedora-31
+    box-url: ${platform_root}/packer/bento/builds/fedora-31-x86_64.virtualbox.box
+    groups:
+      - hostsmachines
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      hostsmachines:
+        docker_user: vagrant
+        docker_group: docker
+  lint: ansible-lint
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
+  options:
+    # show which tests where executed in test output
+    v: 1
+  lint: flake8

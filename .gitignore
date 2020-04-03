@@ -1,4 +1,5 @@
 target/
 packer/.git
 packer/bento
+ansible/roles/lvm
 venv

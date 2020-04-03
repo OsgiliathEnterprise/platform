@@ -1,38 +1,44 @@
-Role Name
+Lvm-manager
 =========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role is an extension of the [most used lvm cookbook](https://github.com/mrlesmithjr/ansible-manage-lvm).
+It add the ability to create thinpools
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+In addition to the [usual variables](https://github.com/mrlesmithjr/ansible-manage-lvm/blob/master/README.md), you can declare some more.
+```
+lvnames:
+  ...
+  metadata: <another lvname> # declares the metadata logical volume 
+```
+
+```
+lvnames:
+  ...
+  autoextendtreshold: <number> # treshold of the autoextend profile
+  autoextendpercent: <number> # percentage of the autoextend profile
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+As said, mrlesmithjr.ansible-manage-lvm
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+See the [vars declared](molecule/default/molecule.yml) on the molecule test, as well as [their impact](molecule/default/tests/test_default.py) 
 
 License
 -------
 
-BSD
+Apache-2
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Twitter [@tcharl](https://twitter.com/Tcharl)
+Github [@tcharl](https://github.com/Tcharl)
+LinkedIn [Charlie Mordant](https://www.linkedin.com/in/charlie-mordant-51796a97/)

@@ -10,3 +10,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 . ./init-mac.sh
 fi
+
+cd roles
+git clone git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git

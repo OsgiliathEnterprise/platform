@@ -10,8 +10,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         # do not work for now...
 echo "not implemented for linux, PR welcomed!"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-. ./init-mac.sh
-. ./packer/init.sh
+. ./configure-mac
 fi
-
 source ~/.bash_profile
+
+. ./packer/configure
+
+. ./ansible/configure

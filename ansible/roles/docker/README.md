@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role has been initialized using the command `molecule init role --driver-name vagrant --role-name docker --verifier-name testinfra`
 
 Requirements
 ------------

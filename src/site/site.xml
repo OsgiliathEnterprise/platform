@@ -13,21 +13,19 @@
    See the License for the specific language governing permissions and limitations under the license
   #L%
   -->
-<project name="tmp" xmlns="http://maven.apache.org/DECORATION/1.7.0"
+<project name="osgiliath-platform" xmlns="http://maven.apache.org/DECORATION/1.8.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.7.0 http://maven.apache.org/xsd/decoration-1.7.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd">
 
   <bannerLeft>
-    <name>Gitlab</name>
-***REMOVED*** this should not be the right adress-->
-***REMOVED*** TODO update this url-->
-    <href>https://gitlab.thalesdigital.io/dcc-dsi/ansible-platform</href>
+    <name>Github</name>
+    <href>https://github.com/Tcharl/platform</href>
   </bannerLeft>
 
   <skin>
     <groupId>org.apache.maven.skins</groupId>
     <artifactId>maven-fluido-skin</artifactId>
-    <version>1.7</version>
+    <version>1.8</version>
   </skin>
   <custom>
     <fluidoSkin>
@@ -41,7 +39,7 @@
     </fluidoSkin>
 ***REMOVED*** this should not be the right address-->
 ***REMOVED*** TODO update this url-->
-    <custom.fluidoSkin.googleSearch.sitesearch>https://dcc-dsi.pages.gitlab.thalesdigital.io/ansible-platform</custom.fluidoSkin.googleSearch.sitesearch>
+    <custom.fluidoSkin.googleSearch.sitesearch>https://github.com/Tcharl/platform</custom.fluidoSkin.googleSearch.sitesearch>
   </custom>
   <body>
     <menu name="Documentation">

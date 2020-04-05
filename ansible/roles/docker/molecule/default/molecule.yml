@@ -1,6 +1,8 @@
 ---
 dependency:
   name: galaxy
+  options:
+    role-file: ../../meta/main.yml
 driver:
   name: vagrant
   provider:
@@ -9,22 +11,46 @@ lint: yamllint
 platforms:
   - name: Fedora-Molecule-Docker
     box: bento/fedora-31
-    box-url: ${platform_root}/packer/bento/builds/fedora-31-x86_64.virtualbox.box
+    # box-url: ${platform_root}/packer/bento/builds/fedora-31-x86_64.virtualbox.box
     groups:
-      - hostsmachines
+      - lvm
+    provider_override_args:
+      - "persistent_storage.enabled = true"
+      - "persistent_storage.location = 'testhdd.vdi'"
+      - "persistent_storage.size = 100"
+      - "persistent_storage.mount = false"
+      - "persistent_storage.diskdevice = '/dev/sdb'"
 provisioner:
   name: ansible
   inventory:
     group_vars:
-      hostsmachines:
-        docker_user: vagrant
-        docker_group: docker
+      lvm:
+        lvm_groups:
+          - vgname: non-persistent
+            disks:
+              - /dev/sdb1
+            create: true
+            lvnames:
+              - lvname: thinpool
+                size: 40%VG
+                opts: "--wipesignatures y"
+                create: true
+                metadata: non-persistent/thinpoolmeta
+                autoextendtreshold: 80
+                autoextendpercent: 20
+                filesystem2: xfs
+                mntp: /var/lib/docker
+                mount2: true
+              - lvname: thinpoolmeta
+                size: 10%VG
+                opts: "--wipesignatures y"
+                create: true
+        manage_lvm: true
   lint: ansible-lint
 verifier:
   name: testinfra
   env:
     PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
   options:
-    # show which tests where executed in test output
     v: 1
   lint: flake8

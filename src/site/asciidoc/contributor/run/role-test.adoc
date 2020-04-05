@@ -10,4 +10,6 @@ Once started, you can deploy your tasks using `molecule converge`
 
 Once converged, you can `molecule verify` executing your tests on the machine.
 
+Finally, `molecule destroy` will kill the VM/Docker container
+
 TIP: Be sure to write your test before implementing so that you can see it failing, so to ensure that you are writing your test the good way !

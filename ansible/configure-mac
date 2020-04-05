@@ -10,7 +10,7 @@ pip3 install ansible-lint
 pip3 install molecule
 pip3 install 'molecule-vagrant'
 pip3 install paramiko
-. init-virtualbox.sh
+. configure-virtualbox
 
 
 

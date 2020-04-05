@@ -14,6 +14,9 @@
             metadata: noraid/docker-thinpoolmeta
             autoextendtreshold: 80
             autoextendpercent: 20
+            filesystem2: xfs
+            mntp: /var/lib/docker
+            mount2: true
           - lvname: docker-thinpoolmeta
             size: 1%VG
             opts: "--wipesignatures y"

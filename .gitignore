@@ -2,5 +2,6 @@ target/
 packer/.git
 packer/bento
 ansible/roles/lvm
+ansible/roles/docker
 ansible/roles/community
 venv

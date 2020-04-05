@@ -1,5 +1,8 @@
- Ansible roles skeleton
+ Osgiliath Platform
  =========
+ # What is it?
+ 
+ Is it a bunch of infrastructure scripts (Packer, Ansible, Terraform, Docker, Kubernetes) 
  
  Documentation
  ------------

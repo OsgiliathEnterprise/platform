@@ -33,18 +33,30 @@
   </properties>
   <build>
     <plugins>
-    <plugin>
-      <groupId>org.asciidoctor</groupId>
-      <artifactId>asciidoctor-maven-plugin</artifactId>
-    </plugin>
       <plugin>
-      <groupId>pl.project13.maven</groupId>
-      <artifactId>git-commit-id-plugin</artifactId>
-      <version>${git-commit-id-plugin.version}</version>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
       </plugin>
       <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-enforcer-plugin</artifactId>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>${git-commit-id-plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-publish-plugin</artifactId>
+          <executions>
+              <execution>
+                  <id>scm-publish</id>
+                  <goals>
+                      <goal>publish-scm</goal>
+                  </goals>
+              </execution>
+          </executions>
       </plugin>
     </plugins>
     <pluginManagement>
@@ -183,18 +195,7 @@
           <passphraseServerId>gpg.passphrase</passphraseServerId>
         </configuration>
       </plugin>
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-scm-publish-plugin</artifactId>
-          <executions>
-              <execution>
-                  <id>scm-publish</id>
-                  <goals>
-                      <goal>publish-scm</goal>
-                  </goals>
-              </execution>
-          </executions>
-      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>

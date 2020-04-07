@@ -6,3 +6,5 @@ ansible/roles/lvm
 ansible/roles/docker
 ansible/roles/community
 venv
+pom.xml.releaseBackup
+release.properties

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.osgiliath</groupId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <artifactId>ansible-platform</artifactId>
   <packaging>pom</packaging>
   <name>Ansible Platform</name>
@@ -15,7 +15,7 @@
     <git-commit-id-plugin.version>2.2.6</git-commit-id-plugin.version>
     <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     <org.apache.maven.scm.version>1.9.4</org.apache.maven.scm.version>
-    <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
+    <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
     <maven-scm-manager-plexus.version>${org.apache.maven.scm.version}</maven-scm-manager-plexus.version>
     <maven-scm-provider-gitexe.version>${org.apache.maven.scm.version}</maven-scm-provider-gitexe.version>
     <maven-enforcer-plugin.version>3.0.0-M1</maven-enforcer-plugin.version>
@@ -159,8 +159,8 @@
               <version>[${maven.version},)</version>
             </requireMavenVersion>
             <requireJavaVersion>
-              <message>You are running an incompatible version of Java. JHipster supports JDK 8 to 14.</message>
-              <version>[1.8,14)</version>
+              <message>You are running an incompatible version of Java. JHipster supports JDK 8 to 12.</message>
+              <version>[1.8,13)</version>
             </requireJavaVersion>
           </rules>
         </configuration>
@@ -182,18 +182,6 @@
           <keyname>${gpg.keyname}</keyname>
           <passphraseServerId>gpg.passphrase</passphraseServerId>
         </configuration>
-      </plugin>
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-scm-publish-plugin</artifactId>
-          <executions>
-              <execution>
-                  <id>scm-publish</id>
-                  <goals>
-                      <goal>publish-scm</goal>
-                  </goals>
-              </execution>
-          </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -321,8 +309,7 @@
 		<connection>scm:git:git@github.com:tcharl/platform.git</connection>
 		<developerConnection>scm:git:git@github.com:tcharl/platform.git</developerConnection>
 		<url>https://github.com/tcharl/platform</url>
-	    <tag>HEAD</tag>
-  </scm>
+	</scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>

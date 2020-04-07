@@ -120,6 +120,6 @@
         </profile>
     </profiles>
     <activeProfiles>
-        <activeProfile>maven-signin</activeProfile>
+        <activeProfile>maven-signing</activeProfile>
     </activeProfiles>
 </settings>

@@ -41,7 +41,7 @@ jobs:
         echo $sshkey | sed -r 's/\\n/\n/g' > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         rm -rf ~/.ssh/id_rsa.pub
-        echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBnSecfIqd4dUrPbH85JPeaJe1+oumO1hM9Uyv6HPEBzvv7+fZP9ofnwSOJlFqC015GZl3Ara3a1q5V/PoOlzY45fBmQwuASNKeonoPDaWgQIQ9r9N4WfGGx2YnXcA7yCpe0fJPxrg8qBuA08DL9EZk2+zqQrjBCxq0bgWhbhURiFbDPoRoYNrn5ka7DEwB2ISapR3tjsmAEjGk8Hpye+xlABjbM145mDSLJEtmxiSLiGXxrZXow/zloEARwxf/QCtfo69YVdCicWTREjyHHBtM8WNiooPlsq74PWn9vhYrGjSEAEQj5wIGoL2MMR3ZrsF8uFzpSFxmOKc6VRVTQvp ci@github.com" > ~/.ssh/id_rsa.pub
+        echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDEhPPsErLx70NFO8az3ZQZ8xVG95eDF1DAuUEo13muMSLWLsaZi6RSsgtlJLvH2wxcWPPma9dZAKZCopR1g7XWPkntY62lhKXCAxJBTWoN/o738/PgHS81NoPEudC/NUKkJqWrlkQrZnYidQd/cCvaTSJjwMwR6Mmd1Ua4MRIWp2AanQODDrnSN64QdrgoZ8nS31Zkl0j95/4/HGNkZdlrabINyjxhXKNkQ+C6U4JXRtDvpOE4WR98IccLrQdVNPLzms099NU1Mpfd5c4UjET57IwhLAntM2oscCQonQmpBkgxtlRvLMTP5VMD/YEHINzEC1N/gZ4IZ4L2Gnov0vLc0jaDOE6uXU8UUr6AhZSWpzjtK/CqOkTr2gQMokcE7oVgBeVo/qK4hy3Ews9Dx5Jwsde+EJmOaPSA5/qc/TiLI6emQV3mnGBUZcBlC8gqpBIblpJqo1nRtH7aFgJW2hRqfZic9z645+1SQkaY8ImMGRp/SfkZaiIUeparjuWD3HWTm7oBeFBQ4aX/S1vtg04mNZnluqoyuziFWK/8BzbkWVgezHsWNBuzFItPvlE0yp2eNLaJ/5U7vsOKfrdHyw5dur12ZmtI6SBiu4l3BULyvI61xcd+Lf6PzjYSi2DnGCLTxWnlCkeFk/Zr0on9lRUtDkX01kd8lwB9J993jP+Yvw== ci@github.com" > ~/.ssh/id_rsa.pub
         ssh-add ~/.ssh/id_rsa
         rm -rf ~/.ssh/known_hosts
         ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts

@@ -115,20 +115,11 @@
 
             <properties>
                 <!--<docker-registry.url>10.201.54.197:18018</docker-registry.url>-->
-                <gpg.keyname>912F659A</gpg.keyname>
-            </properties>
-        </profile>
-        <profile>
-            <id>sonar</id>
-            <properties>
-                <sonar.skip>false</sonar.skip>
-                <sonar.login>{Ry64B77XOZcHV2Q59TowBacVV7jjlco7+1ZSnC7v2l0CZoqnPIocK5sHpsfd+bj3DtVqecnwF9gnHWtx1NGz0A==}</sonar.login>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>https://quality-analysis.thalesdigital.io/sonar</sonar.host.url>
+                <gpg.keyname>39B282E43D03329B</gpg.keyname>
             </properties>
         </profile>
     </profiles>
     <activeProfiles>
-        <activeProfile>dwp</activeProfile>
+        <activeProfile>maven-signin</activeProfile>
     </activeProfiles>
 </settings>

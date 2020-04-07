@@ -17,6 +17,7 @@
             filesystem2: xfs
             mntp: /var/lib/docker
             mount2: true
+            mopts: defaults,pquota,gquota,quota
           - lvname: docker-thinpoolmeta
             size: 1%VG
             opts: "--wipesignatures y"

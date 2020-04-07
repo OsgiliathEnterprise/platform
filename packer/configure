@@ -19,6 +19,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 . ./configure-mac
 fi
 
+if [[ "$distroversion" == "fedora-31" ]]; then
+  if ! grep -q 'grubby' bento/packer_templates/fedora/scripts/install-supporting-packages.sh; then
+  sed -i -e "s/dnf -y install \(.*\)/dnf -y install \1 grubby \&\& grubby --update-kernel=ALL --args=\"systemd.unified_cgroup_hierarchy=0\" --make-default/" bento/packer_templates/fedora/scripts/install-supporting-packages.sh
+  fi
+fi
 
 packer build -var "box_basename=$distroversion" -only=$PACKER_VM_DRIVER $distroversion.json
+
+cd ../../builds
+vagrant box add fedora-31-x86_64.virtualbox.box --name platform/fedora-31
 

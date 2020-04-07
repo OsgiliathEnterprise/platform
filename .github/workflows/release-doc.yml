@@ -30,6 +30,24 @@ jobs:
     - name: Staging site
       run: ./mvnw site:stage
 
-    # publish the site
+    - name: configure ssh
+      env:
+        sshkey: {{ secrets.githubrsa }}
+      run: |
+        - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+        - eval `ssh-agent`
+        - mkdir -p ~/.ssh/
+        - rm -rf ~/.ssh/id_ed25519
+        - echo $sshkey | sed -r 's/\\n/\n/g' > ~/.ssh/id_rsa
+        - chmod 600 ~/.ssh/id_ed25519
+        - rm -rf ~/.ssh/id_ed25519.pub
+        - echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBnSecfIqd4dUrPbH85JPeaJe1+oumO1hM9Uyv6HPEBzvv7+fZP9ofnwSOJlFqC015GZl3Ara3a1q5V/PoOlzY45fBmQwuASNKeonoPDaWgQIQ9r9N4WfGGx2YnXcA7yCpe0fJPxrg8qBuA08DL9EZk2+zqQrjBCxq0bgWhbhURiFbDPoRoYNrn5ka7DEwB2ISapR3tjsmAEjGk8Hpye+xlABjbM145mDSLJEtmxiSLiGXxrZXow/zloEARwxf/QCtfo69YVdCicWTREjyHHBtM8WNiooPlsq74PWn9vhYrGjSEAEQj5wIGoL2MMR3ZrsF8uFzpSFxmOKc6VRVTQvp ci@github.com" > ~/.ssh/id_rsa.pub
+        - ssh-add ~/.ssh/id_rsa
+        - rm -rf ~/.ssh/known_hosts
+        - ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
+        - git config --global user.email "ci@osgiliath.net"
+        - git config --global user.name "Continuous integration"
+
+      # publish the site
     - name: Publish site on branch
       run: ./mvnw scm-publish:publish-scm

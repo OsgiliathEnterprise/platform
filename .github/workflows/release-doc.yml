@@ -22,10 +22,14 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
+    # generate the site
     - name: Run site generation
       run: ./mvnw site
 
-    # Runs a set of commands using the runners shell
+    # stage the site
+    - name: Run site generation
+      run: ./mvnw site
+
+    # publish the site
     - name: Publish site on branch
       run: ./mvnw scm-publish:publish-scm

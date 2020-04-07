@@ -34,7 +34,7 @@ jobs:
       env:
         sshkey: {{ secrets.githubrsa }}
       run: |
-        'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+        which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
         eval `ssh-agent`
         mkdir -p ~/.ssh/
         rm -rf ~/.ssh/id_ed25519

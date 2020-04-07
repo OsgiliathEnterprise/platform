@@ -27,8 +27,8 @@ jobs:
       run: ./mvnw site
 
     # stage the site
-    - name: Run site generation
-      run: ./mvnw site
+    - name: Staging site
+      run: ./mvnw site:stage
 
     # publish the site
     - name: Publish site on branch

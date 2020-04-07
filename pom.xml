@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.thalesgroup.is</groupId>
+  <groupId>com.osgiliath</groupId>
   <version>0.0.1-SNAPSHOT</version>
   <artifactId>ansible-platform</artifactId>
   <packaging>pom</packaging>
-  <name>Pmi</name>
+  <name>Ansible Platform</name>
   <properties>
     <maven.version>3.0.0</maven.version>
     <encoding>UTF-8</encoding>
@@ -23,12 +23,13 @@
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
     <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 ***REMOVED*** dependencies -->
     <asciidoctor-maven-plugin.version>1.5.7</asciidoctor-maven-plugin.version>
     <java.release>11</java.release>
     <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
     <versions-maven-plugin.version>2.1</versions-maven-plugin.version>
-
+    <org.apache.maven.plugins_maven-scm-publish-plugin.version>3.0.0</org.apache.maven.plugins_maven-scm-publish-plugin.version>
   </properties>
   <build>
     <plugins>
@@ -246,6 +247,14 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-publish-plugin</artifactId>
+          <version>${org.apache.maven.plugins_maven-scm-publish-plugin.version}</version>
+          <configuration>
+              <scmBranch>gh-pages</scmBranch>
+          </configuration>
+      </plugin>
     </plugins>
     </pluginManagement>
   </build>
@@ -296,4 +305,26 @@
       </plugin>
     </plugins>
   </reporting>
+  <scm>
+		<connection>scm:git:git@github.com:tcharl/platform.git</connection>
+		<developerConnection>scm:git:git@github.com:tcharl/platform.git</developerConnection>
+		<url>https://github.com/tcharl/platform</url>
+	</scm>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Osgiliath Snapshots public</name>
+			<url>https://dist.osgiliath.net/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>releases</id>
+			<name>Sonatype OSS Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/</url>
+		</repository>
+		<site>
+			<id>github-pages</id>
+			<name>Github GH Pages</name>
+			<url>scm:git:git@github.com:tcharl/platform.git</url>
+		</site>
+	</distributionManagement>
 </project>

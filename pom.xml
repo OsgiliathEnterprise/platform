@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.osgiliath</groupId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <artifactId>ansible-platform</artifactId>
   <packaging>pom</packaging>
   <name>Ansible Platform</name>
@@ -309,7 +309,7 @@
 		<connection>scm:git:git@github.com:tcharl/platform.git</connection>
 		<developerConnection>scm:git:git@github.com:tcharl/platform.git</developerConnection>
 		<url>https://github.com/tcharl/platform</url>
-	  <tag>ansible-platform-0.0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<distributionManagement>
 		<snapshotRepository>

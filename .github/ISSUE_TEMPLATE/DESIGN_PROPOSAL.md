@@ -26,9 +26,9 @@ A design proposal should be opened any time a change meets one of the following 
 ## Motivation
 
 <!---
+    In order to <<benefit>>,
     As a <<user_profile>>,
-    I want to <<functionality>>,
-    so that <<benefit>>.
+    I want to <<functionality>>.
  -->
 
 ## Specification

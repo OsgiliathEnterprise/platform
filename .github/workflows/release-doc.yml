@@ -45,6 +45,16 @@ jobs:
         ssh-add ~/.ssh/id_rsa
         rm -rf ~/.ssh/known_hosts
         ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
+        git remote remove origin
+        git remote add origin git@github.com:Tcharl/platform.git
+        git fetch --all
+        git checkout master || git checkout -b master
+        git pull origin master
+        git push origin --delete gh-pages || true
+        git checkout -b gh-pages
+        git push origin gh-pages
+        git checkout master
+        git branch -D gh-pages
         git config --global user.email "ci@osgiliath.net"
         git config --global user.name "Continuous integration"
 

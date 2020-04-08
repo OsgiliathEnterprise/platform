@@ -1,0 +1,9 @@
+[submodule "packer/bento"]
+	path = packer/bento
+	url = git@github.com:OsgiliathEnterprise/bento.git
+[submodule "ansible/roles/docker"]
+	path = ansible/roles/docker
+	url = git@github.com:OsgiliathEnterprise/ansible-docker.git
+[submodule "ansible/roles/lvm"]
+	path = ansible/roles/lvm
+	url = git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git

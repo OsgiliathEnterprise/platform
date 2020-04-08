@@ -5,12 +5,19 @@
   %%
   Copyright (C) 2018 THALESGROUP
   %%
-  Licensed under the Thales Inner Source Software License (
-   Version 1.0, InnerPublic - OuterRestricted
-   the "License")
-   You may not use this file except in compliance with the License.
-   You may obtain a copy of the License at https://bit.ly/2HPVKx4
-   See the License for the specific language governing permissions and limitations under the license
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Lesser Public License for more details.
+  
+  You should have received a copy of the GNU General Lesser Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/lgpl-3.0.html>.
   #L%
   -->
 <project name="osgiliath-platform" xmlns="http://maven.apache.org/DECORATION/1.8.0"
@@ -18,8 +25,8 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd">
 
   <bannerLeft>
-    <name>Github</name>
-    <href>https://github.com/Tcharl/platform</href>
+    <name>Github repository</name>
+    <href>https://github.com/OsgiliathEnterprise/platform</href>
   </bannerLeft>
 
   <skin>
@@ -38,8 +45,7 @@
       <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
     </fluidoSkin>
     <!-- this should not be the right address-->
-    <!-- TODO update this url-->
-    <custom.fluidoSkin.googleSearch.sitesearch>https://github.com/Tcharl/platform</custom.fluidoSkin.googleSearch.sitesearch>
+    <custom.fluidoSkin.googleSearch.sitesearch>https://github.com/OsgiliathEnterprise/platform</custom.fluidoSkin.googleSearch.sitesearch>
   </custom>
   <body>
     <menu name="Documentation">

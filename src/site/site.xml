@@ -18,8 +18,8 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd">
 
   <bannerLeft>
-    <name>Github</name>
-    <href>https://github.com/Tcharl/platform</href>
+    <name>Github repository</name>
+    <href>https://github.com/OsgiliathEnterprise/platform</href>
   </bannerLeft>
 
   <skin>
@@ -38,8 +38,7 @@
       <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
     </fluidoSkin>
     <!-- this should not be the right address-->
-    <!-- TODO update this url-->
-    <custom.fluidoSkin.googleSearch.sitesearch>https://github.com/Tcharl/platform</custom.fluidoSkin.googleSearch.sitesearch>
+    <custom.fluidoSkin.googleSearch.sitesearch>https://github.com/OsgiliathEnterprise/platform</custom.fluidoSkin.googleSearch.sitesearch>
   </custom>
   <body>
     <menu name="Documentation">

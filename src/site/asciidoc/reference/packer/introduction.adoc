@@ -1,0 +1,15 @@
+# Box
+[[main-title]]
+
+A box is barely an operating system running your beloved software.
+
+## Virtual machines
+
+As of today, computers are not physical computer stricly speaking.
+They are hosted on very big computers (even sometimes cloud) that starts multiple exploitation system using what we call hypervisors. +
+These hypervisors can be either low level (Xen, ESX) meaning started without the need of an OS or not (Virtualbox, Qemu, Hvf, HyperV). +
+Anyway, high or low level hypervisors beed to run a dedicated OS image, sometimes with OS 'additions' e.g. dedicated packages installed on clients that forbids platform independence. +
+
+The Platform is helping on that area, building OSes that are validated under our <<../introduction#main-title, compatibility matrix>>.
+
+

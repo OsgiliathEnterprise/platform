@@ -319,9 +319,9 @@
     </plugins>
   </reporting>
   <scm>
-		<connection>scm:git:git@github.com:tcharl/platform.git</connection>
-		<developerConnection>scm:git:git@github.com:tcharl/platform.git</developerConnection>
-		<url>https://github.com/tcharl/platform</url>
+		<connection>scm:git:git@github.com:OsgiliathEnterprise/platform.git</connection>
+		<developerConnection>scm:git:git@github.com:OsgiliathEnterprise/platform.git</developerConnection>
+		<url>https://github.com/OsgiliathEnterprise/platform</url>
 	    <tag>HEAD</tag>
   </scm>
 	<distributionManagement>
@@ -338,7 +338,43 @@
 		<site>
 			<id>github-pages</id>
 			<name>Github GH Pages</name>
-			<url>scm:git:git@github.com:tcharl/platform.git</url>
+			<url>scm:git:git@github.com:OsgiliathEnterprise/platform.git</url>
 		</site>
 	</distributionManagement>
+  <inceptionYear>2020</inceptionYear>
+    <organization>
+        <name>Osgiliath (Charlie Mordant)</name>
+        <url>not at the moment</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Charlie Mordant</name>
+            <email>cmordant1@gmail.com</email>
+            <url>https://github.com/Tcharl</url>
+            <organization>Osgiliath</organization>
+        </developer>
+    </developers>
+    <ciManagement>
+        <url>https://github.com/OsgiliathEnterprise/platform/actions</url>
+    </ciManagement>
+    <issueManagement>
+        <url>https://github.com/OsgiliathEnterprise/platform/issues</url>
+    </issueManagement>
+    <licenses>
+        <license>
+            <name>GPLv3</name>
+            <url>hhttps://www.gnu.org/licenses/gpl-3.0.en.html</url>
+        </license>
+    </licenses>
+    <mailingLists>
+        <mailingList>
+            <name>dev-chat</name>
+            <subscribe>https://groups.google.com/forum/#!forum/dmf---distributed-modeling-framework</subscribe>
+        </mailingList>
+        <mailingList>
+            <name>user-channel</name>
+            <subscribe>https://groups.google.com/forum/#!forum/osgiliath-enterprise-framework</subscribe>
+        </mailingList>
+    </mailingLists>
+
 </project>

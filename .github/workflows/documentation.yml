@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Publish documentation
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -37,7 +37,7 @@ jobs:
         which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
         eval `ssh-agent`
         mkdir -p ~/.ssh/
-        rm -rf ~/.ssh/id_ed25519
+        rm -rf ~/.ssh/id_rsa
         echo $sshkey | sed -r 's/\\n/\n/g' > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         rm -rf ~/.ssh/id_rsa.pub
@@ -46,7 +46,7 @@ jobs:
         rm -rf ~/.ssh/known_hosts
         ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
         git remote remove origin
-        git remote add origin git@github.com:Tcharl/platform.git
+        git remote add origin git@github.com:OsgiliathEnterprise/platform.git
         git fetch --all
         git checkout master || git checkout -b master
         git pull origin master
@@ -61,3 +61,7 @@ jobs:
       # publish the site
     - name: Publish site on branch
       run: ./mvnw scm-publish:publish-scm
+
+    - name: tear down
+      run: |
+        ~/.ssh/id_rsa*

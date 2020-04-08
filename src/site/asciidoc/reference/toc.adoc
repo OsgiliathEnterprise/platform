@@ -1,0 +1,13 @@
+# User guide
+
+Welcome to the Information System as a service Platform.
+
+You're navigating through a documentation that will let you consume or configure your entire information system in a few command.
+
+## Platform concepts
+
+### Virtualization
+* <<packer/introduction.adoc#main-title, Boxes>>
+
+### Storage
+* <<storage/introduction.adoc#main-title, Hard disk storage>>

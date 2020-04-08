@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-ansible-galaxy install -r requirements.yml --roles-p ../community
-ansible-galaxy collection install -r requirements.yml -p ../community
-
-cd ../community/ansible_collections/crivetimihai/virtualization/roles/docker/tasks
-sed -i 's/== 30/>= 30/g' main.yml

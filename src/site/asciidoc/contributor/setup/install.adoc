@@ -9,4 +9,3 @@ This platform has been developped for Mac but can be enriched to support Linux o
 
 A simple `./configure` at the root of this repository shall setup everything.
 If something goes wrong, feel free to open a ticket
-

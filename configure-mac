@@ -7,3 +7,5 @@ if ! grep -q 'PATH="/usr/local/opt/gnu-sed' ~/.bash_profile; then
 echo 'export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"' >> ~/.bash_profile
 fi
 
+echo 'installing debugging tools'
+brew install nektos/tap/act

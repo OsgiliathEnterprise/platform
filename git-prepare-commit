@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cd ansible/roles/lvm
+git checkout master
+git pull upstream master
+cd ../docker
+git checkout master
+git pull upstream master
+cd ../../..
+git add ansible/roles/lvm
+git add ansible/roles/docker

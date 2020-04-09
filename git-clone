@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git submodule update --init
+
+cd ansible/roles/lvm
+git remote add upstream git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git
+
+cd ../docker
+git remote add upstream git@github.com:OsgiliathEnterprise/ansible-docker.git
+

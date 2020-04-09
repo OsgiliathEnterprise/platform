@@ -2,7 +2,7 @@
 [[main-title]]
 
 
-Running test is fairly easy if you've installed the prerequisites.
+Running Ansible test is fairly easy if you've installed the prerequisites.
 
 First, start your machine using the `molecule create` command.
 
@@ -13,3 +13,10 @@ Once converged, you can `molecule verify` executing your tests on the machine.
 Finally, `molecule destroy` will kill the VM/Docker container
 
 TIP: Be sure to write your test before implementing so that you can see it failing, so to ensure that you are writing your test the good way !
+
+== Test pipelines
+
+We are using https://github.com/nektos/act[act] in order to test our pipeline.
+
+On any repository, you can execute `act list` to see all the available actions and `act <action>` to trigger it.
+You can always update the container used to trigger the tests updating the .actrc file

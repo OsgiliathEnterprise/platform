@@ -28,5 +28,5 @@ fi
 packer build -var "box_basename=$distroversion" -only=$PACKER_VM_DRIVER $distroversion.json
 
 cd ../../builds
-vagrant box add fedora-31-x86_64.virtualbox.box --name platform/fedora-31
+vagrant box add fedora-31-x86_64.virtualbox.box --name tcharl/fedora-31-cgroupv1
 

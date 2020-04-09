@@ -11,3 +11,7 @@
 == Testing
 
  * <<run/role-test.adoc#main-title, Execute integration tests>>
+
+== Publish
+
+ * <<publish/vagrant.adoc#main-title, Publish vagrant boxes>>

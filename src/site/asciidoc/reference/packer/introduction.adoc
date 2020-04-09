@@ -4,6 +4,7 @@
 A box is barely an operating system running your beloved software.
 
 ## Virtual machines
+[[virtual-machines]]
 
 As of today, computers are not physical computer stricly speaking.
 They are hosted on very big computers (even sometimes cloud) that starts multiple exploitation system using what we call hypervisors. +

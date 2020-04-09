@@ -1,0 +1,13 @@
+# Publish your Vagrant boxes
+[[main-title]]
+
+Some of our Ansible roles are based on specific <<../../reference/packer/introduction.adoc#virtual-machines, boxes>>. +
+These hosted to and downloaded from Vagrant Cloud in order to start the tests.
+Following the https://www.vagrantup.com/docs/cli/cloud.html[Official documentation], publishing box is fairly easy.
+First login to vagrant cloud: `vagrant login`
+
+Then publish the boxes under your namespace
+```
+vagrant cloud box create ORGANIZATION/BOX-NAME
+vagrant cloud publish tcharl/fedora-31-cgroupv1 1.0.0 virtualbox ./fedora-31-x86_64.virtualbox.box
+```

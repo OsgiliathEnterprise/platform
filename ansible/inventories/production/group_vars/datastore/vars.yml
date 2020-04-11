@@ -1,5 +1,5 @@
 ---
-# vars file for lvm
+# vars file for datastore
   lvm:
     lvm_groups:
       - vgname: noraid

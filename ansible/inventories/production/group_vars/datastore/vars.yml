@@ -1,10 +1,10 @@
 ---
-# vars file for lvm
+# vars file for datastore
   lvm:
     lvm_groups:
       - vgname: noraid
         disks:
-          - /dev/sda1
+          - /production/sda1
         create: true
         lvnames:
           - lvname: docker-thinpool

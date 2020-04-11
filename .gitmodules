@@ -2,8 +2,11 @@
 	path = packer/bento
 	url = git@github.com:OsgiliathEnterprise/bento.git
 [submodule "ansible/roles/docker"]
-	path = ansible/roles/docker
+	path = ansible/roles/containerization
 	url = git@github.com:OsgiliathEnterprise/ansible-docker.git
 [submodule "ansible/roles/lvm"]
 	path = ansible/roles/lvm
 	url = git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git
+[submodule "ansible/roles/securehost"]
+	path = ansible/roles/securehost
+	url = git@github.com:OsgiliathEnterprise/securehost.git

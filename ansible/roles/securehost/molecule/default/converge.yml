@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include securehost"
+      include_role:
+        name: "securehost"

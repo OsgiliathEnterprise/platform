@@ -1,0 +1,9 @@
+---
+
+- hosts: full
+  become: yes
+  become_method: sudo
+  roles:
+    - role: containerization
+    - role: securehost
+...

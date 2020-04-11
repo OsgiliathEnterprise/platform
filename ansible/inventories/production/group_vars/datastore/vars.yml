@@ -4,7 +4,7 @@
     lvm_groups:
       - vgname: noraid
         disks:
-          - /production/sda1
+          - /dev/sda1
         create: true
         lvnames:
           - lvname: docker-thinpool

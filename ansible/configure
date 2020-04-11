@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-
+pip3 install docker
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   echo "not implemented for linux, PR welcomed!"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -13,12 +13,10 @@ vagrant plugin install vagrant-persistent-storage
 rm -rf ~/.vagrant.d/boxes #remove vagrant box cache
 rm -rf ~/.cache/molecule
 
-cd roles
-git clone git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git lvm
-git clone https://github.com/OsgiliathEnterprise/ansible-docker docker
-
-vagrant box add bento/fedora-31
-cd ./lvm
+cd roles/securehost
 . ./configure
-cd ./../docker
+
+cd ./../lvm
+. ./configure
+cd ./../containerization
 . ./configure

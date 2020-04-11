@@ -1,0 +1,12 @@
+[full:children]
+datastore
+caashost
+
+[datastore:children]
+host
+
+[caashost:children]
+host
+
+[host]
+osgiliath.net ansible_ssh_user=cmordant

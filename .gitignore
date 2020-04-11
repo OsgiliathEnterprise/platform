@@ -1,6 +1,5 @@
 .idea
 target/
-packer/.git
 ansible/roles/community
 venv
 pom.xml.releaseBackup

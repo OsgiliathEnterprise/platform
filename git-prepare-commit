@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
+cd packer/bento
+git checkout master
+git pull upstream master
+cd ../..
 
 cd ansible/roles/lvm
 git checkout master
 git pull upstream master
-cd ../docker
+cd ../containerization
+git checkout master
+git pull upstream master
+cd ../securehost
 git checkout master
 git pull upstream master
 cd ../../..
 git add ansible/roles/lvm
-git add ansible/roles/docker
+git add ansible/roles/containerization
+git add ansible/roles/securehost

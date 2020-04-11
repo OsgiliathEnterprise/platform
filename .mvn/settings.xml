@@ -114,7 +114,7 @@
             </activation>
 
             <properties>
-                <!--<docker-registry.url>10.201.54.197:18018</docker-registry.url>-->
+                <!--<caashost-registry.url>10.201.54.197:18018</caashost-registry.url>-->
                 <gpg.keyname>39B282E43D03329B</gpg.keyname>
             </properties>
         </profile>

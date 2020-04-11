@@ -80,7 +80,7 @@ if [ -z "$M2_HOME" ] ; then
   while [ -h "$PRG" ] ; do
     ls=`ls -ld "$PRG"`
     link=`expr "$ls" : '.*-> \(.*\)$'`
-    if expr "$link" : '/.*' > /production/null; then
+    if expr "$link" : '/.*' > /dev/null; then
       PRG="$link"
     else
       PRG="`dirname "$PRG"`/$link"
@@ -228,7 +228,7 @@ else
       wrapperJarPath=`cygpath --path --windows "$wrapperJarPath"`
     fi
 
-    if command -v wget > /production/null; then
+    if command -v wget > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
           echo "Found wget ... using wget"
         fi
@@ -237,7 +237,7 @@ else
         else
             wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath"
         fi
-    elif command -v curl > /production/null; then
+    elif command -v curl > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
           echo "Found curl ... using curl"
         fi

@@ -13,3 +13,6 @@
 [submodule "ansible/roles/ansible-users"]
 	path = ansible/roles/ansible-users
 	url = git@github.com:OsgiliathEnterprise/ansible-users.git
+[submodule "ansible/roles/ansible-ldap"]
+	path = ansible/roles/ansible-ldap
+	url = git@github.com:OsgiliathEnterprise/ansible-ldap.git

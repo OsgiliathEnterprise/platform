@@ -1,10 +1,37 @@
 #!/usr/bin/env bash
 
-git submodule update --init
+usage="$(basename "$0") [-h] [-u n] -- Setup submodules repositories
 
-cd ansible/roles/lvm
-git remote add upstream git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git
+where:
+    -h  show this help text
+    -u  your github pseudo (origins)"
+user=Tcharl
 
-cd ../docker
-git remote add upstream git@github.com:OsgiliathEnterprise/ansible-docker.git
+while getopts ':hs:' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+    u) user=$OPTARG
+       ;;
+    :) printf "missing argument for -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+   \?) printf "illegal option: -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
 
+for f in ansible/roles/*; do
+    if [[ -d "$f" && $f != "roles/community" ]]; then
+        SUFFIX = echo $f | sed 's#.*/##'
+        cd $f
+        git remote add upstream git@github.com:OsgiliathEnterprise/${SUFFIX}.git
+        git remote add origin git@github.com:${user}/${SUFFIX}.git
+        cd ../../..
+    fi
+done

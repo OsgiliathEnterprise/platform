@@ -4,16 +4,21 @@ git checkout master
 git pull upstream master
 cd ../..
 
-cd ansible/roles/lvm
+cd ansible/roles/ansible-manage-lvm-plus
 git checkout master
 git pull upstream master
-cd ../containerization
+cd ../ansible-docker
 git checkout master
 git pull upstream master
-cd ../securehost
+cd ../ansible-securehost
 git checkout master
 git pull upstream master
+cd ../ansible-users
+git checkout master
+git pull upstream master
+
 cd ../../..
-git add ansible/roles/lvm
-git add ansible/roles/containerization
-git add ansible/roles/securehost
+git add ansible/roles/ansible-manage-lvm-plus
+git add ansible/roles/ansible-docker
+git add ansible/roles/ansible-securehost
+git add ansible/roles/ansible-users

@@ -1,8 +1,0 @@
----
-# handlers file for docker
-
-- name: containerization | daemon restart
-  systemd:
-    name: docker
-    state: restarted
-  become: yes

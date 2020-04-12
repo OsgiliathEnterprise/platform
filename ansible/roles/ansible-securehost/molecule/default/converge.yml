@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include Ansible securehost"
-      include_role:
-        name: "ansible-securehost"

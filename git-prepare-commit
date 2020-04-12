@@ -4,21 +4,20 @@ git checkout master
 git pull upstream master
 cd ../..
 
-cd ansible/roles/ansible-manage-lvm-plus
-git checkout master
-git pull upstream master
-cd ../ansible-docker
-git checkout master
-git pull upstream master
-cd ../ansible-securehost
-git checkout master
-git pull upstream master
-cd ../ansible-users
-git checkout master
-git pull upstream master
+for f in ansible/roles/*; do
+    if [[ -d "$f" && $f != "roles/community" ]]; then
+        cd $f
+        git checkout master
+        git pull upstream master
+        cd ../../..
+    fi
+done
 
-cd ../../..
-git add ansible/roles/ansible-manage-lvm-plus
-git add ansible/roles/ansible-docker
-git add ansible/roles/ansible-securehost
-git add ansible/roles/ansible-users
+
+for f in ansible/roles/*; do
+    if [[ -d "$f" && $f != "roles/community" ]]; then
+        cd $f
+        git add $f
+        cd ../../..
+    fi
+done

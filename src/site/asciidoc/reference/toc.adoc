@@ -11,3 +11,7 @@ You're navigating through a documentation that will let you consume or configure
 
 ### Storage
 * <<storage/introduction.adoc#main-title, Hard disk storage>>
+
+### Administration/Security
+
+* <<admin/fail2ban.adoc#main-title, Not being brute forced with fail2ban>>

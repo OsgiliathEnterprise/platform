@@ -13,12 +13,10 @@ vagrant plugin install vagrant-persistent-storage
 rm -rf ~/.vagrant.d/boxes #remove vagrant box cache
 rm -rf ~/.cache/molecule
 
-cd roles/ansible-docker
-. ./configure
-
-cd ./../ansible-manage-lvm-plus
-. ./configure
-cd ./../ansible-securehost
-. ./configure
-cd ./../ansible-users
-. ./configure
+for f in roles/*; do
+    if [[ -d "$f" && $f != "roles/community" ]]; then
+        cd $f
+        . ./configure
+        cd ../..
+    fi
+done

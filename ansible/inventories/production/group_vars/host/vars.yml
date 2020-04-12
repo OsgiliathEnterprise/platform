@@ -1,11 +1,13 @@
 ---
-hostsusers:
-  users_group_list:
-    - name: cmordant
-  users_user_list:
-    - name: cmordant
-      group: cmordant
-      groups: wheel docker
-      cron_allow: yes
-      authorized_keys:
-        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDeWwsRxiaOhL2DJLZxCZAhL4D/2A+KdzklWLyak6TKvncshzxh3tv0lo6FGZIV/1umOLHCvKpbyOZuGkvS8v99m9GIsQnR6cSXasAczJbqaEMI/N5gDBg2bAuG2lcfmwqfFnaY4D62Wb14GqdnKsydLPXONoXcqbLOuiwZbOjP6Zz/uF22pn18wS/c3vH2nvSASdEiZ5Ths/DFMN6nk/W7dAP2rOOl508d1duaM4Z9ivz6IV61KbgaeNMvU4VXq3X2idOHsgBNprwgcj/nJqLTTIMk/l+J6SIGl6+znPbP5LwJSg2ls/YmhPe4XYfsQv2jCivbEq1jEDaqreEoNgwS86G4xkwm9yCq9PnHb4bCa3lUhUf5ut2Bjs/T1rqZ1v/mNtzjQxujxMxVXp3Y875OMnF4LvZTZGOC+M5cU25ZU1+3ZyVyAKtBFI8T0NkZ/Gr7KpEqvkYapsPLIl3PbWI+2IeSU9ZcXNwSC5Dw0wuC9rN8N2pYi1Pd08efWDX/kGeeFLyUxjCs6bo50BzsDnWVzxEO9Dk2f2YLi0qYyUglD9KOwzU2Q9MixhyjnXTet478HjHlm729oJzWjaDTy2B2RQ//74ebYY9WRELvU1SQsFwPJNeOuipYrYS2B0YMkzbTOvJ4nF1NPcwgjp1AVXm64zFUsogxt6wtiuX1eL6HCQ== cmordant1@gmail.com"
+users_group_list:
+  - name: cmordant
+users_user_list:
+  - name: cmordant
+    group: cmordant
+    groups:
+      - wheel
+      - docker
+      - libvirt
+    cron_allow: yes
+    authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDeWwsRxiaOhL2DJLZxCZAhL4D/2A+KdzklWLyak6TKvncshzxh3tv0lo6FGZIV/1umOLHCvKpbyOZuGkvS8v99m9GIsQnR6cSXasAczJbqaEMI/N5gDBg2bAuG2lcfmwqfFnaY4D62Wb14GqdnKsydLPXONoXcqbLOuiwZbOjP6Zz/uF22pn18wS/c3vH2nvSASdEiZ5Ths/DFMN6nk/W7dAP2rOOl508d1duaM4Z9ivz6IV61KbgaeNMvU4VXq3X2idOHsgBNprwgcj/nJqLTTIMk/l+J6SIGl6+znPbP5LwJSg2ls/YmhPe4XYfsQv2jCivbEq1jEDaqreEoNgwS86G4xkwm9yCq9PnHb4bCa3lUhUf5ut2Bjs/T1rqZ1v/mNtzjQxujxMxVXp3Y875OMnF4LvZTZGOC+M5cU25ZU1+3ZyVyAKtBFI8T0NkZ/Gr7KpEqvkYapsPLIl3PbWI+2IeSU9ZcXNwSC5Dw0wuC9rN8N2pYi1Pd08efWDX/kGeeFLyUxjCs6bo50BzsDnWVzxEO9Dk2f2YLi0qYyUglD9KOwzU2Q9MixhyjnXTet478HjHlm729oJzWjaDTy2B2RQ//74ebYY9WRELvU1SQsFwPJNeOuipYrYS2B0YMkzbTOvJ4nF1NPcwgjp1AVXm64zFUsogxt6wtiuX1eL6HCQ== cmordant1@gmail.com"

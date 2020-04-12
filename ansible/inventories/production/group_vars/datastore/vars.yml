@@ -1,25 +1,25 @@
 ---
 # vars file for datastore
-lvm:
-  lvm_groups:
-    - vgname: noraid
-      disks:
-        - /dev/sda1
-      create: true
-      lvnames:
-        - lvname: docker-thinpool
-          size: 25%VG
-          opts: "--wipesignatures y"
-          create: true
-          metadata: noraid/docker-thinpoolmeta
-          autoextendtreshold: 80
-          autoextendpercent: 20
-          filesystem2: xfs
-          mntp: /var/lib/docker
-          mount2: true
-          mopts: defaults,pquota,gquota,quota
-        - lvname: docker-thinpoolmeta
-          size: 1%VG
-          opts: "--wipesignatures y"
-          create: true
-  manage_lvm: false # don't want to mess with that...
+
+lvm_groups:
+  - vgname: noraid
+    disks:
+      - /dev/sda1
+    create: true
+    lvnames:
+      - lvname: docker-thinpool
+        size: 25%VG
+        opts: "--wipesignatures y"
+        create: true
+        metadata: noraid/docker-thinpoolmeta
+        autoextendtreshold: 80
+        autoextendpercent: 20
+        filesystem2: xfs
+        mntp: /var/lib/docker
+        mount2: true
+        mopts: defaults,pquota,gquota,quota
+      - lvname: docker-thinpoolmeta
+        size: 1%VG
+        opts: "--wipesignatures y"
+        create: true
+manage_lvm: false # don't want to mess with that...

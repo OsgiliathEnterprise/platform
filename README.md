@@ -8,5 +8,8 @@
  ------------
  
  Checkout the [reference documentation](https://osgiliathenterprise.github.io/platform/reference/toc.html) for more information.
+
+Status
+ ------------
  
-  
+This project is looking for active contributors, feel free to contact us on [gitter](https://gitter.im/OsgiliathEnterprise/platform)

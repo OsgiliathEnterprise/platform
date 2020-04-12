@@ -13,10 +13,12 @@ vagrant plugin install vagrant-persistent-storage
 rm -rf ~/.vagrant.d/boxes #remove vagrant box cache
 rm -rf ~/.cache/molecule
 
-cd roles/securehost
+cd roles/ansible-docker
 . ./configure
 
-cd ./../lvm
+cd ./../ansible-manage-lvm-plus
 . ./configure
-cd ./../containerization
+cd ./../ansible-securehost
+. ./configure
+cd ./../ansible-users
 . ./configure

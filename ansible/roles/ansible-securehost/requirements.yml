@@ -1,0 +1,12 @@
+---
+roles:
+  # Install a role from Ansible Galaxy.
+  - name: robertdebock.fail2ban
+    source: https://galaxy.ansible.com
+    path: ../community
+  - name: robertdebock.bootstrap
+    source: https://galaxy.ansible.com
+    path: ../community
+  - name: robertdebock.epel
+    source: https://galaxy.ansible.com
+    path: ../community

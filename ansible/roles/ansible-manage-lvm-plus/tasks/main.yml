@@ -1,0 +1,49 @@
+---
+# tasks file for lvm
+
+- name: lvm | check already converted
+  loop: "{{ lvm_groups|subelements('lvnames') }}"
+  shell: "lvs -o metadata_lv  {{ item.0.vgname }} --separator='|' --noheadings | grep -c '{{ item.1.lvname }}_tmeta'"
+  become: yes
+  register: metadataalreadycreatedresult
+  ignore_errors: True
+  when: >
+    (
+    (
+    manage_lvm is defined and
+    manage_lvm
+    ) and
+    (
+    item.1 is defined and
+    item.1 != 'None'
+    ) and
+    (item.1.metadata is defined)
+    )
+
+- name: lvm | convert thinpool
+  loop: "{{ lvm_groups|subelements('lvnames') }}"
+  command: lvconvert -y --zero n -c 512K --thinpool {{ item.0.vgname }}/{{ item.1.lvname }} --poolmetadata {{ item.1.metadata }}
+  become: yes
+  when: >
+    (
+    metadataalreadycreatedresult is failed and
+    (
+    manage_lvm is defined and
+    manage_lvm
+    ) and
+    (
+    item.1 is defined and
+    item.1 != 'None'
+    ) and
+    (item.1.metadata is defined)
+    )
+
+- include: autoextends.yml
+  when: >
+    manage_lvm is defined and
+    manage_lvm
+
+- include: xfs.yml
+  when: >
+    manage_lvm is defined and
+    manage_lvm

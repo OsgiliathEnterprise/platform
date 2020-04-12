@@ -4,6 +4,7 @@
   become: yes
   become_method: sudo
   roles:
-    - role: containerization
-    - role: securehost
+    - role: ansible-docker
+    - role: ansible-securehost
+    - role: ansible-users
 ...

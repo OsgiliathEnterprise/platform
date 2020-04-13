@@ -16,7 +16,6 @@ done
 
 for f in ansible/roles/*; do
     if [[ -d "$f" && $f != "roles/community" ]]; then
-        cd $f
         git add $f
         cd ../../..
     fi

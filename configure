@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 echo "As a prerequisite, run the install script related to your distro"
+. ./git-clone
 
 if ! grep -q "platform_root=" ~/.bash_profile; then
 echo export platform_root=$(pwd) >> ~/.bash_profile
@@ -14,6 +15,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 source ~/.bash_profile
 
-. ./packer/configure
-
-. ./ansible/configure
+cd packer
+. ./configure
+cd ../ansible
+. ./configure

@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include Ansible Docker"
-      include_role:
-        name: "ansible-containerization"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pip3 install docker
+pip install docker
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   echo "not implemented for linux, PR welcomed!"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -12,11 +12,11 @@ vagrant plugin install vagrant-persistent-storage
 
 rm -rf ~/.vagrant.d/boxes #remove vagrant box cache
 rm -rf ~/.cache/molecule
-
+CWD="$(pwd)"
 for f in roles/*; do
     if [[ -d "$f" && $f != "roles/community" ]]; then
         cd $f
         . ./configure
-        cd ../..
+        cd $CWD
     fi
 done

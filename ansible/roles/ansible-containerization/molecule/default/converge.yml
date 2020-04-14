@@ -1,0 +1,30 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    lvm_groups:
+      - vgname: non-persistent
+        disks:
+          - /dev/sdb1
+        create: true
+        lvnames:
+          - lvname: thinpool
+            size: 40%VG
+            opts: "--wipesignatures y"
+            create: true
+            metadata: non-persistent/thinpoolmeta
+            autoextendtreshold: 80
+            autoextendpercent: 20
+            filesystem2: xfs
+            mntp: /var/lib/docker
+            mount2: true
+            mopts: defaults,pquota,gquota,quota
+          - lvname: thinpoolmeta
+            size: 10%VG
+            opts: "--wipesignatures y"
+            create: true
+    manage_lvm: true
+  tasks:
+    - name: "Include docker"
+      include_role:
+        name: "ansible-containerization"

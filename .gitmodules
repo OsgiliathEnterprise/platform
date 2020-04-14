@@ -1,18 +1,21 @@
 [submodule "packer/bento"]
 	path = packer/bento
 	url = git@github.com:OsgiliathEnterprise/bento.git
-[submodule "ansible/roles/ansible-docker"]
-	path = ansible/roles/ansible-docker
-	url = git@github.com:OsgiliathEnterprise/ansible-docker.git
-[submodule "ansible/roles/ansible-manage-lvm-plus"]
-	path = ansible/roles/ansible-manage-lvm-plus
-	url = git@github.com:OsgiliathEnterprise/ansible-manage-lvm-plus.git
+[submodule "ansible/roles/ansible-containerization"]
+	path = ansible/roles/ansible-containerization
+	url = git@github.com:OsgiliathEnterprise/ansible-containerization.git
+[submodule "ansible/roles/ansible-volumes"]
+	path = ansible/roles/ansible-volumes
+	url = git@github.com:OsgiliathEnterprise/ansible-volumes.git
 [submodule "ansible/roles/ansible-securehost"]
 	path = ansible/roles/ansible-securehost
 	url = git@github.com:OsgiliathEnterprise/ansible-securehost.git
 [submodule "ansible/roles/ansible-users"]
 	path = ansible/roles/ansible-users
 	url = git@github.com:OsgiliathEnterprise/ansible-users.git
+[submodule "ansible/roles/ansible-virtualization"]
+	path = ansible/roles/ansible-virtualization
+	url = git@github.com:OsgiliathEnterprise/ansible-virtualization.git
 [submodule "ansible/roles/ansible-ldap"]
 	path = ansible/roles/ansible-ldap
 	url = git@github.com:OsgiliathEnterprise/ansible-ldap.git

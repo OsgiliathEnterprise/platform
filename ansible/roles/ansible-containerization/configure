@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+ansible-galaxy install -r requirements.yml --roles-path ../community
+ansible-galaxy collection install -r requirements.yml -p ../community
+
+cd ../community/ansible_collections/crivetimihai/virtualization/roles/docker/tasks
+sed -i 's/== 30/>= 30/g' main.yml
+# see resolution at https://github.com/crivetimihai/ansible_virtualization/pull/6
+sed -i 's|linux/centos/docker-ce|linux/fedora/docker-ce|g' install_Fedora.yml
+sed -i 's|6650718e0fe5202ae7618521f695d43a8bc051c539d7570f0edbfa5b4916f218|3af973c1f2e16a032a11074eb22b440894ad4936c9ca86b666f8cf8342b7bea7|g' install_Fedora.yml

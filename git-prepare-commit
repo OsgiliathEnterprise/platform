@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
+CWD="$(pwd)"
 cd packer/bento
 git checkout master
 git pull upstream master
-cd ../..
+cd $CWD
 
 for f in ansible/roles/*; do
     if [[ -d "$f" && $f != "roles/community" ]]; then
-        cd $f
+        cd "$f"
         git checkout master
         git pull upstream master
-        cd ../../..
+        cd $CWD
     fi
 done
 
 
 for f in ansible/roles/*; do
     if [[ -d "$f" && $f != "roles/community" ]]; then
-        git add $f
-        cd ../../..
+        git add "$f"
+        cd $CWD
     fi
 done

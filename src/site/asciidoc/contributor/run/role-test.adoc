@@ -20,3 +20,8 @@ We are using https://github.com/nektos/act[act] in order to test our pipeline.
 
 On any repository, you can execute `act list` to see all the available actions and `act <action>` to trigger it.
 You can always update the container used to trigger the tests updating the .actrc file
+
+== Molecule platforms
+
+The prefered molecule platform being docker, it is pretty straightforward to use and test.
+For some other edge case, we are using https://github.com/ansible-community/molecule-vagrant/blob/master/molecule_vagrant/test/scenarios/molecule/multi-node/molecule.yml[molecule-vagrant] (example, to test logical volumes or virtualization)

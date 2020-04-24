@@ -1,0 +1,21 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    firewalld_zones:
+      - name: public
+        nics:
+          - eth0
+        masquerade: true
+        port_forward_rules:
+          - port_forward_rule: ssh-to-guest
+            family: ipv4
+            from_port: 6752
+            protocol: tcp
+            to_address: 192.168.1.10
+            to_port: 22
+
+  tasks:
+    - name: "Include ansible-routing"
+      include_role:
+        name: "ansible-routing"

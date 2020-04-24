@@ -1,0 +1,49 @@
+---
+
+- name: ansible-routing | zone | create zones
+  become: "{{ firewalld_become }}"
+  firewalld:
+    zone: "{{ zone.name | default('public') }}"
+    permanent: true
+    immediate: true
+    state: enabled
+
+- name: ansible-routing | zone | affect nics
+  become: "{{ firewalld_become }}"
+  firewalld:
+    zone: "{{ zone.name | default('public') }}"
+    permanent: true
+    immediate: true
+    interface: "{{ nic }}"
+    state: enabled
+  loop: "{{ zone.nics | default('eth0') }}"
+  loop_control:
+    loop_var: nic
+
+- name: ansible-routing | zone | test firewalld masquerade
+  command: "firewall-cmd --zone={{ zone.name }} --query-masquerade"
+  become: "{{ firewalld_become }}"
+  register: masqueradeactive
+  failed_when: false
+  changed_when: false
+
+- name: ansible-routing | zone | debug masquerade command
+  debug:
+    var: masqueradeactive
+
+- name: ansible-routing | zone | configure firewalld masquerade
+  become: "{{ firewalld_become }}"
+  firewalld:
+    masquerade: true
+    state: enabled
+    permanent: true
+    zone: "{{ zone.name | default('public') }}"
+  notify: ansible-routing | handler | reload-firewall
+  when: not masqueradeactive.rc == 0
+
+- name: ansible-routing | zone | configure forwarding
+  include: port-forwarding.yml
+  loop: "{{ zone.port_forward_rules }}"
+  loop_control:
+    label: "{{ forward_rule.port_forward_rule }}"
+    loop_var: forward_rule

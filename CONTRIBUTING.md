@@ -19,7 +19,7 @@ If you have a question on using Osgiliath platform, or if you need help with you
 
 ## <a name="issue"></a> Issues and Bugs
 
-If you find a bug in the source code or a mistake in the documentation, you can help us by [submitting a ticket](https://opensource.guide/how-to-contribute/#opening-an-issue) to our [GitHub issues](https://github.com/OsgiliathEnterprise/platform/issues). Even better, you can submit a Pull Request to our [Osgiliath Platform project](https://github.com/OsgiliathEnterprise/platform) or to our [Documentation project](https://github.com/OsgiliathEnterprise/platform/tree/master/src/site).
+If you find a bug in the source code or a mistake in the documentation, you can help us by [submitting a ticket](https://opensource.guide/how-to-contribute/#opening-an-issue) to our [GitHub issues](https://github.com/OsgiliathEnterprise/platform/issues). Even better, after explaining your requirement in a ticket, you can submit a Pull Request to our [Osgiliath Platform project](https://github.com/OsgiliathEnterprise/platform) or to our [Documentation project](https://github.com/OsgiliathEnterprise/platform/tree/master/src/site).
 
 **Please see the Submission Guidelines below**.
 
@@ -28,8 +28,12 @@ If you find a bug in the source code or a mistake in the documentation, you can 
 You can request a new feature by submitting a ticket to our [GitHub issues](https://github.com/OsgiliathEnterprise/platform/issues). If you
 would like to implement a new feature then consider what kind of change it is:
 
--   **Major Changes** that you wish to contribute to the project should be discussed first. Please open a ticket which clearly states that it is a feature request in the title and explain clearly what you want to achieve in the description, and the Osgiliath team will discuss with you what should be done in that ticket. You can then start working on a Pull Request. In order to communicate major changes proposals and receive reviews from the core team, you can also submit an RFC.
--   **Small Changes** can be proposed without any discussion. Open up a ticket which clearly states that it is a feature request in the title. Explain your change in the description, and you can propose a Pull Request straight away.
+*   **New business addition** 
+  * [Create a new business category](https://github.com/OsgiliathEnterprise/platform/issues/new?labels=Status%3A+Untriaged&template=CATEGORY_TEMPLATE.md) that will lead to a specific issue label once accepted (for example, CRM capability)
+  * Then, create as many [solution implementation](https://github.com/OsgiliathEnterprise/platform/issues/new?labels=Status%3A+Untriaged&template=SOLUTION_TEMPLATE.md) answering that problematic (ex: Odoo).
+  * Add vote to your preferred solution: the one with the most vote will be integrated (either via committer development or Pull Request) as the main one in the platform, the other can be also be contributed as alternatives.
+*   **Major Changes** that you wish to contribute to the project should be discussed first. Please open a ticket which clearly states that it is a feature request in the title and explain clearly what you want to achieve in the description, and the Osgiliath team will discuss with you what should be done in that ticket. You can then start working on a Pull Request. In order to communicate major changes proposals and receive reviews from the core team, you can also submit an RFC.
+*   **Small Changes** can be proposed without any discussion. Open up a ticket which clearly states that it is a feature request in the title. Explain your change in the description, and you can propose a Pull Request straight away.
 
 ## <a name="rfcs"></a> RFCs
 
@@ -196,7 +200,11 @@ See the [contributor guide](https://osgiliathenterprise.github.io/platform/contr
 
 ### Fork the platform project
 
-Go to the [platform project](https://github.com/OsgiliathEnterprise/platform) and click on the "fork" button. You can then clone your own fork of the project, and start working on it.
+Go to the [platform project](https://github.com/OsgiliathEnterprise/platform) and click on the "fork" button. 
+You can then clone your own fork of the project, and start working on it.
+```bash
+git clone --recurse-submodule git@github.com:myFork/platform.git
+```
 
 [Please read the GitHub forking documentation for more information](https://help.github.com/articles/fork-a-repo)
 

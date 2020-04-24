@@ -1,0 +1,29 @@
+---
+- name: ansible-routing | forwarding | Redirect port
+  become: "{{ firewalld_become }}"
+  firewalld:
+    rich_rule: >
+      rule family={{ forward_rule.family | default('ipv4') }}
+      forward-port port={{ forward_rule.from_port }}
+      protocol={{ forward_rule.protocol | default('tcp') }}
+      to-port={{ forward_rule.to_port }}
+    zone: "{{ zone.name | default('public') }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  when: not forward_rule.to_address is defined
+
+- name: ansible-routing | forwarding | Redirect ip
+  become: "{{ firewalld_become }}"
+  firewalld:
+    rich_rule: >
+      rule family={{ forward_rule.family | default('ipv4') }}
+      forward-port port={{ forward_rule.from_port }}
+      protocol={{ forward_rule.protocol | default('tcp') }}
+      to-port={{ forward_rule.to_port }}
+      to-addr={{ forward_rule.to_address }}
+    zone: "{{ zone.name | default('public') }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  when: forward_rule.to_address is defined

@@ -4,6 +4,9 @@
 [submodule "ansible/roles/ansible-containerization"]
 	path = ansible/roles/ansible-containerization
 	url = git@github.com:OsgiliathEnterprise/ansible-containerization.git
+[submodule "ansible/roles/ansible-routing"]
+	path = ansible/roles/ansible-routing
+	url = git@github.com:OsgiliathEnterprise/ansible-routing.git
 [submodule "ansible/roles/ansible-volumes"]
 	path = ansible/roles/ansible-volumes
 	url = git@github.com:OsgiliathEnterprise/ansible-volumes.git

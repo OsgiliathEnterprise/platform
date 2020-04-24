@@ -1,8 +1,6 @@
  Osgiliath Platform
  =========
- 
- ![Volumes](https://img.shields.io/github/watchers/OsgiliathEnterprise/ansible-volumes?style=social)
- 
+
 | Repo | Lint status | Tests status | Galaxy url |
 |-----------|-------------|--------------|------------|
 | ![Platform](https://img.shields.io/github/watchers/OsgiliathEnterprise/platform?style=social)|![Documentation](https://github.com/OsgiliathEnterprise/platform/workflows/Build%20documentation/badge.svg)|![Documentation](https://github.com/OsgiliathEnterprise/platform/workflows/Build%20documentation/badge.svg)||

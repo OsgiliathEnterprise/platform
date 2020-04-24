@@ -1,7 +1,0 @@
----
-# handlers file for ansible-routing
-
-- name: ansible-routing | handler | reload-firewall
-  command: "firewall-cmd --reload"
-  become: yes
-  listen: ansible-routing | handler | reload-firewall

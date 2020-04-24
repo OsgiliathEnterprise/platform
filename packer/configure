@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-cd "$(dirname ${BASH_SOURCE[0]})"
+CURRENT_FOLDER = "$(dirname ${BASH_SOURCE[0]})"
 git clone git@github.com:chef/bento.git
 cd "bento"
 git pull upstream master
 cd ../..
 
-. ./../platform-properties.sh
-cd "$(dirname ${BASH_SOURCE[0]})/bento/packer_templates/$distro"
+. ./platform-properties.sh
+cd $CURRENT_FOLDER
 
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -24,9 +24,13 @@ if [[ "$distroversion" == "fedora-31" ]]; then
   sed -i -e "s/dnf -y install \(.*\)/dnf -y install \1 grubby \&\& grubby --update-kernel=ALL --args=\"systemd.unified_cgroup_hierarchy=0\" --make-default/" bento/packer_templates/fedora/scripts/install-supporting-packages.sh
   fi
 fi
+cd bento/packer_templates/$distro
+
 
 packer build -var "box_basename=$distroversion" -only=$PACKER_VM_DRIVER $distroversion.json
 
 cd ../../builds
 vagrant box add fedora-31-x86_64.virtualbox.box --name tcharl/fedora-31-cgroupv1
-
+# to publish
+# vagrant cloud login
+# vagrant cloud publish

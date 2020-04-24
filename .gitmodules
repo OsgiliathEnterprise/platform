@@ -4,6 +4,9 @@
 [submodule "ansible/roles/ansible-containerization"]
 	path = ansible/roles/ansible-containerization
 	url = git@github.com:OsgiliathEnterprise/ansible-containerization.git
+[submodule "ansible/roles/ansible-routing"]
+	path = ansible/roles/ansible-routing
+	url = git@github.com:OsgiliathEnterprise/ansible-routing.git
 [submodule "ansible/roles/ansible-volumes"]
 	path = ansible/roles/ansible-volumes
 	url = git@github.com:OsgiliathEnterprise/ansible-volumes.git
@@ -16,6 +19,9 @@
 [submodule "ansible/roles/ansible-virtualization"]
 	path = ansible/roles/ansible-virtualization
 	url = git@github.com:OsgiliathEnterprise/ansible-virtualization.git
-[submodule "ansible/roles/ansible-ldap"]
-	path = ansible/roles/ansible-ldap
-	url = git@github.com:OsgiliathEnterprise/ansible-ldap.git
+[submodule "ansible/roles/ansible-virtualization-guest"]
+	path = ansible/roles/ansible-virtualization-guest
+	url = git@github.com:OsgiliathEnterprise/ansible-virtualization-guest.git
+[submodule "ansible/roles/ansible-virtualization-guest"]
+	path = ansible/roles/ansible-routing
+	url = git@github.com:OsgiliathEnterprise/ansible-routing.git

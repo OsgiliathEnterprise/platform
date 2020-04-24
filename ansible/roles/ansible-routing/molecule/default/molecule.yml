@@ -1,0 +1,26 @@
+---
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+
+lint: yamllint . && flake8 && ansible-lint --exclude=meta
+platforms:
+  - name: Fedora-Molecule-Routing
+    box: fedora/31-cloud-base
+    memory: 1000
+    cpus: 2
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: yes
+    pre_build_image: yes
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../..:../../../community
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
+  options:
+    v: 1

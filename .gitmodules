@@ -19,3 +19,6 @@
 [submodule "ansible/roles/ansible-virtualization-guest"]
 	path = ansible/roles/ansible-virtualization-guest
 	url = git@github.com:OsgiliathEnterprise/ansible-virtualization-guest.git
+[submodule "ansible/roles/ansible-virtualization-guest"]
+	path = ansible/roles/ansible-routing
+	url = git@github.com:OsgiliathEnterprise/ansible-routing.git

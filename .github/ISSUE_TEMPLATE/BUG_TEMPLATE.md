@@ -6,7 +6,7 @@ labels: "Status: Untriaged"
 
 # Version:
 
-[Version of the project installed]
+[Version of the platform installed]
 
 # Environment:
 

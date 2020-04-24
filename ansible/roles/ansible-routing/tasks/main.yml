@@ -1,0 +1,11 @@
+---
+# tasks file for ansible-routing
+- name: ansible-routing | install firewalld
+  include: install.yml
+
+- name: ansible-routing | configure zones
+  include: zone.yml
+  loop: "{{ firewalld_zones }}"
+  loop_control:
+    label: "{{ zone.name }}"
+    loop_var: zone

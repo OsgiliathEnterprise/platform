@@ -1,0 +1,3 @@
+---
+# Whether this module should use the "become" option for configuring firewalld
+firewalld_become: true

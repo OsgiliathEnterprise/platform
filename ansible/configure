@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pip install docker
+pip3 install docker
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   echo "not implemented for linux, PR welcomed!"
 elif [[ "$OSTYPE" == "darwin"* ]]; then

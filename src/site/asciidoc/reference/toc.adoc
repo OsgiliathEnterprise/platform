@@ -8,6 +8,7 @@ You're navigating through a documentation that will let you consume or configure
 
 ### Virtualization
 * <<packer/introduction.adoc#main-title, Boxes>>
+* <<virtualization/virtualmachines.adoc#main-title, Virtual machines>>
 
 ### Storage
 * <<storage/introduction.adoc#main-title, Hard disk storage>>

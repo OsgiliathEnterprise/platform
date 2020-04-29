@@ -1,0 +1,7 @@
+# Virtual machines
+[[main-title]]
+
+As stated in the << ../packer/introduction.adoc#main-title, introduction>>, Virtual machines are full machines, started from within your host's OS or hypervisor +
+Within the platform, we are relying on multiple Virtualization technologies depending on the use case.
+
+ * <<containers.adoc#main-title, Containers>>

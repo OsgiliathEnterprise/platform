@@ -1,0 +1,16 @@
+---
+
+- name: ansible-directory | install | 389-ds packages
+  template:
+    src: ds-setup.inf.j2
+    dest: "{{ ansible_directory_ds_setup_file_path }}"
+    owner: root
+    group: root
+    mode: '0600'
+  become: true
+
+- name: ansible-directory | install | 389-ds setup server
+  command: "dscreate from-file {{ ansible_directory_ds_setup_file_path }}"
+  become: true
+  args:
+    creates: /etc/dirsrv/slapd-localhost/

@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    company_domain: osgiliath.net
+    ds_admin_password: passw0rd
+  tasks:
+    - name: "Include ansible-directory"
+      include_role:
+        name: "ansible-directory"

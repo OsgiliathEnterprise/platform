@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-directory
+
+ansible_directory_ds_setup_file_path: /tmp/ds-setup.inf

@@ -22,6 +22,6 @@
 [submodule "ansible/roles/ansible-routing"]
 	path = ansible/roles/ansible-routing
 	url = git@github.com:OsgiliathEnterprise/ansible-routing.git
-[submodule "ansible/roles/ansible-node-registry"]
-	path = ansible/roles/ansible-node-registry
-	url = git@github.com:OsgiliathEnterprise/ansible-node-registry.git
+[submodule "ansible/roles/ansible-directory"]
+	path = ansible/roles/ansible-directory
+	url = git@github.com:OsgiliathEnterprise/ansible-directory.git

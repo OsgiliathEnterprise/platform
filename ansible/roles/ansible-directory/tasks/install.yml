@@ -1,0 +1,9 @@
+---
+
+- name: ansible-directory | install | 389-ds packages
+  package:
+    name:
+      - 389-ds-base
+      - 389-ds-base-libs
+    state: present
+  become: true

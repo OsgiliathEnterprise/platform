@@ -6,7 +6,10 @@
   <version>0.0.2-SNAPSHOT</version>
   <artifactId>ansible-platform</artifactId>
   <packaging>pom</packaging>
-  <name>Ansible Platform</name>
+  <name>Osgiliath Platform</name>
+  <description>
+    Single click platform that let focus on your business!
+  </description>
   <properties>
     <maven.version>3.0.0</maven.version>
     <encoding>UTF-8</encoding>

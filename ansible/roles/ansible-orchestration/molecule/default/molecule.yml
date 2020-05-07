@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    roles-path: ../community
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint: yamllint . && flake8 && ansible-lint --exclude=meta
+platforms:
+  - name: Fedora-Molecule-Orchestration-VB
+    box: tcharl/fedora-31-cgroupv1
+    cpus: 8
+    memory: 12288
+    provider_raw_config_args:
+      - "customize ['modifyvm', :id, '--nested-hw-virt', 'on']"
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../..:../../../community
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
+  options:
+    v: 1

@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-orchestration
+orchestrator_data_dir: /var/lib/minikube
+orchestrator_virtualization_group: libvirt

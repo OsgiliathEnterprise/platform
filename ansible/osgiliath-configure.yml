@@ -1,10 +1,9 @@
 ---
-
-- hosts: full
-  become: yes
-  become_method: sudo
+- name: install common roles
+  hosts: full
   roles:
     - role: ansible-containerization
     - role: ansible-securehost
     - role: ansible-users
+    - role: ansible-orchestration
 ...

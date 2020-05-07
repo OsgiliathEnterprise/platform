@@ -1,11 +1,15 @@
 [full:children]
 datastore
 caashost
+secured
 
 [datastore:children]
 host
 
 [caashost:children]
+host
+
+[secured:children]
 host
 
 [host]

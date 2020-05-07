@@ -8,7 +8,7 @@ lvm_groups:
     create: true
     lvnames:
       - lvname: docker-thinpool
-        size: 25%VG
+        size: 20%VG
         opts: "--wipesignatures y"
         create: true
         metadata: noraid/docker-thinpoolmeta

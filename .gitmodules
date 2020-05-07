@@ -25,3 +25,6 @@
 [submodule "ansible/roles/ansible-directory"]
 	path = ansible/roles/ansible-directory
 	url = git@github.com:OsgiliathEnterprise/ansible-directory.git
+[submodule "ansible/roles/ansible-orchestration"]
+	path = ansible/roles/ansible-orchestration
+	url = git@github.com:OsgiliathEnterprise/ansible-orchestration.git

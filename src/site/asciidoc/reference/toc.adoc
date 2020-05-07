@@ -2,6 +2,12 @@
 
 Welcome to the Information System as a service Platform.
 
+Have you ever dreamed to choose useful applications and deploy your entire information system with a PR and a simple
+```bash
+ansible-playbook -i inventories/my-server my-play.yml --ask-become-pass
+```
+So you have knocked on right door!
+
 You're navigating through a documentation that will let you consume or configure your entire information system in a few command.
 
 ## Platform concepts
@@ -15,4 +21,5 @@ You're navigating through a documentation that will let you consume or configure
 
 ### Administration/Security
 
-* <<admin/fail2ban.adoc#main-title, Not being brute forced with fail2ban>>
+* <<admin/fail2ban.adoc#main-title, Avoiding machines being brute forced>>
+

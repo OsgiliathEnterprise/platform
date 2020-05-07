@@ -1,6 +1,0 @@
----
-# vars file for ansible-orchestration
-
-orchestration:
-  group: orchestrationadm
-  user: orchestrationadm

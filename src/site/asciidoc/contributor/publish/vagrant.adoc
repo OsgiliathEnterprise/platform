@@ -9,5 +9,5 @@ First login to vagrant cloud: `vagrant login`
 Then publish the boxes under your namespace
 ```
 vagrant cloud box create ORGANIZATION/BOX-NAME
-vagrant cloud publish tcharl/fedora-31-cgroupv1 1.0.0 virtualbox ./fedora-31-x86_64.virtualbox.box
+vagrant cloud publish ORGANIZATION/BOX-NAME BOX_VERSION PROVIDER ./BUILT_BOX.PROVIDER.box
 ```

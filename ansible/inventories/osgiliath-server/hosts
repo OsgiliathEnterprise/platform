@@ -1,7 +1,8 @@
-[full:children]
+[hostmachines:children]
 datastore
 caashost
 secured
+vmhost
 
 [datastore:children]
 host
@@ -12,5 +13,21 @@ host
 [secured:children]
 host
 
+[hostmachines:children]
+host
+
+[vmhost:children]
+host
+
+[orchestrationmaster:children]
+kube_master
+
+[orchestrationnode:children]
+kube_node
+
+[kube_master]
+
+[kube_node]
+
 [host]
-osgiliath.net ansible_ssh_user=cmordant
+osgiliath.net ansible_ssh_user=cmordant ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath

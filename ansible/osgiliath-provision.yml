@@ -1,6 +1,7 @@
 ---
 
-- name: provision
-  hosts: hosts
-  roles: [] # For now, no VM should be created
+- name: Provision VMs
+  hosts: hostmachines
+  roles:
+    - role: ansible-virtualization-guest
 ...

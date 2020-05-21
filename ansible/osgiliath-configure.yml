@@ -1,9 +1,20 @@
 ---
-- name: install common roles
-  hosts: full
+- name: install host roles
+  hosts: hostmachines
   roles:
     - role: ansible-containerization
     - role: ansible-securehost
     - role: ansible-users
+    - role: ansible-routing
+    - role: ansible-nameserver
+    - { role: robertdebock.bootstrap, become: true }
+    - { role: robertdebock.core_dependencies, become: true }
+
+- name: install kube roles
+  hosts:
+    - kube_master
+    - kube_node
+  roles:
     - role: ansible-orchestration
+
 ...

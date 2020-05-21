@@ -1,0 +1,59 @@
+---
+
+libvirt_host_pools:
+  - name: libvirt_vg
+    type: lvm2
+    source: non-persistent
+libvirt_host_networks:
+  - name: default
+    mode: nat
+    bridge: vibr0
+    ip: 192.168.122.1
+    netmask: 255.255.255.0
+    dhcp_start: 192.168.122.100
+    dhcp_end: 192.168.122.200
+systemusers_user_list:
+  - name: libvirt
+    group: libvirt
+    groups: wheel
+virtualization_guest_boxes:
+  - name: fedora-31-cloud-master
+    url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
+    ssh_key:
+  - name: fedora-31-cloud-node
+    url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
+libvirt_vms:
+  - state: present
+    name: 'master.osgiliath.net'
+    memory_mb: 3072
+    vcpus: 2
+    ssh_port_on_host: 22022
+    # same as the one in molecule.yml
+    ansible_groups:
+      - kube_master
+    volumes:
+      - name: 'fedora-31-cloud-master.img'
+        device: 'disk'
+        type: 'file'
+        capacity: '3GB'
+        format: 'qcow2'
+        target: 'hda'  # first device on ide bus
+    interfaces:
+      - network: default
+  - state: present
+    name: 'node.osgiliath.net'
+    memory_mb: 3072
+    vcpus: 2
+    ssh_port_on_host: 23022
+    # same as the one in molecule.yml
+    ansible_groups:
+      - kube_node
+    volumes:
+      - name: 'fedora-31-cloud-node.img'
+        device: 'disk'
+        type: 'file'
+        capacity: '3GB'
+        format: 'qcow2'
+        target: 'hda'  # first device on ide bus
+    interfaces:
+      - network: default

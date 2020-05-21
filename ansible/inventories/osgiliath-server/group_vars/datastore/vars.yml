@@ -6,7 +6,7 @@ lvm_groups:
     disks:
       - /dev/sda1
     create: true
-    lvnames:
+    lvmetanames:
       - lvname: docker-thinpool
         size: 20%VG
         opts: "--wipesignatures y"

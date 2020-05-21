@@ -1,0 +1,7 @@
+---
+kubernetes_role: node
+kubernetes_pod_network:
+  cni: 'flannel'
+  cidr: '10.128.0.0/16'
+ns_hostname: "node.osgiliath.net"
+hostname_reboot: false

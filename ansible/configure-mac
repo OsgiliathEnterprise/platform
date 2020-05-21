@@ -4,9 +4,9 @@ brew cask install vagrant
 brew install ansible
 brew install yamllint
 brew install flake8
-brew install python3
-pip3 install ansible-lint
-pip3 install molecule
-pip3 install 'molecule-vagrant'
-pip3 install paramiko
+brew install python@3.8
+pip install ansible-lint
+pip install molecule
+pip install 'molecule-vagrant'
+pip install paramiko
 . configure-virtualbox

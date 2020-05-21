@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ns_hostname: "dummy.dum.com"
+  tasks:
+    - name: "Include ansible-nameserver"
+      include_role:
+        name: "ansible-nameserver"

@@ -7,33 +7,32 @@ Within the platform, we are relying on multiple Virtualization technologies depe
  * <<containers.adoc#main-title, Containers>>
 
 ## Wipe VMS
-[[wipe]]
 Sometimes script can mess and you want to restart from a blank page.
 As VMs are not that easy to manage, you should execute some commands in order to go back to the initial mode (contribution welcome to automate that ;-))
 
 1. Delete the machines
 You should first delete the machine:
 
-```[source,bash]
+```bash
 sudo virsh list
 sudo virsh destroy <the machines>
 sudo virsh undefine <the machines>
 ```
 
 2. Delete the dhcp host entries
-```[source,bash]
+```bash
 sudo virsh net-dumpxml default
 sudo virsh net-update default delete ip-dhcp-host "<host mac='52:54:00:49:67:77' id='01:52:54:00:49:67:77' name='master.osgiliath.net' ip='192.168.122.74'/>" --live
 ```
 
 3. Delete the firewall redirection rules
-```[source,bash]
+```bash
 sudo firewall-cmd --list-all --zone=public
 sudo firewall-cmd --permanent --remove-rich-rule='rule family="ipv4" forward-port port="22022" protocol="tcp" to-port="22" to-addr="192.168.122.74"' --zone=public
 sudo firewall-cmd --runtime-to-permanent
 ```
 
 4. Delete ssh hook
-```[source,bash]
+```bash
 rm .ssh/authorizedOn*
 ```

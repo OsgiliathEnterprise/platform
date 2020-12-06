@@ -1,0 +1,45 @@
+---
+ns_hostname: "dns.osgiliath.net"
+bind_acls:
+  - name: lan
+    networks:
+     - 192.168.122.0/24
+bind_config: true
+bind_pri_domain_name: "osgiliath.net"
+bind_forward_zones:
+  - zone: "{{ bind_pri_domain_name }}"
+    expire: 2419200
+    hostmaster: "dns.{{ bind_pri_domain_name }}"
+    masters: []
+    nameservers:
+     - "host.{{ bind_pri_domain_name }}"
+    records:
+     - name: host
+       address: 192.168.1.17
+       type: A
+    soa: "dns.{{ bind_pri_domain_name }}"
+    refresh: 604800
+    retry: 86400
+    neg_cache_ttl: 604800
+    ttl: 32
+    slaves: []
+bind_forwarding_server: true
+bind_forwarders:
+  - 8.8.8.8
+bind_manage_zones: true
+bind_reverse_zones:
+  - zone: "1.168.192"
+    refresh: 604800
+    retry: 86400
+    ttl: 32
+    soa: "{{ ansible_hostname }}.{{ bind_pri_domain_name }}"
+    expire: 2419200
+    hostmaster: "dns.{{ bind_pri_domain_name }}"
+    masters: []
+    nameservers:
+      - "host.{{ bind_pri_domain_name }}"
+    neg_cache_ttl: 604800
+    slaves: []
+    records:
+      - name: "host.{{ bind_pri_domain_name }}"
+        address: "2.0"

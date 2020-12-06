@@ -25,6 +25,11 @@ kube_master
 [orchestrationnode:children]
 kube_node
 
+[bindmasters]
+
+[bindclients:children]
+host
+
 [kube_master]
 
 [kube_node]

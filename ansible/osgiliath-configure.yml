@@ -6,7 +6,6 @@
     - role: ansible-securehost
     - role: ansible-users
     - role: ansible-routing
-    - role: ansible-nameserver
     - { role: robertdebock.bootstrap, become: true }
     - { role: robertdebock.core_dependencies, become: true }
 
@@ -17,4 +16,9 @@
   roles:
     - role: ansible-orchestration
 
+- name: install kube roles
+  hosts:
+    - bindmasters
+  roles:
+    - role: ansible-nameserver
 ...

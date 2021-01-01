@@ -1,0 +1,17 @@
+---
+
+- debug:
+    msg: "{{ ansible_facts['distribution'] }}"
+
+- debug:
+    msg: "{{ ansible_facts['distribution_major_version'] | int }}"
+
+- name: Get current user.
+  command: whoami
+  changed_when: false
+  become: false
+  register: whoami
+
+- name: ansible-virtualization-guest | debug whoami
+  debug:
+    var: whoami

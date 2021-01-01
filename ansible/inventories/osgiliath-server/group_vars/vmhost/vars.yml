@@ -17,16 +17,8 @@ systemusers_user_list:
     group: libvirt
     groups: wheel
 virtualization_guest_boxes:
-  - name: fedora-31-cloud-master
+  - name: 'master.osgiliath.net'
     url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
-    ssh_key:
-  - name: fedora-31-cloud-node
-    url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
-  - name: fedora-31-cloud-dns
-    url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
-libvirt_vms:
-  - state: present
-    name: 'master.osgiliath.net'
     memory_mb: 3072
     vcpus: 2
     ssh_port_on_host: 22022
@@ -34,17 +26,10 @@ libvirt_vms:
     ansible_groups:
       - kube_master
       - bindclients
-    volumes:
-      - name: 'fedora-31-cloud-master.img'
-        device: 'disk'
-        type: 'file'
-        capacity: '3GB'
-        format: 'qcow2'
-        target: 'hda'  # first device on ide bus
     interfaces:
       - network: default
-  - state: present
-    name: 'node.osgiliath.net'
+  - name: 'node.osgiliath.net'
+    url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
     ssh_port_on_host: 23022
@@ -52,29 +37,15 @@ libvirt_vms:
     ansible_groups:
       - kube_node
       - bindclients
-    volumes:
-      - name: 'fedora-31-cloud-node.img'
-        device: 'disk'
-        type: 'file'
-        capacity: '3GB'
-        format: 'qcow2'
-        target: 'hda'  # first device on ide bus
     interfaces:
       - network: default
-  - state: present
-    name: 'dns.osgiliath.net'
+  - name: 'dns.osgiliath.net'
+    url: https://vagrantcloud.com/tcharl/boxes/fedora-31-cgroupv1/versions/1.0.0/providers/libvirt.box
     memory_mb: 1072
     vcpus: 2
     ssh_port_on_host: 24022
     # same as the one in molecule.yml
     ansible_groups:
       - bindmasters
-    volumes:
-      - name: 'fedora-31-cloud-dns.img'
-        device: 'disk'
-        type: 'file'
-        capacity: '3GB'
-        format: 'qcow2'
-        target: 'hda'  # first device on ide bus
     interfaces:
       - network: default

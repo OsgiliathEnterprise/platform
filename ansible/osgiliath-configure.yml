@@ -16,7 +16,7 @@
   roles:
     - role: ansible-orchestration
 
-- name: install kube roles
+- name: install nameserver roles
   hosts:
     - bindmasters
   roles:

@@ -18,7 +18,7 @@ systemusers_user_list:
     groups: wheel
 virtualization_guest_boxes:
   - name: 'master.osgiliath.net'
-    url: https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.0/providers/libvirt.box
+    url: https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.2/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
     ssh_port_on_host: 22022
@@ -29,7 +29,7 @@ virtualization_guest_boxes:
     interfaces:
       - network: default
   - name: 'node.osgiliath.net'
-    url: https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.0/providers/libvirt.box
+    url: https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.2/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
     ssh_port_on_host: 23022

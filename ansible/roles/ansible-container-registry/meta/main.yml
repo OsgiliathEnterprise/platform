@@ -42,7 +42,8 @@ galaxy_info:
   #   - 99.99
 
   galaxy_tags:
-    - "container-registry"
+    - "dockerregistry"
+    - "containerregistry"
     - "docker"
     - "letencrypt"
     - "nginx"

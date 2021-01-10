@@ -31,3 +31,6 @@
 [submodule "ansible/roles/ansible-nameserver"]
 	path = ansible/roles/ansible-nameserver
 	url = git@github.com:OsgiliathEnterprise/ansible-nameserver.git
+[submodule "ansible/roles/ansible-container-registry"]
+	path = ansible/roles/ansible-container-registry
+	url = git@github.com:OsgiliathEnterprise/ansible-container-registry.git

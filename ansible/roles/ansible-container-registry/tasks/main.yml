@@ -1,0 +1,14 @@
+---
+
+- name: ansible-container-registry | install docker
+  import_role:
+    name: tcharl.ansible_containerization
+
+- name: ansible-container-registry | install prerequisites
+  include_tasks: prerequisites.yml
+
+- name: ansible-container-registry | start nginx-proxy
+  include_tasks: nginx-proxy.yml
+
+- name: ansible-container-registry | start docker-registry
+  include_tasks: docker-registry.yml

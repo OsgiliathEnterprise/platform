@@ -1,0 +1,20 @@
+---
+version: 0.1
+auth:
+  htpasswd:
+    realm: Registry Realm
+    path: /auth/registry.htpasswd
+log:
+  level: debug
+http:
+  addr: 0.0.0.0:5000
+  host: http{% if gen_certs %}s{% endif %}://{{container_registry_domain_name}}
+storage:
+  delete:
+    enabled: {{ docker_registry_delete_mode|bool }}
+  maintenance:
+    readonly:
+      enabled: {{docker_registry_readonly_mode|bool}}
+  filesystem:
+    rootdirectory: /var/lib/registry
+    maxthreads: 100

@@ -1,0 +1,109 @@
+---
+
+- name: ansible-container-registry | nginx-proxy | make directories
+  become: true
+  become_user: root
+  with_items:
+    - "{{ docker_shared_data }}"
+    - "{{ docker_shared_data_nginx_proxy_path }}"
+    - "{{ docker_shared_data_nginx_proxy_certs_path }}"
+    - "{{ docker_shared_data_nginx_proxy_vhosts_path }}"
+    - "{{ docker_shared_data_nginx_proxy_html_path }}"
+    - "{{ docker_shared_data_letsencrypt_path }}"
+  file:
+    state: directory
+    dest: '{{ item }}'
+    mode: "0753"
+
+- name: ansible-container-registry | nginx-proxy | copy execution driver
+  copy:
+    src: index.html
+    dest: "{{ docker_shared_data_nginx_proxy_html_path }}"
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+
+- name: ansible-container-registry | nginx-proxy | open 80 port
+  include_role:
+    name: tcharl.ansible_routing
+  vars:
+    firewalld_zones:
+      - name: public
+        enabled_ports:
+          - port: 80
+            protocol: tcp
+          - port: 80
+            protocol: tcp
+
+- name: ansible-container-registry | nginx-proxy | open 443 port
+  include_role:
+    name: tcharl.ansible_routing
+  when: gen_certs
+  vars:
+    firewalld_zones:
+      - name: public
+        enabled_ports:
+          - port: 443
+            protocol: tcp
+          - port: 443
+            protocol: tcp
+
+- name: ansible-container-registry | nginx-proxy | domain configuration
+  copy:
+    src: vhost
+    dest: "{{ docker_shared_data_nginx_proxy_vhosts_path }}/{{ container_registry_domain_name }}"
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: ansible-container-registry | nginx-proxy | default domain configuration
+  copy:
+    src: vhost
+    dest: "{{ docker_shared_data_nginx_proxy_vhosts_path }}/default"
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: ansible-container-registry | nginx-proxy | domain location configuration
+  copy:
+    src: vhost_location
+    dest: "{{ docker_shared_data_nginx_proxy_vhosts_path }}/{{ container_registry_domain_name }}_location"
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
+- name: ansible-container-registry | nginx-proxy | start proxy
+  docker_container:
+    name: nginx-proxy
+    image: jwilder/nginx-proxy
+    restart_policy: "always"
+    published_ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "{{ docker_shared_data_nginx_proxy_certs_path }}:/etc/nginx/certs"
+      - "{{ docker_shared_data_nginx_proxy_vhosts_path }}:/etc/nginx/vhost.d"
+      - "{{ docker_shared_data_nginx_proxy_html_path }}:/usr/share/nginx/html"
+    state: started
+  become: true
+
+- name: ansible-container-registry | nginx-proxy | letsencrypt-companion
+  docker_container:
+    name: letsencrypt-companion
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart_policy: "always"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "{{ docker_shared_data_letsencrypt_path }}:/etc/acme.sh"
+    volumes_from:
+      - nginx-proxy
+    env:
+      DEFAULT_EMAIL: "{{ letsencrypt_default_email }}"
+    state: started
+  when: gen_certs
+  become: true

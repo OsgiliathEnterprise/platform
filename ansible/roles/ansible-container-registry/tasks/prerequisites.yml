@@ -1,0 +1,19 @@
+---
+
+- name: ansible-volumes | install prerequisite - pip
+  package:
+    name: python-pip
+    state: present
+  become: true
+
+- name: ansible-volumes | install prerequisite - docker
+  pip:
+    name: docker
+    state: present
+  become: true
+
+- name: ansible-volumes | install prerequisite - docker
+  pip:
+    name: passlib
+    state: present
+  become: true

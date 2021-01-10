@@ -1,0 +1,19 @@
+# Containers
+[[main-title]]
+
+Most of the time, you won't need the full isolation of a Virtual machine, you can share the kernel of your host to execute your middleware.
+
+## Images and containers
+
+Docker is one of the most known containerization technologies.
+You'll first create a Dockerfile that describes the commands and container configuration you want (a docker image), you'll push that image into a registry, then you'll build and run that image in your environments (an instance is called a container).
+
+These containers are run in a runtime (usually containerd, which is the docker runtime)
+
+## Runtime
+
+Thanks to it's ansible-container role, the Platform is able to install all the prerequisites and volumes needed for containerization.
+
+## Container registry
+
+Also, the ansible-container-registry creates a docker registry and protect him with TLS and basic auth.

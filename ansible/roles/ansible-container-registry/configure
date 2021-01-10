@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+pip3 install docker
+pip3 install requests
+molecule dependency

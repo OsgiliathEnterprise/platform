@@ -1,0 +1,36 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    lvm_groups:
+      - vgname: non-persistent
+        disks:
+          - /dev/sdb1
+        create: true
+        lvmetanames:
+          - lvname: thinpool
+            size: 40%VG
+            opts: "--wipesignatures y"
+            create: true
+            metadata: non-persistent/thinpoolmeta
+            autoextendtreshold: 80
+            autoextendpercent: 20
+            filesystem: xfs
+            mntp: /var/lib/docker
+            mount: true
+            mopts: defaults,pquota,gquota,quota
+          - lvname: thinpoolmeta
+            size: 10%VG
+            opts: "--wipesignatures y"
+            create: true
+    manage_lvm: true
+    gen_certs: false
+    ns_hostname: "containers.dummy.com"
+  tasks:
+    - name: "Include ansible-nameserver to configure hosts"
+      include_role:
+        name: "ansible-nameserver"
+
+    - name: "Include ansible-container-registry"
+      include_role:
+        name: "ansible-container-registry"

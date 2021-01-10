@@ -1,0 +1,32 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: molecule/requirements.yml
+    roles-path: ../community
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint: yamllint . && flake8 && ansible-lint --exclude=meta
+platforms:
+  - name: Fedora-Molecule-Container-registry-VB
+    box: tcharl/fedora-33-cgroupv1
+    cpus: 2
+    memory: 2048
+    provider_override_args:
+      - "persistent_storage.enabled = true"
+      - "persistent_storage.location = 'molecule-container-registry.vdi'"
+      - "persistent_storage.size = 2000"
+      - "persistent_storage.mount = false"
+      - "persistent_storage.diskdevice = '/dev/sdb'"
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../..:../../../community
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
+  options:
+    v: 3

@@ -16,6 +16,9 @@ You're navigating through a documentation that will let you consume or configure
 * <<packer/introduction.adoc#main-title, Boxes>>
 * <<virtualization/virtualmachines.adoc#main-title, Virtual machines>>
 
+### Containerization
+* <<containerization/introduction.adoc#main-title, Containers>>
+
 ### Storage
 * <<storage/introduction.adoc#main-title, Hard disk storage>>
 

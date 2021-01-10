@@ -1,0 +1,100 @@
+---
+
+- name: ansible-container-registry | nginx-proxy | make directories
+  become: true
+  become_user: root
+  with_items:
+    - "{{ docker_shared_data }}"
+    - "{{ docker_shared_data_registry_path }}"
+    - "{{ docker_shared_data_registry_data_path }}"
+    - "{{ docker_shared_data_registry_config_path }}"
+  file:
+    state: directory
+    dest: '{{ item }}'
+    mode: "0753"
+
+- name: ansible-container-registry | nginx-proxy | add passwds to /etc/docker-registry/auth/registry.htpasswd
+  become: true
+  become_user: root
+  with_items: '{{ docker_registry_users }}'
+  htpasswd:
+    path: '{{ docker_shared_data_nginx_proxy_auth_path }}/registry.htpasswd'
+    mode: 0600
+    name: '{{ item.uid }}'
+    password: '{{ item.pwd }}'
+    crypt_scheme: bcrypt
+
+- name: ansible-container-registry | nginx-proxy | generate docker-registry config file
+  become: true
+  become_user: root
+  with_items:
+    - config.yml
+  template:
+    src: '{{ item }}.j2'
+    dest: '{{ docker_shared_data_registry_config_path }}/{{ item }}'
+    mode: '0644'
+
+- name: ansible-container-registry | nginx-proxy | launching registry container without security
+  become: true
+  docker_container:
+    restart_policy: always
+    name: docker-registry
+    image: registry:2
+    env:
+      LETSENCRYPT_HOST: "{{ container_registry_domain_name }}"
+      LETSENCRYPT_EMAIL: "{{ letsencrypt_default_email }}"
+      VIRTUAL_HOST: "{{ container_registry_domain_name }}"
+      VIRTUAL_PORT: "5000"
+      VIRTUAL_PROTO: "https"
+    state: started
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -an | grep ':5000 ' > /dev/null; if [ 0 != $? ]; then exit 1; fi;"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 6s
+    volumes:
+      - '{{ docker_shared_data_registry_config_path }}:/etc/docker/registry:ro'
+      - '{{ docker_shared_data_nginx_proxy_auth_path }}:/auth:ro'
+      - '{{ docker_shared_data_registry_data_path }}:/var/lib/registry:rw'
+
+- name: ansible-container-registry | nginx-proxy | wait for letsencrypt to achieve its acme dance
+  wait_for:
+    timeout: 300
+  when: gen_certs
+  delegate_to: localhost
+
+- name: ansible-container-registry | nginx-proxy | stop registry container...
+  when: gen_certs
+  become: true
+  docker_container:
+    state: stopped
+    name: docker-registry
+
+- name: ansible-container-registry | nginx-proxy | launching registry container...
+  when: gen_certs
+  become: true
+  docker_container:
+    restart_policy: always
+    name: docker-registry
+    image: registry:2
+    env:
+      LETSENCRYPT_HOST: "{{ container_registry_domain_name }}"
+      LETSENCRYPT_EMAIL: "{{ letsencrypt_default_email }}"
+      VIRTUAL_HOST: "{{ container_registry_domain_name }}"
+      VIRTUAL_PORT: "5000"
+      VIRTUAL_PROTO: "https"
+      REGISTRY_HTTP_TLS_CERTIFICATE: "/pki/fullchain.pem"
+      REGISTRY_HTTP_TLS_KEY: "/pki/key.pem"
+    state: started
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -an | grep ':5000 ' > /dev/null; if [ 0 != $? ]; then exit 1; fi;"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 6s
+    volumes:
+      - '{{ docker_shared_data_registry_config_path }}:/etc/docker/registry:ro'
+      - '{{ docker_shared_data_nginx_proxy_auth_path }}:/auth:ro'
+      - '{{ docker_shared_data_nginx_proxy_certs_path }}/{{ container_registry_domain_name }}:/pki:ro'
+      - '{{ docker_shared_data_registry_data_path }}:/var/lib/registry:rw'

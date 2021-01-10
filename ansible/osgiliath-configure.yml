@@ -8,6 +8,7 @@
     - role: ansible-routing
     - { role: robertdebock.bootstrap, become: true }
     - { role: robertdebock.core_dependencies, become: true }
+    - role: ansible-container-registry
 
 - name: install kube roles
   hosts:

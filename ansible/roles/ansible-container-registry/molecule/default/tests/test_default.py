@@ -12,7 +12,7 @@ def test_is_docker_installed(host):
 
 
 def test_container_registry_is_running(host):
-    command = """docker ps | \
+    command = r"""docker ps | \
             egrep -c 'registry:2.*healthy'"""
     with host.sudo():
         cmd = host.run(command)

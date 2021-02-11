@@ -1,4 +1,4 @@
-***REMOVED***
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -27,7 +27,7 @@
     <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
     <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-***REMOVED*** dependencies -->
+    <!-- dependencies -->
     <asciidoctor-maven-plugin.version>1.5.7</asciidoctor-maven-plugin.version>
     <java.release>11</java.release>
     <maven-project-info-reports-plugin.version>2.8</maven-project-info-reports-plugin.version>
@@ -80,11 +80,11 @@
               <goal>single</goal>
             </goals>
             <phase>package</phase>
-***REMOVED***
+            <configuration>
               <descriptors>
                 <descriptor>/src/main/assembly/resources.xml</descriptor>
               </descriptors>
-***REMOVED***
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -162,12 +162,12 @@
           </execution>
           <execution>
             <id>enforce-dependencyConvergence</id>
-***REMOVED***
+            <configuration>
               <rules>
                 <DependencyConvergence />
               </rules>
               <fail>false</fail>
-***REMOVED***
+            </configuration>
             <goals>
               <goal>enforce</goal>
             </goals>
@@ -246,7 +246,7 @@
         </dependencies>
         <configuration>
           <scmCommentPrefix>[ci skip][maven-release-plugin]</scmCommentPrefix>
-      ***REMOVED*** The profile we want to use when doing the release -->
+          <!-- The profile we want to use when doing the release -->
           <autoVersionSubmodules>true</autoVersionSubmodules>
           <releaseProfiles>release</releaseProfiles>
         </configuration>

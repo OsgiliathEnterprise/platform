@@ -44,7 +44,7 @@
       </googleSearch>
       <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
     </fluidoSkin>
-***REMOVED*** this should not be the right address-->
+    <!-- this should not be the right address-->
     <custom.fluidoSkin.googleSearch.sitesearch>https://github.com/OsgiliathEnterprise/platform</custom.fluidoSkin.googleSearch.sitesearch>
   </custom>
   <body>

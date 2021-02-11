@@ -3,3 +3,4 @@ target/
 venv
 pom.xml.releaseBackup
 release.properties
+bfg-1.13.2.jar

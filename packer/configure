@@ -33,4 +33,4 @@ cd ../../builds
 vagrant box add $distroversion.virtualbox.box --name tcharl/$distroshortversion-cgroupv1
 # to publish
 # vagrant cloud auth login
-# vagrant cloud publish
+# vagrant cloud publish tcharl/fedora-33-cgroupv1 1.0.2 virtualbox fedora-33-x86_64.virtualbox.box

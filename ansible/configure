@@ -22,3 +22,14 @@ for f in roles/*; do
         cd $CWD
     fi
 done
+
+# Installs vagrant-cachier
+
+mkdir vagrant
+cd vagrant
+git clone git@github.com:fgrehm/vagrant-cachier.git
+sed -i 's/v1.7.2/v2.2.14/' filenameGemfile
+bundle install
+bundle exec rake build
+vagrant plugin install pkg/vagrant-cachier-1.2.1.gem
+

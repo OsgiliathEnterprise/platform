@@ -25,4 +25,4 @@ You're navigating through a documentation that will let you consume or configure
 ### Administration/Security
 
 * <<admin/fail2ban.adoc#main-title, Avoiding machines being brute forced>>
-
+* <<admin/freeipa.adoc#main-title, Centralizing Authentication and Authorization with FreeIPA>>

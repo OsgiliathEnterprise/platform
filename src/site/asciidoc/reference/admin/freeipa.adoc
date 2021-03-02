@@ -1,0 +1,10 @@
+# FreeIPA
+[[main-title]]
+
+Centralizing machine to machine and user to machine communication is a must have.
+FreeIPA is a all in one choice: it's a wrapper solution which includes a LDAP (to centralize users, groups and certificate store), a PKI (and a KRA) to handle Certificate authority and certificate revocation, Kerberos to manage authentication as well as a nice user interface.
+
+## Description
+
+Basically, freeIPA is made of servers and replicas (idm server) which manages domains.
+Then, all machines that should be part of that domain should be registered as IPA client among this server.

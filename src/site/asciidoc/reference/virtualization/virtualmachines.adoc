@@ -1,7 +1,7 @@
 # Virtual machines
 [[main-title]]
 
-As stated in the << ../packer/introduction.adoc#main-title, introduction>>, Virtual machines are full machines, started from within your host's OS or hypervisor +
+As stated in the <<../packer/introduction.adoc#main-title, introduction>>, Virtual machines are full machines, started from within your host's OS or hypervisor +
 Within the platform, we are relying on multiple Virtualization technologies depending on the use case.
 
  * <<containers.adoc#main-title, Containers>>
@@ -33,6 +33,8 @@ sudo firewall-cmd --runtime-to-permanent
 ```
 
 4. Delete ssh hook
+The default vagrant boxes ssh keys are downloaded on the host in order to access the machines when they are downloaded, then these keys are deleted and VMs are considered 'configured'.
+If you want to reset VMs, you'll also have to delete the persistent facts
 ```bash
-rm .ssh/authorizedOn*
+rm /etc/ansible/facts.d/ansible_virtualization_guest.fact
 ```

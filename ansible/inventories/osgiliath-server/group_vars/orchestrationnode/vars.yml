@@ -1,4 +1,5 @@
 ---
 kubernetes_role: node
-ns_hostname: "node.osgiliath.net"
+idm_client_default_domain_prefix: 'node'
+ns_hostname: "{{ idm_client_default_domain_prefix }}.osgiliath.net"
 hostname_reboot: false

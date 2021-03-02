@@ -3,5 +3,6 @@ kubernetes_role: master
 kubernetes_pod_network:
   cni: 'flannel'
   cidr: '10.128.0.0/16'
-ns_hostname: "master.osgiliath.net"
+idm_client_default_domain_prefix: 'master'
+ns_hostname: "{{ idm_client_default_domain_prefix }}.osgiliath.net"
 hostname_reboot: false

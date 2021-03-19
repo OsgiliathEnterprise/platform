@@ -12,20 +12,20 @@ libvirt_host_networks:
     netmask: 255.255.255.0
     dhcp_start: 192.168.122.100
     dhcp_end: 192.168.122.200
-systemusers_user_list:
+local_systemusers_user_list:
   - name: libvirt
     group: libvirt
     groups: wheel
 virtualization_guest_boxes:
   - name: 'master.osgiliath.net'
     url: https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.2/providers/libvirt.box
-    memory_mb: 3072
+    memory_mb: 2072
     vcpus: 2
     ssh_port_on_host: 22022
     # same as the one in molecule.yml
     ansible_groups:
       - kube_master
-      - bindclients
+      - ipaclients
     interfaces:
       - network: default
   - name: 'node.osgiliath.net'
@@ -36,9 +36,20 @@ virtualization_guest_boxes:
     # same as the one in molecule.yml
     ansible_groups:
       - kube_node
-      - bindclients
+      - ipaclients
     interfaces:
       - network: default
+  - name: 'idm.osgiliath.net'
+    url: https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-33-1.2.x86_64.vagrant-libvirt.box
+    memory_mb: 2072
+    vcpus: 2
+    ssh_port_on_host: 24022
+    # same as the one in molecule.yml
+    ansible_groups:
+      - ipaservers
+    interfaces:
+      - network: default
+
 letsencrypt_default_email: "cmordant1@gmail.com"
 container_registry_domain_name: "containers.osgiliath.net"
 docker_registry_users:

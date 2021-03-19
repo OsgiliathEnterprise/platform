@@ -17,9 +17,16 @@
   roles:
     - role: ansible-orchestration
 
-- name: install nameserver roles
+- name: install freeipa roles
   hosts:
-    - bindmasters
+    - ipaclients
+    - ipaservers
   roles:
-    - role: ansible-nameserver
+    - role: ansible-securehost
+
+#- name: install nameserver roles
+#  hosts:
+#    - bindmasters
+#  roles:
+#    - role: ansible-nameserver
 ...

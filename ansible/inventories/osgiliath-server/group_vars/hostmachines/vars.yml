@@ -1,9 +1,9 @@
 ---
-users_group_list2:
+local_users_group_list:
   - name: cmordant
   - name: libvirt
 
-users_user_list2:
+local_users_user_list:
   - name: cmordant
     group: cmordant
     groups:

@@ -1,13 +1,9 @@
 [hostmachines:children]
 datastore
-caashost
 secured
 vmhost
 
 [datastore:children]
-host
-
-[caashost:children]
 host
 
 [secured:children]
@@ -19,6 +15,10 @@ host
 [vmhost:children]
 host
 
+[idm:children]
+ipaservers
+ipaclients
+
 [orchestrationmaster:children]
 kube_master
 
@@ -29,6 +29,10 @@ kube_node
 
 [bindclients:children]
 host
+
+[ipaservers]
+
+[ipaclients]
 
 [kube_master]
 

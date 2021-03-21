@@ -13,7 +13,29 @@ local_users_user_list:
     cron_allow: yes
     authorized_keys:
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDeWwsRxiaOhL2DJLZxCZAhL4D/2A+KdzklWLyak6TKvncshzxh3tv0lo6FGZIV/1umOLHCvKpbyOZuGkvS8v99m9GIsQnR6cSXasAczJbqaEMI/N5gDBg2bAuG2lcfmwqfFnaY4D62Wb14GqdnKsydLPXONoXcqbLOuiwZbOjP6Zz/uF22pn18wS/c3vH2nvSASdEiZ5Ths/DFMN6nk/W7dAP2rOOl508d1duaM4Z9ivz6IV61KbgaeNMvU4VXq3X2idOHsgBNprwgcj/nJqLTTIMk/l+J6SIGl6+znPbP5LwJSg2ls/YmhPe4XYfsQv2jCivbEq1jEDaqreEoNgwS86G4xkwm9yCq9PnHb4bCa3lUhUf5ut2Bjs/T1rqZ1v/mNtzjQxujxMxVXp3Y875OMnF4LvZTZGOC+M5cU25ZU1+3ZyVyAKtBFI8T0NkZ/Gr7KpEqvkYapsPLIl3PbWI+2IeSU9ZcXNwSC5Dw0wuC9rN8N2pYi1Pd08efWDX/kGeeFLyUxjCs6bo50BzsDnWVzxEO9Dk2f2YLi0qYyUglD9KOwzU2Q9MixhyjnXTet478HjHlm729oJzWjaDTy2B2RQ//74ebYY9WRELvU1SQsFwPJNeOuipYrYS2B0YMkzbTOvJ4nF1NPcwgjp1AVXm64zFUsogxt6wtiuX1eL6HCQ== cmordant1@gmail.com"
-
+ipa_users_group_list:
+  - name: docker
+  - name: wheel
+  - name: libvirt
+  - name: cmordant
+ipa_users_user_list:
+  - name: cmordant
+    first: Charlie
+    last: Mordant
+    pwd: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              38646334353235613562643635626633613863623863353165656561666430623438383535396539
+              3466643263626264316135336431383235363963373732630a313761333737613539316239366662
+              33663730353462323636356564643664323739333462643032623236353063313861333732633434
+              6239336630313734660a363061306236643536623036646261303634383832366461336633636430
+              6665
+    update_password: on_create
+    passwordexpiration: "2023-01-19 23:59:59"
+    group: cmordant
+    groups:
+      - wheel
+      - docker
+      - libvirt
 firewalld_zones:
   - name: public
     nics:

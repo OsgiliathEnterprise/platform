@@ -1,14 +1,20 @@
 ---
-# vars file for datastore
-
 lvm_groups:
   - vgname: noraid
     disks:
       - /dev/sda1
     create: true
     lvmetanames:
+      - lvname: kube-share
+        size: 100g
+        create: true
+        expose_nfs: True
+        filesystem: xfs
+        mntp: /var/shared
+        mount: true
+        mopts: defaults
       - lvname: docker-thinpool
-        size: 20%VG
+        size: 100g
         opts: "--wipesignatures y"
         create: true
         metadata: noraid/docker-thinpoolmeta
@@ -22,4 +28,6 @@ lvm_groups:
         size: 1%VG
         opts: "--wipesignatures y"
         create: true
-manage_lvm: false # don't want to mess with that...
+configure_nfs: True
+datastore_firewall_zone: libvirt
+manage_lvm: False

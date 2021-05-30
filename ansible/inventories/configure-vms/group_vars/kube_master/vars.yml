@@ -1,0 +1,8 @@
+---
+kubernetes_allow_pods_on_master: False
+hostname: "master.internal.osgiliath.net"
+hostname_reboot: false
+kube_firewall_zone: 'public'
+docker_install_compose: false
+kube_alt_names:
+  - "kubeadm.osgiliath.net"

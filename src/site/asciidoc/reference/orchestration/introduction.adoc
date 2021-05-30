@@ -1,0 +1,55 @@
+# Orchestrator
+[[main-title]]
+
+## Usage
+
+Download kubectl on your laptop, e.g. `brew install kubectl`
+copy the content of the following files that are present on your master node to your laptop:
+
+. /etc/kubernetes/pki/ca.crt
+. /home/kubecreds/kubeadm.crt
+. /home/kubecreds/kubeadm.pem (with care, ideally chmod 600)
+
+Then, configure kubectl:
+
+```
+kubectl config set-cluster osgiliath --server=https://kubeadm.osgiliath.net:6443 --certificate-authority=/home/charliemordant/.ssh/ca.crt --tls-server-name=kubeadm.osgiliath.net
+kubectl config set-credentials kubeadmin.osgiliath --client-certificate=/home/charliemordant/.ssh/kubeadm.crt --client-key=/home/charliemordant/.ssh/kubeadm.pem
+kubectl config set-context osgiliath --cluster=osgiliath --user=kubeadmin.osgiliath
+kubectl config use-context osgiliath
+```
+
+
+## Troubleshooting
+
+Unfortunately, no real role allowing to uninstall everything have been created.
+
+If it messes up with something, here is the procedure to uninstall everything to be able to reinstall the roles
+
+
+```
+sudo kubectl drain <node name> --delete-local-data --force --ignore-daemonsets # only on master
+sudo kubectl delete node <node name> # only on master
+sudo kubeadm reset
+sudo dnf remove kubeadm kubectl kubelet kubernetes-cni kube*
+sudo rm -rf ~/.kube
+sudo rm -rf /etc/kubernetes/
+sudo rm -rf /var/lib/etcd/
+sudo rm -rf /var/lib/kubelet
+sudo rm -rf /var/lib/kubelet
+```
+
+or if you missed it
+
+on master
+```
+sudo dnf remove kubelet kubectl kubeadm kubernetes-cni
+sudo docker container ps
+sudo docker container stop  ...
+sudo docker container rm  ...
+sudo rm -rf /etc/kubernetes/
+sudo rm -rf /var/lib/etcd/
+sudo rm -rf /var/lib/kubelet   # with errors
+sudo umount <errors>
+sudo rm -rf /var/lib/kubelet
+```

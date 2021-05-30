@@ -6,9 +6,15 @@ Within the platform, we are relying on multiple Virtualization technologies depe
 
  * <<containers.adoc#main-title, Containers>>
 
+## Access to the VMs
+
+There's a race condition between firewalld and libvirt concerning port forwarding.
+To be sure that packets are well forwarded, executes: `sudo sh /etc/libvirt/hooks/qemu` at each reboot of firewalld (includin machine reboot)
+
 ## Wipe VMS
+
 Sometimes script can mess and you want to restart from a blank page.
-As VMs are not that easy to manage, you should execute some commands in order to go back to the initial mode (contribution welcome to automate that ;-))
+As VMs are not that easy to manage, you should execute some commands in order to go back to the initial mode (for example, when you modified the name of one VM)
 
 1. Delete the machines
 You should first delete the machine:
@@ -22,13 +28,13 @@ sudo virsh undefine <the machines>
 2. Delete the dhcp host entries
 ```bash
 sudo virsh net-dumpxml default
-sudo virsh net-update default delete ip-dhcp-host "<host mac='52:54:00:49:67:77' id='01:52:54:00:49:67:77' name='master.osgiliath.net' ip='192.168.122.74'/>" --live
+sudo virsh net-update default delete ip-dhcp-host "<host mac='<the macadress>' id='<the id>' name='<the host' ip='<the ip>'/>" --live
 ```
 
 3. Delete the firewall redirection rules
 ```bash
 sudo firewall-cmd --list-all --zone=public
-sudo firewall-cmd --permanent --remove-rich-rule='rule family="ipv4" forward-port port="22022" protocol="tcp" to-port="22" to-addr="192.168.122.74"' --zone=public
+sudo firewall-cmd --remove-rich-rule='rule family="ipv4" forward-port port="<the port>" protocol="<the protocol>" to-port="<the destination port>" to-addr="<the vm adress>"' --zone=public
 sudo firewall-cmd --runtime-to-permanent
 ```
 
@@ -36,5 +42,20 @@ sudo firewall-cmd --runtime-to-permanent
 The default vagrant boxes ssh keys are downloaded on the host in order to access the machines when they are downloaded, then these keys are deleted and VMs are considered 'configured'.
 If you want to reset VMs, you'll also have to delete the persistent facts
 ```bash
-rm /etc/ansible/facts.d/ansible_virtualization_guest.fact
+sudo rm /etc/ansible/facts.d/ansible_virtualization_guest.fact
 ```
+
+5. Delete the images
+The box images could have been updated, please also remove the content of the `/var/lib/libvirt/images` folder
+
+## Make the network configuration permanent
+
+It's not very clear if network dhcp leases configuration are permanent or not after reboots
+
+You can verify after reboot if you already have your `<host` entries while typing the command `sudo virsh net-dumpxml default`on your host.
+
+In order to be sure that it's the actual behavior, you've to first retrieve the guests mac adress:
+`sudo virsh domiflist <guest hostname>`
+
+Then update the virsh net configuration:
+`sudo virsh net-update default add ip-dhcp-host '<host mac="<mac address>" ip="<target ip>"/>' --live --config`

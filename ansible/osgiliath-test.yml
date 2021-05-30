@@ -1,6 +1,0 @@
----
-
-- name: install host roles
-  hosts: hostmachines
-  roles:
-    - role: ansible-container-registry

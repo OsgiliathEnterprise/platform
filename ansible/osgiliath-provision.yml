@@ -1,7 +1,23 @@
 ---
+- name: Provision store
+  hosts: datastore
+  roles:
+    - role: ansible-volumes
 
-- name: Provision VMs
+- name: Configure and secure host
   hosts: hostmachines
   roles:
+    - role: ansible-users
+    - role: ansible-securehost
+
+- name: Provision VMs
+  hosts: vmhost
+  roles:
     - role: ansible-virtualization-guest
+
+- name: Provision Containerization
+  hosts: containerization
+  roles:
+    - role: ansible-containerization
+
 ...

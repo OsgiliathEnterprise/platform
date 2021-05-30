@@ -1,0 +1,36 @@
+[hostmachines:children]
+hostmachine1
+
+[hostmachine1:children]
+osgiliath
+
+# [bindmasters]
+
+# [bindclients:children]
+# osgiliath
+
+[ipaservers:children]
+idmvm
+
+[idmvm]
+idm.internal.osgiliath.net ansible_ssh_user=cmordant ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 ansible_ssh_port=24022
+
+[ipaclients:children]
+osgiliath
+kube_node
+kube_master
+
+[kube_master]
+master.internal.osgiliath.net ansible_ssh_user=cmordant ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 ansible_ssh_port=22022
+
+[kube_node]
+node1.internal.osgiliath.net ansible_ssh_user=cmordant ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 ansible_ssh_port=23022
+
+[reverse_proxy:children]
+osgiliath
+
+[datastore:children]
+osgiliath
+
+[osgiliath]
+host.internal.osgiliath.net ansible_ssh_user=cmordant ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3

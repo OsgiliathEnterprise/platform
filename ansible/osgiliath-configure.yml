@@ -1,32 +1,86 @@
 ---
-- name: install host roles
-  hosts: hostmachines
-  roles:
-    - role: ansible-containerization
-    - role: ansible-securehost
-    - role: ansible-users
-    - role: ansible-routing
-    - { role: robertdebock.bootstrap, become: true }
-    - { role: robertdebock.core_dependencies, become: true }
-    - role: ansible-container-registry
-
-- name: install kube roles
+- name: configure hosts
   hosts:
-    - kube_master
-    - kube_node
+    - all
   roles:
-    - role: ansible-orchestration
+    - role: ansible-role-hostname
+    - role: robertdebock.fail2ban
+    - role: robertdebock.bootstrap
+    - role: robertdebock.epel
+    - role: robertdebock.core_dependencies
+  become: Yes
 
 - name: install freeipa roles
   hosts:
-    - ipaclients
     - ipaservers
+    - ipaclients
   roles:
     - role: ansible-securehost
 
-#- name: install nameserver roles
-#  hosts:
-#    - bindmasters
-#  roles:
-#    - role: ansible-nameserver
+- name: configure datastore nfs enpoints
+  hosts:
+    - datastore
+  roles:
+    - role: ansible-volumes
+
+- name: install configure freeipa dns for clients
+  hosts:
+    - ipaclients
+  roles:
+    - role: ansible-nameserver
+
+- name: configure users on server
+  hosts:
+    - ipaservers
+  roles:
+    - role: ansible-users
+
+- name: install host roles
+  hosts: hostmachine1
+  roles:
+    - role: ansible-securehost
+    - role: ansible-routing
+#    - role: ansible-container-registry
+
+- name: configure containerization prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+    - kube_master
+    - kube_node
+    - reverse_proxy
+  roles:
+    - role: ansible-containerization
+
+- name: configure reverse proxy
+  hosts: reverse_proxy
+  roles:
+    - role: ansible-routing
+
+- name: configure datastore nfs mountpoints
+  hosts:
+    - kube_node
+  roles:
+    - role: ansible-volumes
+
+- name: configure kubernetes prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+    - kube_master
+    - kube_node
+  vars:
+    swap_file_state: absent
+  roles:
+    - role: geerlingguy.swap
+  become: Yes
+
+- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+  roles:
+    - role: ansible-orchestration
+
+- name: configure kubernetes nodes
+  hosts: # use this order: master should be created before node
+   - kube_node
+  roles:
+    - role: ansible-orchestration
+
 ...

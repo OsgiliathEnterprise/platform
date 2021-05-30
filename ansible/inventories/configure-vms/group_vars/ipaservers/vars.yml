@@ -1,0 +1,27 @@
+---
+
+firewalld_nics_zone: 'virbr0'
+ipa_users_group_list:
+  - name: docker
+  - name: wheel
+  - name: libvirt
+
+ipa_users_user_list:
+  - name: cmordant
+    first: Charlie
+    last: Mordant
+    pwd: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      38646334353235613562643635626633613863623863353165656561666430623438383535396539
+      3466643263626264316135336431383235363963373732630a313761333737613539316239366662
+      33663730353462323636356564643664323739333462643032623236353063313861333732633434
+      6239336630313734660a363061306236643536623036646261303634383832366461336633636430
+      6665
+    update_password: on_create
+    passwordexpiration: "2023-01-19 23:59:59"
+    group: cmordant
+    groups:
+      - wheel
+      - docker
+      - libvirt
+hostname: "idm.internal.osgiliath.net"

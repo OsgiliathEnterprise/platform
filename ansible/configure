@@ -6,11 +6,19 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 . ./configure-mac
 fi
+pip3 install ansible
+pip3 install ansible-lint
+pip3 install molecule
+pip3 install python-vagrant
+pip3 install molecule-vagrant==0.6.1
+pip3 install pytest
+pip3 install pytest-testinfra
+pip3 install flake8
+pip3 install yamllint
+
 
 vagrant plugin update
 vagrant plugin install vagrant-persistent-storage
-pip3 install testinfra
-pip3 install pytest-testinfra
 
 rm -rf ~/.vagrant.d/boxes #remove vagrant box cache
 rm -rf ~/.cache/molecule

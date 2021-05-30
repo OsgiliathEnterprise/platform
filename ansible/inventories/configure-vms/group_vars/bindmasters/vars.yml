@@ -1,5 +1,5 @@
 ---
-ns_hostname: "dns.osgiliath.net"
+hostname: "dns.osgiliath.net"
 bind_acls:
   - name: lan
     networks:

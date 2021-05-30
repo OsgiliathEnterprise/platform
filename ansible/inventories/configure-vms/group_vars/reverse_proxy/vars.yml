@@ -1,0 +1,41 @@
+---
+
+firewalld_zones:
+  - name: public
+    masquerade: true
+    port_forward_rules:
+      - port_forward_rule: forwarding-to-kubernetes
+        family: "ipv4"
+        from_port: 6443
+        protocol: "tcp"
+        to_host: "master.internal.osgiliath.net"
+        to_port: 6443
+    nics:
+      - docker0
+      - enp7s0
+virtual_hosts:
+  - name: idm.osgiliath.net
+    upstream: "idm.internal.osgiliath.net"
+    referer_suffix: "/ipa/ui"
+    proto: https
+    container: False
+    gen_certs: True
+    volumes:
+      - "/etc/ipa:/etc/ipa:ro"
+    additional_nginx_headers:
+      - "proxy_ssl_trusted_certificate /etc/ipa/ca.crt"
+  - name: infra.osgiliath.net
+    upstream: "192.168.1.17:9090"
+    volumes:
+      - "/etc/cockpit/ws-certs.d:/etc/cockpit/ws-certs.d:ro"
+    additional_nginx_headers:
+      - "proxy_http_version 1.1"
+      - "proxy_buffering off"
+      - "proxy_set_header Upgrade $http_upgrade"
+      - 'proxy_set_header Connection "upgrade"'
+      - 'proxy_ssl_trusted_certificate /etc/cockpit/ws-certs.d/0-self-signed.cert'
+      - 'gzip off'
+    proto: https
+    container: False
+    gen_certs: True
+    default_host: True

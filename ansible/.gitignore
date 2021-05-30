@@ -1,3 +1,3 @@
-osgiliath-test.yml
-vagrant
+../vagrant
 .vault_pass.txt
+test.yml

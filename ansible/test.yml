@@ -1,0 +1,17 @@
+---
+- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+  roles:
+    - role: ansible-orchestration
+
+- name: configure kubernetes nodes
+  hosts: # use this order: master should be created before node
+   - kube_node
+  roles:
+    - role: ansible-orchestration
+
+# - name: configure reverse proxy
+#  hosts: reverse_proxy
+#  roles:
+#    - role: ansible-routing

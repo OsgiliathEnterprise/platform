@@ -194,7 +194,7 @@ from the main (upstream) repository:
     git pull --ff upstream master
     ```
 
-## <a name="setup"></a> Generator development setup
+## <a name="setup"></a> Development setup
 
 See the [contributor guide](https://osgiliathenterprise.github.io/platform/contributor/toc.html)
 
@@ -219,6 +219,8 @@ For testing, you will want to bootstrap a VM or a docker container.
 We do not recommend any IDE to develop on the Platform as Ansible and affiliates are simply yaml: up to you to choose vim! 
 
 ## Local Build
+
+If you use Virtualbox, you'll first have to compile [vagrant cachier](./vagrant/vagrant-cachier) first and install it locally.
 
 On the root of the ansible role you want to test, first execute `./configure` to bootstrap necessary modules, then `molecule create` to bootstrap your vm or container.
 You can then either connect to the VM or container, either execute `molecule converge` to execute the role.
@@ -284,7 +286,7 @@ automatically closing the issues referenced in your commit.
 For example, here is a good commit message:
 
 ```
-upgrade to Ansible 10.0
+upgrade to Ansible 4.0
 
 upgrade the platform builds to use the new Ansible,
 see https://github.com/ansible/ansible/blob/stable-2.9/changelogs/CHANGELOG-v2.9.rst

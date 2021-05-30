@@ -1,0 +1,8 @@
+---
+#firewalld_zones: because it also acts as reverse proxy...
+#  - name: public
+#    nics:
+#      - enp7s0
+#    masquerade: true
+hostname_reboot: false
+hostname: "host.internal.osgiliath.net"

@@ -11,8 +11,8 @@
 | [Virt-guest](https://github.com/OsgiliathEnterprise/ansible-virtualization-guest)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-virtualization-guest/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-virtualization-guest.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-virtualization-guest)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_virtualization_guest-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_virtualization_guest)|
 | [Volumes](https://github.com/OsgiliathEnterprise/ansible-volumes)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-volumes/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-volumes.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-volumes)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_volumes-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_volumes)|
 | [Nameserver](https://github.com/OsgiliathEnterprise/ansible-nameserver)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-nameserver/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-nameserver.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-nameserver)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_nameserver-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_nameserver)|
-| [Orchestration](https://github.com/OsgiliathEnterprise/ansible-orchestration)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-orchestration/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-orchestration.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-orchestration)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible-orchestration-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_orchestration)|
-| [Container registry](https://github.com/OsgiliathEnterprise/ansible-container-registry)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-container-registry/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-container-registry.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-container-registry)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible-container-registry-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_container_registry)|
+| [Orchestration](https://github.com/OsgiliathEnterprise/ansible-orchestration)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-orchestration/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-orchestration.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-orchestration)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_orchestration-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_orchestration)|
+| [Container registry](https://github.com/OsgiliathEnterprise/ansible-container-registry)|![Molecule](https://github.com/OsgiliathEnterprise/ansible-container-registry/workflows/Molecule/badge.svg)|[![Build Status](https://travis-ci.com/OsgiliathEnterprise/ansible-container-registry.svg?branch=master)](https://travis-ci.com/OsgiliathEnterprise/ansible-container-registry)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_container_registry-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_container_registry)|
 
 
 [![Join the chat at https://gitter.im/OsgiliathEnterprise/platform](https://badges.gitter.im/OsgiliathEnterprise/platform.svg)](https://gitter.im/OsgiliathEnterprise/platform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -44,3 +44,16 @@ Technically speaking, the stack is dealing with the following technologies:
 # Status
  
 This project is looking for active contributors and committers, feel free [to join us and produce anything you'll find useful](https://github.com/OsgiliathEnterprise/platform/blob/master/CONTRIBUTING.md)
+
+# Running
+
+At the end of the day, you'll configure your [provision (VM creation)](./ansible/inventories/provision-vms) and [configuration (middlewares)](./ansible/inventories/configure-vms) inventories, then run the three commands above to get your production platform up and running!
+
+```
+sh git-clone # will disappear ASAP
+./configure
+
+ ansible-playbook -i inventories/provision-vms osgiliath-provision.yml -vv --vault-password-file .vault_pass.txt --ask-become-pass
+
+ ansible-playbook -i inventories/configure-vms osgiliath-configure.yml -vv --vault-password-file .vault_pass.txt --ask-become-pass
+```

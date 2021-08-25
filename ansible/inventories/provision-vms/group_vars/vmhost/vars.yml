@@ -22,7 +22,6 @@ local_systemusers_user_list:
 virtualization_guest_boxes:
   - name: 'idm.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/34-cloud-base/versions/34.20210423.0/providers/libvirt.box
-    # https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.3/providers/libvirt.box
     memory_mb: 4072
     vcpus: 3
     ssh_port_on_host: 24022
@@ -33,7 +32,6 @@ virtualization_guest_boxes:
       - network: default
   - name: 'master.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/34-cloud-base/versions/34.20210423.0/providers/libvirt.box
-    # https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.4/providers/libvirt.box
     memory_mb: 2072
     vcpus: 2
     ssh_port_on_host: 22022
@@ -45,7 +43,6 @@ virtualization_guest_boxes:
       - network: default
   - name: 'node1.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/34-cloud-base/versions/34.20210423.0/providers/libvirt.box
-    # https://vagrantcloud.com/tcharl/boxes/fedora-33-cgroupv1/versions/1.0.4/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
     ssh_port_on_host: 23022

@@ -1,5 +1,7 @@
 company_domain: "internal.osgiliath.net" #
 letsencrypt_default_email: "cmordant1@gmail.com"
+secure_logs: True
+reset_kube: False
 
 company_realm_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

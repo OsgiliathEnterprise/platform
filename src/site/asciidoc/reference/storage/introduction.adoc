@@ -21,3 +21,30 @@ These logical volume groups can be auto extending, meaning that at first they on
 
 A thinpool is made of two logical volumes: a fixed one to store the pool metadata (main thinpool configuration) and an other one for the effective pool.
 
+## NFS
+
+Network file systems are mounted harddisks through network. +
+These filesystem are protected by kerberos, particularly with the help of the ansible-volume role.
+
+However sometimes, the kerberos tickets expires.
+
+Here's a recipe to renew all tickets on each hosts.
+On the datastore host
+
+```
+kdestroy
+kinit admin
+ipa-rmkeytab -p nfs/nfs.example.com -k /etc/krb5.keytab
+ipa-rmkeytab -p host/nfs.example.com -k /etc/krb5.keytab
+ipa-getkeytab -p host/nfs.example.com -k /etc/krb5.keytab
+ipa-getkeytab -p nfs/nfs.example.com -k /etc/krb5.keytab
+```
+
+On the client host
+
+```
+kdestroy
+kinit admin
+ipa-rmkeytab -p host/client.example.com -k /etc/krb5.keytab
+ipa-getkeytab -p host/client.example.com -k /etc/krb5.keytab
+```

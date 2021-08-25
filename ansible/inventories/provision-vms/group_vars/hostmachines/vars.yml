@@ -1,10 +1,10 @@
 ---
 local_users_group_list:
-  - name: cmordant
+  - name: cmordantlocal
   - name: libvirt
 local_users_user_list:
-  - name: cmordant
-    group: cmordant
+  - name: cmordantlocal
+    group: cmordantlocal
     groups:
       - wheel
       - docker

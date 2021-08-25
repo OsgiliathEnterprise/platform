@@ -1,5 +1,4 @@
 ---
-
 firewalld_zones:
   - name: public
     masquerade: true
@@ -11,7 +10,7 @@ firewalld_zones:
         to_host: "master.internal.osgiliath.net"
         to_port: 6443
     nics:
-      - docker0
+#      - docker0
       - enp7s0
 virtual_hosts:
   - name: idm.osgiliath.net

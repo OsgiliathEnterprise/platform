@@ -46,7 +46,11 @@ sudo rm /etc/ansible/facts.d/ansible_virtualization_guest.fact
 ```
 
 5. Delete the images
-The box images could have been updated, please also remove the content of the `/var/lib/libvirt/images` folder
+The box images could have been updated, please also remove the content of the `sudo rm -rf /var/lib/libvirt/images` folder
+
+6. additional host entries
+
+Finally, there could be some additional entries in `/etc/host` that won't be useful anymore
 
 ## Make the network configuration permanent
 

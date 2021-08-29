@@ -28,20 +28,7 @@ platforms:
         type: dhcp
     groups:
       - kube_master
-      - ipaclients
-  - name: node1.osgiliath.test
-    box: tcharl/fedora-33-cgroupv1
-    provider_options:
-      driver: '"kvm"'
-      cpus: 2
-      memory: 2048
-    groups:
-      - kube_node
-      - ipaservers
-    interfaces:
-      - auto_config: true
-        network_name: private_network
-        type: dhcp
+
 provisioner:
   name: ansible
 #  config_options:

@@ -7,7 +7,6 @@
       include_role:
         name: "ansible-orchestration-cli"
       vars:
-        standalone_role: False
         # optional if default kube_context: system:node:master.osgiliath.test@kubernetes
         # orchestrator_client_cert_path: /home/kubecreds/kubeadm.crt
         # orchestrator_client_key_path: /home/kubecreds/kubeadm.pem
@@ -17,3 +16,14 @@
             branch: master
             descriptors: # TODO to become Optional, should take all descriptors if no descriptor is mentionned
               - namespaces/kubernetes-ns.yml
+        secure_logs: False
+        preferred_nic: "eth1"
+        # Ansible orchestration variables
+        kubernetes_allow_pods_on_master: Yes
+        hostname: "master.osgiliath.test"
+        hostname_reboot: false
+        kube_firewall_zone: 'public'
+        docker_install_compose: false
+        company_domain: osgiliath.test
+        company_realm_password: '123ADMin'
+        reset_kube: True

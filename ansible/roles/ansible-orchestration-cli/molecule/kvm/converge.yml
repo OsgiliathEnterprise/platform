@@ -7,8 +7,18 @@
       include_role:
         name: "ansible-orchestration"
       vars:
+        # optional if default kube_context: system:node:master.osgiliath.test@kubernetes
+        # orchestrator_client_cert_path: /home/kubecreds/kubeadm.crt
+        # orchestrator_client_key_path: /home/kubecreds/kubeadm.pem
+        descriptor_sets:
+          - url: https://github.com/OsgiliathEnterprise/orchestrator-system-configuration.git
+            kind: git # local (TODO) means local to the machine executing role could also be git with a 'url' parameter set
+            branch: master
+            descriptors: # TODO to become Optional, should take all descriptors if no descriptor is mentionned
+              - namespaces/kubernetes-ns.yml
         secure_logs: False
-        kubernetes_allow_pods_on_master: False
+        # Ansible orchestration variables
+        kubernetes_allow_pods_on_master: Yes
         hostname: "master.osgiliath.test"
         hostname_reboot: false
         kube_firewall_zone: 'public'
@@ -16,21 +26,3 @@
         company_domain: osgiliath.test
         company_realm_password: '123ADMin'
         reset_kube: True
-#        kube_alt_names:
-#          - "kubeadm.osgiliath.net"
-
-- name: Converge node
-  hosts:
-   - kube_node
-  tasks:
-    - name: "Include Ansible Orchestration"
-      include_role:
-        name: "ansible-orchestration"
-      vars:
-        secure_logs: False
-        hostname: "node1.osgiliath.test"
-        company_domain: osgiliath.test
-        company_realm_password: '123ADMin'
-        hostname_reboot: false
-        reset_kube: True
-        kube_firewall_zone: 'public'

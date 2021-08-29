@@ -4,7 +4,7 @@
   community.kubernetes.k8s:
     state: present
     src: "{{ temp_orchestration_cli_directory.path }}/{{ descriptor_set.url | split('/') | last | split('.') | first }}/{{ descriptor }}"
-    orchestrator_ca_cert: "{{ kube_cacert_path | default(omit) }}"
+    ca_cert: "{{ kube_cacert_path | default(omit) }}"
     client_cert: "{{ kube_sysadmin_client_cert_path | default(omit) }}"
     client_key: "{{ kube_sysadmin_client_key_path | default(omit) }}"
     kubeconfig: "{{ kube_config_path }}"

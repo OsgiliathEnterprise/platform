@@ -51,3 +51,6 @@ roles:
 
   - name: tcharl.ansible_orchestration
     source: https://galaxy.ansible.com
+
+  - name: tcharl.ansible_orchestration_cli # Circular dep due to orchestrator
+    source: https://galaxy.ansible.com

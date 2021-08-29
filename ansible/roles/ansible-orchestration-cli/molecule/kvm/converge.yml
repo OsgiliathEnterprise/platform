@@ -5,7 +5,7 @@
   tasks:
     - name: "Include Ansible Orchestration"
       include_role:
-        name: "ansible-orchestration"
+        name: "ansible-orchestration-cli"
       vars:
         # optional if default kube_context: system:node:master.osgiliath.test@kubernetes
         # orchestrator_client_cert_path: /home/kubecreds/kubeadm.crt

@@ -1,0 +1,8 @@
+---
+# defaults properties
+kube_masters_group: kube_master
+standalone_role: Yes
+kind: local
+# kube_cacert_path: /etc/kubernetes/pki/ca.crt
+kube_config_path: /etc/kubernetes/admin.conf
+helm_install: Yes

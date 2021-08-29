@@ -1,0 +1,13 @@
+---
+
+- name: "ansible-orchestration-cli | descriptor-set | checkout git for descriptorset {{ descriptor_set }}"
+  ansible.builtin.git:
+    repo: "{{ descriptor_set.url }}"
+    dest: "{{ temp_orchestration_cli_directory.path }}/{{ descriptor_set.url | split('/') | last | split('.') | first }}"
+    update: no
+
+- name: ansible-orchestration-cli | descriptor-set | loop over configured ymls
+  ansible.builtin.include_tasks: kube-apply.yml
+  loop: "{{ descriptor_set.descriptors }}"
+  loop_control:
+    loop_var: descriptor

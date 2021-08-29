@@ -1,0 +1,78 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    roles-path: ../community
+    requirements-file: requirements-collections.yml
+    collections-path: ../community-collections
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint: |
+  set -e
+  yamllint .
+  flake8
+  ANSIBLE_ROLES_PATH=${MOLECULE_PROJECT_DIRECTORY}/../community ANSIBLE_COLLECTIONS_PATH=${MOLECULE_PROJECT_DIRECTORY}/../community-collections ansible-lint
+platforms:
+  - name: master.osgiliath.test
+    box: tcharl/fedora-33-cgroupv1
+    provider_options:
+      cpus: 2
+      memory: 2048
+    interfaces:
+      - auto_config: true
+        network_name: private_network
+        type: dhcp
+    groups:
+      - kube_master
+      - ipaclients
+  - name: node1.osgiliath.test
+    box: tcharl/fedora-33-cgroupv1
+    provider_options:
+      cpus: 2
+      memory: 2048
+    groups:
+      - kube_node
+      - ipaservers
+    interfaces:
+      - auto_config: true
+        network_name: private_network
+        type: dhcp
+
+provisioner:
+  name: ansible
+#  config_options:
+#    defaults:
+#      forks: 20
+#      gather_timeout: 20
+#      timeout: 60
+#    ssh_connection:
+#      pipelining: true
+#      ssh_args: -o ControlMaster=auto -o ControlPersist=6000s
+  env:
+    ANSIBLE_ROLES_PATH: ${ANSIBLE_ROLES_PATH}:../../../community
+    ANSIBLE_COLLECTIONS_PATH: ${ANSIBLE_COLLECTIONS_PATH}:../community-collections
+verifier:
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
+  options:
+    v: 1
+scenario:
+  name: default
+  test_sequence:
+    - dependency
+    - lint
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+ #   - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy

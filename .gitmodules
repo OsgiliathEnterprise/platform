@@ -28,6 +28,9 @@
 [submodule "ansible/roles/ansible-orchestration"]
 	path = ansible/roles/ansible-orchestration
 	url = git@github.com:OsgiliathEnterprise/ansible-orchestration.git
+[submodule "ansible/roles/ansible-orchestration-cli"]
+	path = ansible/roles/ansible-orchestration-cli
+	url = git@github.com:OsgiliathEnterprise/ansible-orchestration-cli.git
 [submodule "ansible/roles/ansible-nameserver"]
 	path = ansible/roles/ansible-nameserver
 	url = git@github.com:OsgiliathEnterprise/ansible-nameserver.git

@@ -1,0 +1,23 @@
+---
+
+- name: ansible-orchestration-cli | helm-install | configuring snap repositories
+  package:
+    name: snapd
+    state: present
+  become: Yes
+
+- name: ansible-orchestration-cli | helm-install | activating snapd classic mode
+  ansible.builtin.file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link
+  become: Yes
+
+- name: ansible-orchestration-cli | helm-install | wait snap seed loaded
+  ansible.builtin.command: "snap wait system seed.loaded"
+  changed_when: False
+  become: Yes
+
+- name: ansible-orchestration-cli | helm-install | install helm
+  ansible.builtin.command: "snap install helm --classic"
+  become: Yes

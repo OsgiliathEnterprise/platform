@@ -1,0 +1,11 @@
+---
+- name: ansible-orchestration-cli | include orchestration role
+  ansible.builtin.include_tasks: deps.yml
+  when:
+   - standalone_role
+   - kube_masters_group in group_names
+
+- name: ansible-orchestration-cli | include kube master operations
+  ansible.builtin.include_tasks: kube-master-tasks.yml
+  when:
+   - kube_masters_group in group_names

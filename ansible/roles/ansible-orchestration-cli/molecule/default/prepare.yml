@@ -1,0 +1,40 @@
+---
+- name: prepare IPA
+  hosts: all
+  roles:
+    - role: tcharl.ansible_securehost
+  vars:
+    preferred_nic: "eth1"
+    company_domain: osgiliath.test
+
+- name: Converge master
+  hosts:
+   - kube_master
+  roles:
+    - role: tcharl.ansible_orchestration
+  vars:
+    secure_logs: False
+    preferred_nic: "eth1"
+    kubernetes_allow_pods_on_master: False
+    hostname: "master.osgiliath.test"
+    hostname_reboot: false
+    kube_firewall_zone: 'public'
+    docker_install_compose: false
+    company_domain: osgiliath.test
+    company_realm_password: '123ADMin'
+    reset_kube: True
+
+- name: Converge node
+  hosts:
+   - kube_node
+  roles:
+    - role: tcharl.ansible_orchestration
+  vars:
+    secure_logs: False
+    preferred_nic: "eth1"
+    hostname: "node1.osgiliath.test"
+    company_domain: osgiliath.test
+    company_realm_password: '123ADMin'
+    hostname_reboot: false
+    reset_kube: True
+    kube_firewall_zone: 'public'

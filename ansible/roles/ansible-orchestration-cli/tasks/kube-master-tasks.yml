@@ -1,0 +1,29 @@
+---
+
+- name: ansible-orchestration-cli | kube-master-tasks | install prereq
+  ansible.builtin.pip:
+    name: kubernetes
+  become: Yes
+
+- name: ansible-orchestration-cli | kube-master-tasks | Create temporary directory to checkout git
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: orchestration-cli
+  register: temp_orchestration_cli_directory
+
+- name: ansible-orchestration-cli | kube-master-tasks | Create temporary directory to checkout git
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: orchestration-cli
+  register: temp_orchestration_cli_directory
+
+- name: ansible-orchestration-cli | kube-master-tasks | loop over git repos to download
+  ansible.builtin.include_tasks: descriptor-set.yml
+  loop: "{{ descriptor_sets }}"
+  loop_control:
+    loop_var: descriptor_set
+
+- name: ansible-orchestration-cli | kube-master-tasks | check if should install helm
+  ansible.builtin.include_tasks: helm-install.yml
+  when:
+   - helm_install

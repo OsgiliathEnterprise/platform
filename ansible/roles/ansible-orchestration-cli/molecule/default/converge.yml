@@ -1,0 +1,19 @@
+---
+- name: Converge master
+  hosts:
+   - kube_master
+  tasks:
+    - name: "Include Ansible Orchestration Cli"
+      include_role:
+        name: "ansible-orchestration-cli"
+      vars:
+        standalone_role: False
+        # optional if default kube_context: system:node:master.osgiliath.test@kubernetes
+        # orchestrator_client_cert_path: /home/kubecreds/kubeadm.crt
+        # orchestrator_client_key_path: /home/kubecreds/kubeadm.pem
+        descriptor_sets:
+          - url: https://github.com/OsgiliathEnterprise/orchestrator-system-configuration.git
+            kind: git # local (TODO) means local to the machine executing role could also be git with a 'url' parameter set
+            branch: master
+            descriptors: # TODO to become Optional, should take all descriptors if no descriptor is mentionned
+              - namespaces/kubernetes-ns.yml

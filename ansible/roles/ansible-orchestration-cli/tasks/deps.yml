@@ -1,0 +1,6 @@
+---
+
+- name: ansible-orchestration-cli | deps | import orchestration role
+  import_role:
+    name: tcharl.ansible_orchestration
+  become: Yes

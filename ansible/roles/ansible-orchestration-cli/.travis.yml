@@ -1,0 +1,44 @@
+---
+
+dist: focal
+
+language: python
+python:
+  - "3.8"
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main'
+        key_url: 'https://apt.releases.hashicorp.com/gpg'
+    update: true
+    packages:
+      - bridge-utils
+      - dnsmasq-base
+      - ebtables
+      - virtinst
+      - libvirt-dev
+      - libvirt-daemon-system
+      - qemu-kvm
+      - qemu-utils
+      - ruby-dev
+      - ca-certificates
+      - curl
+      - gcc
+      - iproute2
+      - sudo
+      - vagrant
+
+install:
+  - vagrant plugin install vagrant-libvirt
+  - pip install wheel pyopenssl
+  - pip install netaddr python-vagrant yamllint pytest-testinfra flake8
+  - pip install ansible ansible-lint
+  - pip install molecule molecule-vagrant==0.6.1 jmespath netaddr
+  - sudo chmod o+rwx /var/run/libvirt/libvirt-sock
+
+script:
+  - travis_wait 180 molecule test --scenario-name kvm
+branches:
+  only:
+    - master

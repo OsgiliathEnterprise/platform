@@ -62,7 +62,7 @@
     - role: ansible-volumes
 
 - name: configure kubernetes prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
-  hosts: # use this order: master should be created before node
+  hosts:
     - kube_master
     - kube_node
   vars:
@@ -82,5 +82,11 @@
    - kube_node
   roles:
     - role: ansible-orchestration
+
+- name: initiate kubernetes chart client
+  hosts: # use this order: master should be created before node
+   - kube_master
+  roles:
+    - role: ansible-orchestration-cli
 
 ...

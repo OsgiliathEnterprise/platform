@@ -32,19 +32,19 @@ Here's a recipe to renew all tickets on each hosts.
 On the datastore host
 
 ```
-kdestroy
-kinit admin
-ipa-rmkeytab -p nfs/nfs.example.com -k /etc/krb5.keytab
-ipa-rmkeytab -p host/nfs.example.com -k /etc/krb5.keytab
-ipa-getkeytab -p host/nfs.example.com -k /etc/krb5.keytab
-ipa-getkeytab -p nfs/nfs.example.com -k /etc/krb5.keytab
+sudo kdestroy
+sudo kinit admin
+sudo ipa-rmkeytab -p nfs/nfs.example.com -k /etc/krb5.keytab
+sudo ipa-getkeytab -p nfs/nfs.example.com -k /etc/krb5.keytab
+sudo ipa-rmkeytab -p host/nfs.example.com -k /etc/krb5.keytab
+sudo ipa-getkeytab -p host/nfs.example.com -k /etc/krb5.keytab
 ```
 
 On the client host
 
 ```
-kdestroy
-kinit admin
-ipa-rmkeytab -p host/client.example.com -k /etc/krb5.keytab
-ipa-getkeytab -p host/client.example.com -k /etc/krb5.keytab
+sudo kdestroy
+sudo kinit admin
+sudo ipa-rmkeytab -p host/client.example.com -k /etc/krb5.keytab
+sudo ipa-getkeytab -p host/client.example.com -k /etc/krb5.keytab
 ```

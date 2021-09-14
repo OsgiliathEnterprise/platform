@@ -37,3 +37,6 @@
 [submodule "ansible/roles/ansible-container-registry"]
 	path = ansible/roles/ansible-container-registry
 	url = git@github.com:OsgiliathEnterprise/ansible-container-registry.git
+[submodule "ansible/roles/ansible-iam"]
+	path = ansible/roles/ansible-iam
+	url = git@github.com:OsgiliathEnterprise/ansible-iam.git

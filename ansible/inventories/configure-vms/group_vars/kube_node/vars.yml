@@ -7,6 +7,13 @@ nfs_mountpoints:
     mountpoints:
      - remote: /var/shared
        local: /net
+       kubernetes_volumes:
+       - volume_kind: Hardwire # TODO CSI
+         subtree: /artifactrepository
+         mountsize: 6
+       - volume_kind: Hardwire # TODO CSI
+         subtree: /iam
+         mountsize: 1
 datastore_firewall_zone: 'libvirt'
 kube_firewall_zone: 'public'
 docker_install_compose: false

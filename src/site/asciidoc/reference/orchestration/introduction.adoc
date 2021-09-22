@@ -24,7 +24,7 @@ kubectl config use-context osgiliath
 
 Unfortunately, no real role allowing to uninstall everything have been created.
 
-If it messes up with something, here is the procedure to uninstall everything to be able to reinstall the roles
+If it messes up with something, here is the procedure to uninstall everything to be able to reinstall the roles if something has gone wrong (usually, ansible_orchestration role executes that procedure)
 
 
 ```
@@ -35,7 +35,7 @@ sudo dnf remove kubeadm kubectl kubelet kubernetes-cni kube*
 sudo rm -rf ~/.kube
 sudo rm -rf /etc/kubernetes/
 sudo rm -rf /var/lib/etcd/
-sudo rm -rf /var/lib/kubelet
+sudo rm -rf /usr/lib/kubelet
 sudo rm -rf /var/lib/kubelet
 ```
 
@@ -51,5 +51,5 @@ sudo rm -rf /etc/kubernetes/
 sudo rm -rf /var/lib/etcd/
 sudo rm -rf /var/lib/kubelet   # with errors
 sudo umount <errors>
-sudo rm -rf /var/lib/kubelet
+sudo rm -rf /usr/lib/kubelet
 ```

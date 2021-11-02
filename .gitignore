@@ -3,4 +3,8 @@ target/
 venv
 pom.xml.releaseBackup
 release.properties
-bfg-1.13.2.jar
+ansible/test.yml
+ansible/roles/test-role
+ansible/roles/community
+ansible/roles/community-collections
+

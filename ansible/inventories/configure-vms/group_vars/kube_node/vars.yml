@@ -2,18 +2,13 @@
 hostname: "node1.internal.osgiliath.net"
 hostname_reboot: false
 configure_nfs: True
-nfs_mountpoints:
-  - host: host.internal.osgiliath.net
-    mountpoints:
-     - remote: /var/shared
-       local: /net
-       kubernetes_volumes:
-       - volume_kind: Hardwire # TODO CSI
-         subtree: /artifactrepository
-         mountsize: 6
-       - volume_kind: Hardwire # TODO CSI
-         subtree: /iam
-         mountsize: 1
 datastore_firewall_zone: 'libvirt'
 kube_firewall_zone: 'public'
 docker_install_compose: false
+nfs_mountpoints:
+  - host: host.internal.osgiliath.net
+    host_ansible_host: host.osgiliath.net
+    mountpoints:
+     - remote: /var/shared
+       local: /var/hpvolumes
+       csi_mount: Yes

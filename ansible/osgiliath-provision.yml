@@ -2,22 +2,22 @@
 - name: Provision store
   hosts: datastore
   roles:
-    - role: ansible-volumes
+    - role: tcharl.ansible_volumes
 
 - name: Configure and secure host
   hosts: hostmachines
   roles:
-    - role: ansible-users
-    - role: ansible-securehost
+    - role: tcharl.ansible_users
+    - role: tcharl.ansible_securehost
 
 - name: Provision VMs
   hosts: vmhost
   roles:
-    - role: ansible-virtualization-guest
+    - role: tcharl.ansible_virtualization_guest
 
 - name: Provision Containerization
   hosts: containerization
   roles:
-    - role: ansible-containerization
+    - role: tcharl.ansible_containerization
 
 ...

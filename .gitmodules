@@ -1,42 +1,42 @@
 [submodule "packer/bento"]
 	path = packer/bento
 	url = git@github.com:OsgiliathEnterprise/bento.git
-[submodule "ansible/roles/ansible-containerization"]
-	path = ansible/roles/ansible-containerization
+[submodule "ansible/roles/tcharl.ansible_containerization"]
+	path = ansible/roles/tcharl.ansible_containerization
 	url = git@github.com:OsgiliathEnterprise/ansible-containerization.git
-[submodule "ansible/roles/ansible-volumes"]
-	path = ansible/roles/ansible-volumes
+[submodule "ansible/roles/tcharl.ansible_volumes"]
+	path = ansible/roles/tcharl.ansible_volumes
 	url = git@github.com:OsgiliathEnterprise/ansible-volumes.git
-[submodule "ansible/roles/ansible-securehost"]
-	path = ansible/roles/ansible-securehost
+[submodule "ansible/roles/tcharl.ansible_securehost"]
+	path = ansible/roles/tcharl.ansible_securehost
 	url = git@github.com:OsgiliathEnterprise/ansible-securehost.git
-[submodule "ansible/roles/ansible-users"]
-	path = ansible/roles/ansible-users
+[submodule "ansible/roles/tcharl.ansible_users"]
+	path = ansible/roles/tcharl.ansible_users
 	url = git@github.com:OsgiliathEnterprise/ansible-users.git
-[submodule "ansible/roles/ansible-virtualization"]
-	path = ansible/roles/ansible-virtualization
+[submodule "ansible/roles/tcharl.ansible_virtualization"]
+	path = ansible/roles/tcharl.ansible_virtualization
 	url = git@github.com:OsgiliathEnterprise/ansible-virtualization.git
-[submodule "ansible/roles/ansible-virtualization-guest"]
-	path = ansible/roles/ansible-virtualization-guest
+[submodule "ansible/roles/tcharl.ansible_virtualization_guest"]
+	path = ansible/roles/tcharl.ansible_virtualization_guest
 	url = git@github.com:OsgiliathEnterprise/ansible-virtualization-guest.git
-[submodule "ansible/roles/ansible-routing"]
-	path = ansible/roles/ansible-routing
+[submodule "ansible/roles/tcharl.ansible_routing"]
+	path = ansible/roles/tcharl.ansible_routing
 	url = git@github.com:OsgiliathEnterprise/ansible-routing.git
-[submodule "ansible/roles/ansible-directory"]
-	path = ansible/roles/ansible-directory
+[submodule "ansible/roles/tcharl.ansible_directory"]
+	path = ansible/roles/tcharl.ansible_directory
 	url = git@github.com:OsgiliathEnterprise/ansible-directory.git
-[submodule "ansible/roles/ansible-orchestration"]
-	path = ansible/roles/ansible-orchestration
+[submodule "ansible/roles/tcharl.ansible_orchestration"]
+	path = ansible/roles/tcharl.ansible_orchestration
 	url = git@github.com:OsgiliathEnterprise/ansible-orchestration.git
-[submodule "ansible/roles/ansible-orchestration-cli"]
-	path = ansible/roles/ansible-orchestration-cli
+[submodule "ansible/roles/tcharl.ansible_orchestration_cli"]
+	path = ansible/roles/tcharl.ansible_orchestration_cli
 	url = git@github.com:OsgiliathEnterprise/ansible-orchestration-cli.git
-[submodule "ansible/roles/ansible-nameserver"]
-	path = ansible/roles/ansible-nameserver
+[submodule "ansible/roles/tcharl.ansible_nameserver"]
+	path = ansible/roles/tcharl.ansible_nameserver
 	url = git@github.com:OsgiliathEnterprise/ansible-nameserver.git
-[submodule "ansible/roles/ansible-container-registry"]
-	path = ansible/roles/ansible-container-registry
+[submodule "ansible/roles/tcharl.ansible_container_registry"]
+	path = ansible/roles/tcharl.ansible_container_registry
 	url = git@github.com:OsgiliathEnterprise/ansible-container-registry.git
-[submodule "ansible/roles/ansible-iam"]
-	path = ansible/roles/ansible-iam
+[submodule "ansible/roles/tcharl.ansible_iam"]
+	path = ansible/roles/tcharl.ansible_iam
 	url = git@github.com:OsgiliathEnterprise/ansible-iam.git

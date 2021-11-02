@@ -1,15 +1,9 @@
 ---
-- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
-  hosts: # use this order: master should be created before node
-   - kube_master
+- name: configure datastore nfs enpoints
+  hosts:
+    - datastore
   roles:
-    - role: ansible-orchestration
-
-- name: configure kubernetes nodes
-  hosts: # use this order: master should be created before node
-   - kube_node
-  roles:
-    - role: ansible-orchestration
+    - role: tcharl.ansible_volumes
 
 # - name: configure reverse proxy
 #  hosts: reverse_proxy

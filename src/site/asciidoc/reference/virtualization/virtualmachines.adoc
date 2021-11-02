@@ -28,8 +28,9 @@ sudo virsh undefine <the machines>
 2. Delete the dhcp host entries
 ```bash
 sudo virsh net-dumpxml default
-sudo virsh net-update default delete ip-dhcp-host "<host mac='<the macadress>' id='<the id>' name='<the host' ip='<the ip>'/>" --live
+sudo virsh net-update default delete ip-dhcp-host "<host mac='<the macadress>' name='<the host' ip='<the ip>'/>" --live
 ```
+You can also use `virsh net-edit default`, `virsh net-destroy default`, `virsh net-start default` for bulk edit.
 
 3. Delete the firewall redirection rules
 ```bash

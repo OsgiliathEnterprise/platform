@@ -3,9 +3,14 @@
   hosts:
     - all
   roles:
-    - role: ansible-role-hostname
+    - role: tcharl.ansible_hostname
     - role: robertdebock.fail2ban
-    - role: robertdebock.bootstrap
+      become: Yes
+#    - role: robertdebock.bootstrap
+      # TODO should run, but I'm unable to start it again. Comment it if you're not able to, but it can have side effect
+#      become: Yes
+#      become_method: sudo
+#      become_user: root
     - role: robertdebock.epel
     - role: robertdebock.core_dependencies
   become: Yes
@@ -15,31 +20,31 @@
     - ipaservers
     - ipaclients
   roles:
-    - role: ansible-securehost
+    - role: tcharl.ansible_securehost
 
 - name: configure datastore nfs enpoints
   hosts:
     - datastore
   roles:
-    - role: ansible-volumes
+    - role: tcharl.ansible_volumes
 
 - name: install configure freeipa dns for clients
   hosts:
     - ipaclients
   roles:
-    - role: ansible-nameserver
+    - role: tcharl.ansible_nameserver
 
 - name: configure users on server
   hosts:
     - ipaservers
   roles:
-    - role: ansible-users
+    - role: tcharl.ansible_users
 
 - name: install host roles
   hosts: hostmachine1
   roles:
-    - role: ansible-securehost
-    - role: ansible-routing
+    - role: tcharl.ansible_securehost
+    - role: tcharl.ansible_routing
 #    - role: ansible-container-registry
 
 - name: configure containerization prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
@@ -48,18 +53,18 @@
     - kube_node
     - reverse_proxy
   roles:
-    - role: ansible-containerization
+    - role: tcharl.ansible_containerization
 
 - name: configure reverse proxy
   hosts: reverse_proxy
   roles:
-    - role: ansible-routing
+    - role: tcharl.ansible_routing
 
 - name: configure datastore nfs mountpoints
   hosts:
     - kube_node
   roles:
-    - role: ansible-volumes
+    - role: tcharl.ansible_volumes
 
 - name: configure kubernetes prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts:
@@ -75,12 +80,12 @@
   hosts: # use this order: master should be created before node
    - kube_master
   roles:
-    - role: ansible-orchestration
+    - role: tcharl.ansible_orchestration
 
 - name: configure kubernetes nodes
   hosts: # use this order: master should be created before node
    - kube_node
   roles:
-    - role: ansible-orchestration
+    - role: tcharl.ansible_orchestration
 
 ...

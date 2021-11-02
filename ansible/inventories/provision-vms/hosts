@@ -11,4 +11,4 @@ osgiliath
 osgiliath
 
 [osgiliath]
-host.internal.osgiliath.net ansible_ssh_user=cmordantlocal ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3
+host.osgiliath.net ansible_ssh_user=cmordantlocal ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3

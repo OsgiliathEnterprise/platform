@@ -1,6 +1,6 @@
 ---
 
-firewalld_nics_zone: 'virbr0'
+firewalld_nics_zone: 'public'
 ipa_users_group_list:
   - name: docker
   - name: wheel

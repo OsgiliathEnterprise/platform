@@ -10,6 +10,82 @@ So you have knocked on right door!
 
 You're navigating through a documentation that will let you consume or configure your entire information system in a few command.
 
+## Usage of the platform
+
+This platform has been configured for a deployment on a single server.
+It's a two step process: +
+
+### First step: Cloning the entire repo
+
+You should first clone the platform including submodules: +
+
+`git clone --recurse-submodules -j8 git://github.com/foo/bar.git` +
+
+Then, use the `./configure` scripts to get all the dependent libraries (python mostly)
+
+
+### Second step: VM creation
+
+The first roles to be executed will install and configure a virtualization technology then start three Virtual machines. It will also install a reverse proxy technology on the host and some dedicated storage as well
+
+To configure it, tweak the inventories/provision-vms inventory
+Then, configure ssh access on your client to your hosts editing .ssh/config file
+```
+Host host
+    HostName host.osgiliath.net
+    User cmordantlocal
+    IdentityFile ~/.ssh/id_osgiliath
+    ForwardX11Trusted yes
+    ForwardX11 yes
+    AddKeysToAgent yes
+    UseKeychain yes
+```
+Then trigger the ansible playbook:
+
+`ansible-playbook -i inventories/provision-vms osgiliath-provision.yml --vault-password-file .vault_pass.txt -K`
+
+### Third step: VM provision
+
+This third step will configure everything: NFS servers, kerberos, kubernetes, cni plugins, ...
+To configure it, tweak the inventories/configure-vms inventory
+Then, configure ssh access on your client to your VMS editing .ssh/config file and configuring passthrough:
+```
+Host node
+    HostName node1.internal.osgiliath.net # be sure that this hostname is referenced in the /etc/hosts file of your host
+    ProxyJump host
+    ForwardAgent yes
+    User cmordantlocal
+    IdentityFile ~/.ssh/id_osgiliath
+```
+
+Then trigger the ansible playbook:
+
+`ansible-playbook -i inventories/configure-vms osgiliath-configure.yml --vault-password-file .vault_pass.txt -K`
+
+#### Fourth step: configure kubectl
+
+Finally, configure access to your kube master on your client:
+
+First, configure a context
+``` .kube/config
+clusters:
+- cluster:
+    certificate-authority: /Users/charliemordant/.ssh/kubeCA_osgiliath.crt
+    # server: https://kubeadm.osgiliath.net:6443
+    server: https://127.0.0.1:12345
+    tls-server-name: kubeadm.osgiliath.net
+users:
+- name: kubeadmin.osgiliath
+  user:
+    client-certificate: /Users/charliemordant/.ssh/kubeAdm_osgiliath.crt
+    client-key: /Users/charliemordant/.ssh/kubeAdm_osgiliath.pem
+
+```
+
+then, configure a ssh tunnel from your client to your kube master:
+`ssh -fNT -L 12345:<kube master hosname>:6443 <kube master ssh alias in your config>`
+
+
 ## Platform concepts
 
 ### Virtualization

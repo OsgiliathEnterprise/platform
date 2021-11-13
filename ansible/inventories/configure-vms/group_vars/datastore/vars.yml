@@ -31,3 +31,4 @@ lvm_groups:
 configure_nfs: True
 datastore_firewall_zone: libvirt
 manage_lvm: False
+# reset_ipa_client: Yes

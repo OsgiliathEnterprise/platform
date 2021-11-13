@@ -35,7 +35,7 @@ You can also use `virsh net-edit default`, `virsh net-destroy default`, `virsh n
 3. Delete the firewall redirection rules
 ```bash
 sudo firewall-cmd --list-all --zone=public
-sudo firewall-cmd --remove-rich-rule='rule family="ipv4" forward-port port="<the port>" protocol="<the protocol>" to-port="<the destination port>" to-addr="<the vm adress>"' --zone=public
+sudo firewall-cmd --zone=public --remove-rich-rule='rule family="ipv4" forward-port port="<the port>" protocol="<the protocol>" to-port="<the destination port>" to-addr="<the vm adress>"'
 sudo firewall-cmd --runtime-to-permanent
 ```
 

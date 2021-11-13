@@ -1,2 +1,3 @@
 ---
 standalone_role: False
+docker_yum_gpg_key: "{{ docker_repo_url }}/fedora/gpg"

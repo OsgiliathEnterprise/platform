@@ -3,7 +3,6 @@ hostname: "node1.internal.osgiliath.net"
 hostname_reboot: false
 configure_nfs: True
 datastore_firewall_zone: 'libvirt'
-kube_firewall_zone: 'public'
 docker_install_compose: false
 nfs_mountpoints:
   - host: host.internal.osgiliath.net

@@ -13,7 +13,9 @@ copy the content of the following files that are present on your master node to 
 Then, configure kubectl:
 
 ```
-kubectl config set-cluster osgiliath --server=https://kubeadm.osgiliath.net:6443 --certificate-authority=/home/charliemordant/.ssh/ca.crt --tls-server-name=kubeadm.osgiliath.net
+ssh -fNT -L 12345:<hosname of your master node>:6443 <ssh name of your client ssh configuration>
+
+kubectl config set-cluster osgiliath --server=https://127.0.0.1:12345 --certificate-authority=/home/charliemordant/.ssh/ca.crt --tls-server-name=kubeadm.osgiliath.net
 kubectl config set-credentials kubeadmin.osgiliath --client-certificate=/home/charliemordant/.ssh/kubeadm.crt --client-key=/home/charliemordant/.ssh/kubeadm.pem
 kubectl config set-context osgiliath --cluster=osgiliath --user=kubeadmin.osgiliath
 kubectl config use-context osgiliath

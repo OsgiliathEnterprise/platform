@@ -66,8 +66,8 @@ Then trigger the ansible playbook:
 
 Finally, configure access to your kube master on your client:
 
-First, configure a context
-``` .kube/config
+First, configure a context in your kube cli config file (.kube/config)
+```
 clusters:
 - cluster:
     certificate-authority: /Users/charliemordant/.ssh/kubeCA_osgiliath.crt

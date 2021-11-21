@@ -5,4 +5,4 @@ hostname_reboot: false
 docker_install_compose: false
 kube_alt_names:
   - "kubeadm.osgiliath.net"
-kube_firewall_zone: 'libvirt'
+kube_firewall_zone: 'public'

@@ -29,6 +29,6 @@ lvm_groups:
         opts: "--wipesignatures y"
         create: True
 configure_nfs: True
-datastore_firewall_zone: libvirt
+datastore_firewall_zone: libvirt # because nfs is mounted for virtual machines
 manage_lvm: False
 # reset_ipa_client: Yes

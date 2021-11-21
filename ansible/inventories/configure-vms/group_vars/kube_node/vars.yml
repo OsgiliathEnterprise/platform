@@ -1,6 +1,6 @@
 ---
 hostname: "node1.internal.osgiliath.net"
-hostname_reboot: false
+: false
 configure_nfs: True
 datastore_firewall_zone: 'libvirt'
 docker_install_compose: false

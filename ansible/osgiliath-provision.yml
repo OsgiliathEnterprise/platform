@@ -7,8 +7,9 @@
 - name: Configure and secure host
   hosts: hostmachines
   roles:
-    - role: tcharl.ansible_users
-    - role: tcharl.ansible_securehost
+    - role: tcharl.ansible_localuser
+    - role: tcharl.fail2ban
+    - role: tcharl.ansible_routing
 
 - name: Provision VMs
   hosts: vmhost

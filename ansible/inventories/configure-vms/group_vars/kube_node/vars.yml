@@ -1,9 +1,9 @@
 ---
-hostname: "node1.internal.osgiliath.net"
-: false
+hostname_reboot: false
 configure_nfs: True
-datastore_firewall_zone: 'libvirt'
+datastore_firewall_zone: 'public'
 docker_install_compose: false
+containerd_config_cgroup_driver_systemd: True
 nfs_mountpoints:
   - host: host.internal.osgiliath.net
     host_ansible_host: host.osgiliath.net

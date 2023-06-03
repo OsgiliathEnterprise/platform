@@ -1,8 +1,9 @@
 company_domain: "internal.osgiliath.net" #
 letsencrypt_default_email: "cmordant1@gmail.com"
-secure_logs: True
-reset_kube: False
+secure_logs: False # Don't do that in production!
+reset_kube: True
 docker_yum_gpg_key: "{{ docker_repo_url }}/fedora/gpg"
+docker_repo_url: https://download.docker.com/linux
 
 company_realm_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256

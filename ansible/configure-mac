@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
 brew cask install vagrant
-brew install yamllint
-brew install flake8
-brew install python@3.9
+## x86_64
 . configure-virtualbox

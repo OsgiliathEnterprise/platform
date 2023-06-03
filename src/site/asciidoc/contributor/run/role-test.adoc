@@ -1,27 +1,33 @@
 = Tests
 [[main-title]]
 
+== Prerequisites
+
+You should have installed the following tools on your machine:
+
+. Python
+. Pip
+. Tox (via pip)
+. Vagrant, Docker and/or podman (depending on the role you are testing: check molecule.yml)
+. Virtualbox/Libvirt or Parallels (dependending on your OS)
+
+== Running tests
 
 Running Ansible test is fairly easy if you've installed the prerequisites.
 
-First, start your machine using the `molecule create` command.
+First, generate all the python requirement files `tox -e pipdep` command.
 
-Once started, you can deploy your tasks using `molecule converge`
+Then, you can run the tests using `tox -e test-exec -- --scenario-name <your-scenario>` the scenario name being the name of the virtualization technology you use according to the `molecule` folder.
 
-Once converged, you can `molecule verify` executing your tests on the machine.
+You can also `create`, `converge`, `lint`, ... As you would do using ansible molecule framework.
 
-Finally, `molecule destroy` will kill the VM/Docker container
+Finally, there's a `monorepo` option on high level roles (the ones that requires other roles to be installed) that will allow you to test the role in a monorepo context (it will use all the roles that are on the same path than the curren tone instead of their released version.
 
 TIP: Be sure to write your test before implementing so that you can see it failing, so to ensure that you are writing your test the good way !
 
 == Test pipelines
 
-We are using https://github.com/nektos/act[act] in order to test our pipeline.
+We are using https://github.com/nektos/act[act] in order to test our pipeline before pushing to github (lint, docker-compatible roles) or travis-ci (molecule vagrant roles).
 
 On any repository, you can execute `act list` to see all the available actions and `act <action>` to trigger it.
 You can always update the container used to trigger the tests updating the .actrc file
-
-== Molecule platforms
-
-The prefered molecule platform being docker, it is pretty straightforward to use and test.
-For some other edge case, we are using https://github.com/ansible-community/molecule-vagrant/blob/master/molecule_vagrant/test/scenarios/molecule/multi-node/molecule.yml[molecule-vagrant] (example, to test logical volumes or virtualization)

@@ -13,7 +13,7 @@ osgiliath
 idmvm
 
 [idmvm]
-idm ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3
+idm ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 hostname=idm.internal.osgiliath.net
 
 [ipaclients:children]
 osgiliath
@@ -21,10 +21,12 @@ kube_node
 kube_master
 
 [kube_master]
-master ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3
+master ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 hostname=master.internal.osgiliath.net
 
 [kube_node]
-node ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3
+node1 ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 hostname=node1.internal.osgiliath.net
+node2 ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 hostname=node2.internal.osgiliath.net
+node3 ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 hostname=node3.internal.osgiliath.net
 
 [reverse_proxy:children]
 osgiliath
@@ -33,4 +35,4 @@ osgiliath
 osgiliath
 
 [osgiliath]
-host ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3
+host ansible_ssh_private_key_file=/Users/charliemordant/.ssh/id_osgiliath ansible_python_interpreter=/usr/bin/python3 hostname=host.internal.osgiliath.net

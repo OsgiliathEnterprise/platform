@@ -3,21 +3,38 @@
   hosts:
     - all
   roles:
+    - role: robertdebock.epel
+      become: Yes
+    - role: robertdebock.core_dependencies
+      become: Yes
     - role: tcharl.ansible_hostname
+      become: Yes
     - role: robertdebock.fail2ban
       become: Yes
+    - role: tcharl.fail2ban
+    - role: tcharl.ansible_routing
 #    - role: robertdebock.bootstrap
       # TODO should run, but I'm unable to start it again. Comment it if you're not able to, but it can have side effect
 #      become: Yes
 #      become_method: sudo
 #      become_user: root
-    - role: robertdebock.epel
-    - role: robertdebock.core_dependencies
-  become: Yes
+
+- name: install freeipa roles & configure users
+  hosts:
+    - ipaservers
+  roles:
+    - role: tcharl.freeipa_server
+    - role: tcharl.ansible_users
+
+- name: Declare dns & reverse dns for each machine
+  hosts:
+    - ipaclients
+    - ipaservers
+  roles:
+    - role: tcharl.ansible_nameserver
 
 - name: install freeipa roles
   hosts:
-    - ipaservers
     - ipaclients
   roles:
     - role: tcharl.ansible_securehost
@@ -27,44 +44,34 @@
     - datastore
   roles:
     - role: tcharl.ansible_volumes
-
-- name: install configure freeipa dns for clients
-  hosts:
-    - ipaclients
-  roles:
-    - role: tcharl.ansible_nameserver
-
-- name: configure users on server
-  hosts:
-    - ipaservers
-  roles:
-    - role: tcharl.ansible_users
+    - role: tcharl.nfs_server
 
 - name: install host roles
   hosts: hostmachine1
   roles:
     - role: tcharl.ansible_securehost
-    - role: tcharl.ansible_routing
 #    - role: ansible-container-registry
+
+- name: configure reverse prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+    - reverse_proxy
+  roles:
+    - role: tcharl.ansible_containerization
+    - role: tcharl.reverse_proxy
+
+- name: configure nfs mountpoints # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+    - kube_node
+  roles:
+    - role: tcharl.nfs_client
 
 - name: configure containerization prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts: # use this order: master should be created before node
     - kube_master
     - kube_node
-    - reverse_proxy
   roles:
-    - role: tcharl.ansible_containerization
-
-- name: configure reverse proxy
-  hosts: reverse_proxy
-  roles:
-    - role: tcharl.ansible_routing
-
-- name: configure datastore nfs mountpoints
-  hosts:
-    - kube_node
-  roles:
-    - role: tcharl.ansible_volumes
+    - role: geerlingguy.containerd
+  become: Yes
 
 - name: configure kubernetes prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts:
@@ -79,13 +86,26 @@
 - name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts: # use this order: master should be created before node
    - kube_master
-  roles:
-    - role: tcharl.ansible_orchestration
-
-- name: configure kubernetes nodes
-  hosts: # use this order: master should be created before node
    - kube_node
   roles:
     - role: tcharl.ansible_orchestration
 
+- name: configure helm on kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+  roles:
+    - role: tcharl.ansible_orchestration_cli
+
+- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+   - kube_node
+  roles:
+    - role: tcharl.servicemesh
+
+- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_node
+  roles:
+    - role: tcharl.orchestration_csi
 ...

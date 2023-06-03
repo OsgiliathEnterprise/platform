@@ -3,7 +3,8 @@
 CURRENT_FOLDER="$(dirname ${BASH_SOURCE[0]})"
 git clone git@github.com:chef/bento.git
 cd "bento"
-git pull upstream master
+git remote add upstream git@github.com:chef/bento.git
+git pull upstream main
 cd ../..
 
 . ./platform-properties.sh
@@ -31,11 +32,15 @@ packer build -var "box_basename=$distroversion" -only=$PACKER_VM_DRIVER $distrov
 
 cd ../../builds
 if [[ "PACKER_VM_DRIVER" == "virtualbox-iso" ]]; then
-vagrant box add $distroversion.virtualbox.box --name tcharl/$distroshortversion-cgroupv1
+vagrant box add $distroversion.virtualbox.box --name tcharl/$distroshortversion
 fi
 if [[ "PACKER_VM_DRIVER" == "qemu" ]]; then
-vagrant box add $distroversion.libvirt.box --name tcharl/$distroshortversion-cgroupv1
+vagrant box add $distroversion.libvirt.box --name tcharl/$distroshortversion
 fi
+if [[ "PACKER_VM_DRIVER" == "parallels-iso" ]]; then
+vagrant box add $distroversion.parallels.box --name tcharl/$distroshortversion
+fi
+
 # to publish
 # vagrant cloud auth login
-# vagrant cloud publish tcharl/fedora-33-cgroupv1 1.0.2 virtualbox fedora-33-x86_64.virtualbox.box
+# vagrant cloud publish tcharl/$distroversion 1.0.0 parallels $distroversion.parallels.box

@@ -1,6 +1,5 @@
 ---
 
-firewalld_nics_zone: 'public'
 ipa_users_group_list:
   - name: docker
   - name: wheel
@@ -18,7 +17,7 @@ ipa_users_user_list:
       6239336630313734660a363061306236643536623036646261303634383832366461336633636430
       6665
     update_password: on_create
-    passwordexpiration: "2023-01-19 23:59:59"
+    passwordexpiration: "2024-02-19 23:59:59"
     group: cmordant
     groups:
       - wheel
@@ -42,5 +41,3 @@ ipa_users_user_list:
       3065373739663637650a663730373666303132353666376165303062633063353139383336623330
       66666665383538363332316133613365643663396266653836333562393535396336
     group: artifactrepository
-
-hostname: "idm.internal.osgiliath.net"

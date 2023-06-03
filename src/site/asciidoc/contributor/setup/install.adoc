@@ -7,5 +7,7 @@ This platform has been developped for Mac but can be enriched to support Linux o
 
 == Launch the configuration script
 
-A simple `./configure` at the root of this repository shall setup everything.
-If something goes wrong, feel free to open a ticket
+You should first get a python 3.9+ installation on your laptop. +
+Then, you should install tox testing framework through pip3 `pip3 install tox`. +
+Once you get tox, ou can use it to setup virtual environment:
+.

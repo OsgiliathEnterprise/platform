@@ -13,6 +13,7 @@ firewalld_zones:
     nics:
 #      - docker0
       - enp7s0
+reverse_proxy_firewall_zone: docker
 virtual_hosts:
   - name: idm.osgiliath.net
     upstream: "idm.internal.osgiliath.net"

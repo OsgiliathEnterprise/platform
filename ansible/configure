@@ -8,13 +8,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 pip3 install ansible
 pip3 install ansible-lint
-pip3 install molecule
-pip3 install python-vagrant
-pip3 install molecule-vagrant
-pip3 install pytest
-pip3 install pytest-testinfra
-pip3 install flake8
-pip3 install yamllint
+pip3 install tox
 
 
 vagrant plugin update

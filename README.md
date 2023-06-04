@@ -34,13 +34,12 @@
 As of now, it focuses on setting up a fully secured production platform (with kubernetes) that can scale from 1 to inifinite.
 Technically speaking, the stack is dealing with the following technologies:
  * LVM
- * NFS
- * FreeIPA (including Kerberos, PKI, internal DNS, company LDAP)
  * Libvirt and KVM (to simulate multi-server with VMs)
+ * Other low level security & host stack: Firewalld, Fail2ban, /etc/hosts, ...
+ * FreeIPA (including Kerberos, PKI, internal DNS, company LDAP)
+ * NFS
  * Nginx-proxy & letencrypt
  * Kubernetes
- * And of course other low level security & host stack: Firewalld, Fail2ban, /etc/hosts, ...
- 
  * Want a new business relative integration ? Feel free to [propose a new category](https://github.com/OsgiliathEnterprise/platform/issues/new?labels=Status%3A+Untriaged&template=CATEGORY_TEMPLATE.md)
  * Want to propose a new solution answering to a business need? [Tell us your recommendation](https://github.com/OsgiliathEnterprise/platform/issues/new?labels=Status%3A+Untriaged&template=SOLUTION_TEMPLATE.md)
  

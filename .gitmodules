@@ -58,3 +58,15 @@
 [submodule "ansible/roles/tcharl.bind9"]
 	path = ansible/roles/tcharl.bind9
 	url = git@github.com:OsgiliathEnterprise/bind9.git
+[submodule "ansible/roles/oss/tcharl.ansible_hostname"]
+	path = ansible/roles/oss/tcharl.ansible_hostname
+	url = git@github.com:OsgiliathEnterprise/ansible-role-hostname.git
+[submodule "ansible/roles/oss/tcharl.ansible_libvirt_vm"]
+	path = ansible/roles/oss/tcharl.ansible_libvirt_vm
+	url = git@github.com:OsgiliathEnterprise/ansible-role-libvirt-vm.git
+[submodule "ansible/roles/oss/tcharl.ansible_role_libvirt_host"]
+	path = ansible/roles/oss/tcharl.ansible_role_libvirt_host
+	url = git@github.com:OsgiliathEnterprise/ansible-role-libvirt-host.git
+[submodule "ansible/roles/oss/tcharl.kubernetes"]
+	path = ansible/roles/oss/tcharl.kubernetes
+	url = git@github.com:OsgiliathEnterprise/ansible-role-kubernetes.git

@@ -58,8 +58,8 @@
 [submodule "ansible/roles/tcharl.bind9"]
 	path = ansible/roles/tcharl.bind9
 	url = git@github.com:OsgiliathEnterprise/bind9.git
-[submodule "ansible/roles/oss/tcharl.ansible-bind"]
-	path = ansible/roles/oss/tcharl.ansible-bind
+[submodule "ansible/roles/oss/ansible-bind"]
+	path = ansible/roles/oss/ansible-bind
 	url = git@github.com:OsgiliathEnterprise/ansible-bind.git
 [submodule "ansible/roles/oss/tcharl.ansible_hostname"]
 	path = ansible/roles/oss/tcharl.ansible_hostname

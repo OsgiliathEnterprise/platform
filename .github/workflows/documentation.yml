@@ -57,12 +57,6 @@ jobs:
         git branch -D gh-pages
         git config --global user.email "ci@osgiliath.net"
         git config --global user.name "Continuous integration"
-
-      # publish the site
-    - name: Publish site on branch
-      run: ./mvnw scm-publish:publish-scm
-
-    - name: tear down
-      run: |
+        ./mvnw scm-publish:publish-scm
         rm ~/.ssh/id_rsa
         rm ~/.ssh/id_rsa.pub

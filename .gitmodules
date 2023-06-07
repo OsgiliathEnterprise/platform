@@ -55,6 +55,9 @@
 [submodule "ansible/roles/tcharl.nfs_server"]
 	path = ansible/roles/tcharl.nfs_server
 	url = git@github.com:OsgiliathEnterprise/nfs_server.git
+[submodule "ansible/roles/tcharl.nfs_client"]
+	path = ansible/roles/tcharl.nfs_client
+	url = git@github.com:OsgiliathEnterprise/nfs_client.git
 [submodule "ansible/roles/tcharl.bind9"]
 	path = ansible/roles/tcharl.bind9
 	url = git@github.com:OsgiliathEnterprise/bind9.git

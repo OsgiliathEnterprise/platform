@@ -1,0 +1,29 @@
+---
+- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+   - kube_node
+  roles:
+    - role: tcharl.ansible_orchestration
+
+
+- name: configure certmanager # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+   - ipaservers
+  roles:
+    - role: tcharl.kube_certmanager
+
+- name: configure service mesh # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
+  roles:
+    - role: tcharl.servicemesh
+
+
+- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_node
+  roles:
+    - role: tcharl.orchestration_csi
+...

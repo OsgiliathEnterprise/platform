@@ -12,7 +12,7 @@ firewalld_zones:
         to_port: 6443
     nics:
 #      - docker0
-      - enp7s0
+      - end0
 reverse_proxy_firewall_zone: docker
 virtual_hosts:
   - name: idm.osgiliath.net
@@ -26,7 +26,7 @@ virtual_hosts:
     additional_nginx_headers:
       - "proxy_ssl_trusted_certificate /etc/ipa/ca.crt"
   - name: infra.osgiliath.net
-    upstream: "192.168.1.17:9090"
+    upstream: "192.168.1.128:9090"
     volumes:
       - "/etc/cockpit/ws-certs.d:/etc/cockpit/ws-certs.d:ro"
     additional_nginx_headers:

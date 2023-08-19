@@ -14,6 +14,7 @@
 - name: Provision VMs
   hosts: vmhost
   roles:
+    - tcharl.ansible_virtualization
     - role: tcharl.ansible_virtualization_guest
 
 - name: Provision Containerization

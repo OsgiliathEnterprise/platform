@@ -46,11 +46,10 @@ or if you missed it
 on master
 ```
 sudo dnf remove kubelet kubectl kubeadm kubernetes-cni
-sudo docker container ps
-sudo docker container stop  ...
-sudo docker container rm  ...
 sudo rm -rf /etc/kubernetes/
 sudo rm -rf /var/lib/etcd/
+sudo rm -rf /etc/calico
+sudo service containerd stop
 sudo rm -rf /var/lib/kubelet   # with errors
 sudo umount <errors>
 sudo rm -rf /usr/lib/kubelet

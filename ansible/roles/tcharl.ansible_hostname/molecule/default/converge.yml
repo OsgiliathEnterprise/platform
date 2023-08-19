@@ -1,0 +1,7 @@
+---
+- name: converge
+  hosts: all
+  become: yes
+  gather_facts: yes
+  roles:
+    - role: tcharl.ansible_hostname

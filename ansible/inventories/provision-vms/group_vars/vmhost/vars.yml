@@ -29,51 +29,57 @@ virtualization_guest_boxes:
     ansible_groups:
       - ipaservers
     interfaces:
-      - network: default
+      - type: bridge
+        source:
+          dev: enp4s0
   - name: 'master.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/38-cloud-base/versions/38.20230413.1/providers/libvirt.box
-    memory_mb: 2072
-    vcpus: 2
-    ssh_port_on_host: 22022
+    memory_mb: 4096
+    vcpus: 3
     ansible_groups:
       - kube_master
       - ipaclients
-    recreate_machine: true
+    recreate_machine: false
     interfaces:
-      - network: default
+      - type: bridge
+        source:
+          dev: enp4s0
   - name: 'node1.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/38-cloud-base/versions/38.20230413.1/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
-    ssh_port_on_host: 23022
-    recreate_machine: true
+    recreate_machine: false
 # same as the one in molecule.yml
     ansible_groups:
       - kube_node
       - ipaclients
     interfaces:
-      - network: default
+      - type: bridge
+        source:
+          dev: enp4s0
   - name: 'node2.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/38-cloud-base/versions/38.20230413.1/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
-    ssh_port_on_host: 25022
-    recreate_machine: true
+    recreate_machine: false
 # same as the one in molecule.yml
     ansible_groups:
       - kube_node
       - ipaclients
     interfaces:
-      - network: default
+      - type: bridge
+        source:
+          dev: enp4s0
   - name: 'node3.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/38-cloud-base/versions/38.20230413.1/providers/libvirt.box
     memory_mb: 3072
     vcpus: 2
-    ssh_port_on_host: 26022
-    recreate_machine: true
+    recreate_machine: false
 # same as the one in molecule.yml
     ansible_groups:
       - kube_node
       - ipaclients
     interfaces:
-      - network: default
+      - type: bridge
+        source:
+          dev: enp4s0

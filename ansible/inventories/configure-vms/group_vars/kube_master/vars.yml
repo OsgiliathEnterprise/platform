@@ -5,4 +5,5 @@ docker_install_compose: false
 kube_alt_names:
   - "kubeadm.osgiliath.net"
 kube_firewall_zone: 'public'
+# kube_firewall_trusted_zone: 'public'
 containerd_config_cgroup_driver_systemd: True

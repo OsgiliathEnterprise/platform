@@ -13,6 +13,7 @@
 | [Nameserver](https://github.com/OsgiliathEnterprise/ansible-nameserver)                 |![Molecule](https://github.com/OsgiliathEnterprise/ansible-nameserver/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/ansible-nameserver.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/ansible-nameserver)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_nameserver-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_nameserver)| [![GA](https://img.shields.io/badge/GA-released-green)]()                       |
 | [Orchestration](https://github.com/OsgiliathEnterprise/ansible-orchestration)           |![Molecule](https://github.com/OsgiliathEnterprise/ansible-orchestration/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/ansible-orchestration.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/ansible-orchestration)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_orchestration-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_orchestration)| [![GA](https://img.shields.io/badge/GA-released-green)]()                       |
 | [Orchestration Cli](https://github.com/OsgiliathEnterprise/ansible-orchestration-cli)   |![Molecule](https://github.com/OsgiliathEnterprise/ansible-orchestration-cli/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/ansible-orchestration-cli.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/ansible-orchestration-cli)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_orchestration_cli-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_orchestration_cli)| [![GA](https://img.shields.io/badge/GA-released-green)]()                       |
+| [Kube Cert Manager](https://github.com/OsgiliathEnterprise/kube_certmanager)            |![Molecule](https://github.com/OsgiliathEnterprise/kube_certmanager/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/kube_certmanager.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/kube_certmanager)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.kube_certmanager-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/kube_certmanager)| [![GA](https://img.shields.io/badge/GA-released-green)]()                       |
 | [Container registry](https://github.com/OsgiliathEnterprise/ansible-container-registry) |![Molecule](https://github.com/OsgiliathEnterprise/ansible-container-registry/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/ansible-container-registry.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/ansible-container-registry)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.ansible_container_registry-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/ansible_container_registry)| [![In Progress](https://img.shields.io/badge/InProgress-not_released-orange)]() |
 | [NFS Client](https://github.com/OsgiliathEnterprise/nfs_client)                         |![Molecule](https://github.com/OsgiliathEnterprise/nfs_client/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/nfs_client.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/nfs_client)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.nfs_client-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/nfs_client)| [![GA](https://img.shields.io/badge/GA-released-green)]()                       |
 | [NFS Server](https://github.com/OsgiliathEnterprise/nfs_server)                         |![Molecule](https://github.com/OsgiliathEnterprise/nfs_server/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/nfs_server.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/nfs_server)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.nfs_server-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/nfs_server)| [![GA](https://img.shields.io/badge/GA-released-green)]()                       |
@@ -21,29 +22,30 @@
 | [Bind9](https://github.com/OsgiliathEnterprise/bind9)                                   |![Molecule](https://github.com/OsgiliathEnterprise/bind9/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/bind9.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/bind9)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.bind9-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/bind9)|[![In Progress](https://img.shields.io/badge/GA-released-green)]()|
 | [/etc/host append](https://github.com/OsgiliathEnterprise/etchost_append)               |![Molecule](https://github.com/OsgiliathEnterprise/etchost_append/workflows/Molecule/badge.svg)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/etchost_append.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/etchost_append)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.etchost_append-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/etchost_append)|[![In Progress](https://img.shields.io/badge/GA-released-green)]()|
 | [Orchestration_csi](https://github.com/OsgiliathEnterprise/orchestration_csi)           |[![Molecule](https://github.com/OsgiliathEnterprise/orchestration_csi/actions/workflows/molecule.yml/badge.svg)](https://github.com/OsgiliathEnterprise/orchestration_csi/actions/workflows/molecule.yml)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/orchestration_csi.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/orchestration_csi)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.orchestration_csi-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/orchestration_csi)|[![In Progress](https://img.shields.io/badge/GA-released-green)]()|
-| [Service Mesh](https://github.com/OsgiliathEnterprise/servicemesh)|[![Molecule](https://github.com/OsgiliathEnterprise/servicemesh/actions/workflows/molecule.yml/badge.svg)](https://github.com/OsgiliathEnterprise/servicemesh/actions/workflows/molecule.yml)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/servicemesh.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/servicemesh)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.servicemesh-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/servicemesh)|[![In Progress](https://img.shields.io/badge/GA-released-green)]()|
+| [Service Mesh](https://github.com/OsgiliathEnterprise/servicemesh)                      |[![Molecule](https://github.com/OsgiliathEnterprise/servicemesh/actions/workflows/molecule.yml/badge.svg)](https://github.com/OsgiliathEnterprise/servicemesh/actions/workflows/molecule.yml)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/servicemesh.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/servicemesh)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.servicemesh-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/servicemesh)|[![In Progress](https://img.shields.io/badge/GA-released-green)]()|
+| [Cert manager](https://github.com/OsgiliathEnterprise/kube_certmanager)                      |[![Molecule](https://github.com/OsgiliathEnterprise/kube_certmanager/actions/workflows/molecule.yml/badge.svg)](https://github.com/OsgiliathEnterprise/kube_certmanager/actions/workflows/molecule.yml)|[![Build Status](https://app.travis-ci.com/OsgiliathEnterprise/kube_certmanager.svg?branch=master)](https://app.travis-ci.com/github/OsgiliathEnterprise/kube_certmanager)|[![Ansible Galaxy](https://img.shields.io/badge/galaxy-tcharl.kube_certmanager-660198.svg?style=flat)](https://galaxy.ansible.com/tcharl/kube_certmanager)|[![In Progress](https://img.shields.io/badge/GA-released-green)]()|
 
-
+NOTE | Don't worry that much about build status: CI on 3 VMs and public, free-of-chagre CI providers are frequently leading to timeouts...
 
 [![Join the chat at https://gitter.im/OsgiliathEnterprise/platform](https://badges.gitter.im/OsgiliathEnterprise/platform.svg)](https://gitter.im/OsgiliathEnterprise/platform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
  # What is it?
  
- Is it a bunch of infrastructure scripts (Packer, Ansible, Terraform, Dockerfiles, Kubernetes Helm Charts) that will ease the setup of a full OSS Information System (including people management, mails, HR, ERP, EMD, Engineering, ...) targeting cloud and on premise.
+ Is it a bunch of infrastructure scripts (Packer, Ansible, Terraform, Dockerfiles, Kubernetes Helm Charts) that will ease the setup of a full OSS integrated Information System (including people management, mails, HR, ERP, EMD, Engineering, ...) targeting on premise (also includes a private cloud).
 
 As of now, it focuses on setting up a fully secured production platform (with kubernetes) that can scale from 1 to inifinite.
 Technically speaking, the stack is dealing with the following technologies:
  * LVM
- * Libvirt and KVM (to simulate multi-server with VMs)
+ * Libvirt and KVM (VMs)
  * Other low level security & host stack: Firewalld, Fail2ban, /etc/hosts, ...
  * FreeIPA (including Kerberos, PKI, internal DNS, company LDAP)
- * NFS
- * Nginx-proxy & letencrypt
- * Kubernetes
+ * Kerberized NFS
+ * Nginx-proxy & letencrypt (frontend proxy)
+ * Kubernetes (including certmanager and Istio service mesh)
  * Want a new business relative integration ? Feel free to [propose a new category](https://github.com/OsgiliathEnterprise/platform/issues/new?labels=Status%3A+Untriaged&template=CATEGORY_TEMPLATE.md)
  * Want to propose a new solution answering to a business need? [Tell us your recommendation](https://github.com/OsgiliathEnterprise/platform/issues/new?labels=Status%3A+Untriaged&template=SOLUTION_TEMPLATE.md)
  
- Solution proposal are submitted by the community and choosed democratically via votes on tickets, then integrated in the platform.
+ Solution proposal are submitted by the community and chosed democratically via votes on tickets, then integrated in the platform.
  The platform delivery goal is to provide a one (or just a little bit more) click solution to deploy the overall integrated stack for your company.
  
 # Documentation
@@ -61,6 +63,8 @@ At the end of the day, you'll configure your [provision (VM creation)](./ansible
 ```
 sh git-clone # will disappear ASAP
 ./configure
+
+ansible-galaxy install -r <path to the highest level role>/requirements-stansalone.yml -p ./roles
 
  ansible-playbook -i inventories/provision-vms osgiliath-provision.yml -vv --vault-password-file .vault_pass.txt --ask-become-pass
 

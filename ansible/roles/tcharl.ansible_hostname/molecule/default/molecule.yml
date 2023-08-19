@@ -1,0 +1,33 @@
+---
+#
+# Ansible managed
+#
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+driver:
+  name: docker
+platforms:
+  - name: "hostname-${image:-fedora}-${tag:-latest}${TOX_ENVNAME}"
+    image: fedora:38
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: yes
+    pre_build_image: yes
+    docker_networks:
+      - name: 'acmenet'
+        ipam_config:
+          - subnet: '10.30.50.0/24'
+    networks:
+      - name: "acmenet"
+        ipv4_address: '10.30.50.2'
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      stdout_callback: yaml
+      bin_ansible_callbacks: yes
+verifier:
+  name: ansible

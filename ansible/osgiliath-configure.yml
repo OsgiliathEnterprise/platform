@@ -46,12 +46,6 @@
     - role: tcharl.ansible_volumes
     - role: tcharl.nfs_server
 
-- name: install host roles
-  hosts: hostmachine1
-  roles:
-    - role: tcharl.ansible_securehost
-#    - role: ansible-container-registry
-
 - name: configure reverse prereq # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts: # use this order: master should be created before node
     - reverse_proxy
@@ -96,12 +90,19 @@
   roles:
     - role: tcharl.ansible_orchestration_cli
 
-- name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+- name: configure certmanager # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts: # use this order: master should be created before node
    - kube_master
-   - kube_node
+   - ipaservers
+  roles:
+    - role: tcharl.kube_certmanager
+
+- name: configure service mesh # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+   - kube_master
   roles:
     - role: tcharl.servicemesh
+
 
 - name: configure kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts: # use this order: master should be created before node

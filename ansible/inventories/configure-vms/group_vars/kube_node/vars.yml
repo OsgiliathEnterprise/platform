@@ -1,8 +1,9 @@
 ---
 hostname_reboot: false
 configure_nfs: True
-datastore_firewall_zone: 'public'
 docker_install_compose: false
+# kube_firewall_trusted_zone: 'public'
+kube_firewall_zone: 'public'
 containerd_config_cgroup_driver_systemd: True
 nfs_mountpoints:
   - host: host.internal.osgiliath.net

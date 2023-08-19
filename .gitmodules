@@ -31,9 +31,18 @@
 [submodule "ansible/roles/tcharl.ansible_orchestration"]
 	path = ansible/roles/tcharl.ansible_orchestration
 	url = git@github.com:OsgiliathEnterprise/ansible-orchestration.git
+[submodule "ansible/roles/tcharl.orchestration_csi"]
+	path = ansible/roles/tcharl.orchestration_csi
+	url = git@github.com:OsgiliathEnterprise/orchestration_csi.git
+[submodule "ansible/roles/tcharl.kube_certmanager"]
+	path = ansible/roles/tcharl.kube_certmanager
+	url = git@github.com:OsgiliathEnterprise/kube_certmanager.git
 [submodule "ansible/roles/tcharl.ansible_orchestration_cli"]
 	path = ansible/roles/tcharl.ansible_orchestration_cli
 	url = git@github.com:OsgiliathEnterprise/ansible-orchestration-cli.git
+[submodule "ansible/roles/tcharl.servicemesh"]
+	path = ansible/roles/tcharl.servicemesh
+	url = git@github.com:OsgiliathEnterprise/servicemesh.git
 [submodule "ansible/roles/tcharl.ansible_nameserver"]
 	path = ansible/roles/tcharl.ansible_nameserver
 	url = git@github.com:OsgiliathEnterprise/ansible-nameserver.git
@@ -76,3 +85,6 @@
 [submodule "ansible/roles/oss/tcharl.kubernetes"]
 	path = ansible/roles/oss/tcharl.kubernetes
 	url = git@github.com:OsgiliathEnterprise/ansible-role-kubernetes.git
+[submodule "docker-compose/mailcow-dockerized"]
+	path = docker-compose/mailcow-dockerized
+	url = git@github.com:OsgiliathEnterprise/mailcow-dockerized.git

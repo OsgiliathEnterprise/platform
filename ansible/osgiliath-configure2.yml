@@ -1,8 +1,0 @@
----
-
-- name: Declare dns & reverse dns for each machine
-  hosts:
-    - ipaclients
-    - ipaservers
-  roles:
-    - role: tcharl.ansible_securehost

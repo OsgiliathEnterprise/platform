@@ -21,10 +21,10 @@ You should first clone the platform including submodules (ideally a fork): +
 
 `git clone --recurse-submodules -j8 git://github.com/foo/bar.git` +
 
-Then, use the `./configure` scripts to get all the dependent libraries (python mostly)
+Install prerequisites (tox, poetry, pip, vagrant)
+Then, use the `./configure` ansible/ scripts to get all the dependent libraries (python mostly)
 
-
-### Second step: VM creation
+### Second step: VM provision
 
 The first roles to be executed will install and configure a virtualization technology then start three Virtual machines. It will also install a reverse proxy technology on the host and some dedicated storage as well
 
@@ -44,7 +44,11 @@ Then trigger the ansible playbook:
 
 `ansible-playbook -i inventories/provision-vms osgiliath-provision.yml --vault-password-file .vault_pass.txt -K`
 
-### Third step: VM provision
+### Before configuring the machines
+
+If you use the role for kubernetes, your vms will be configured using bridge network. So before executing the next steps, as a prerequisite to configure vms, you'll have to configure your router to group your vmasters and workers ips using static ips. then, add connections to bridge vms in your /etc/hosts, .ssh/config ansible/inventories/hosts
+
+### Third step: VM configuration
 
 This third step will configure everything: NFS servers, kerberos, kubernetes, cni plugins, ...
 To configure it, tweak the `inventories/configure-vms` inventory

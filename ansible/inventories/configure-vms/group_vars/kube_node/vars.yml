@@ -3,6 +3,7 @@ hostname_reboot: false
 configure_nfs: True
 docker_install_compose: false
 # kube_firewall_trusted_zone: 'public'
+kube_cluster_subnet: 192.168.1.130/27 # Do not remove: used by kube-firewall.yml to shrink the trusted sources
 kube_firewall_zone: 'public'
 containerd_config_cgroup_driver_systemd: True
 nfs_mountpoints:
@@ -12,3 +13,5 @@ nfs_mountpoints:
      - remote: /var/shared
        local: /var/hpvolumes
        csi_mount: Yes
+       insecure: True
+       min_ip_to_share: 192.168.1.128

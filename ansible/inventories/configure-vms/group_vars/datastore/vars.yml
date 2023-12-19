@@ -12,6 +12,8 @@ lvm_groups:
         filesystem: xfs
         mntp: /var/shared
         mount: True
+        insecure: True
+        min_ip_to_share: 192.168.1.128
         mopts: defaults
       - lvname: docker-thinpool
         size: 100g
@@ -22,7 +24,6 @@ lvm_groups:
         autoextendpercent: 20
         filesystem: xfs
         mntp: /var/lib/docker
-        mount: True
         mopts: defaults,pquota,gquota,quota
       - lvname: docker-thinpoolmeta
         size: 1%VG

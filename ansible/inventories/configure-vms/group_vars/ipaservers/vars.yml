@@ -17,7 +17,7 @@ ipa_users_user_list:
       6239336630313734660a363061306236643536623036646261303634383832366461336633636430
       6665
     update_password: on_create
-    passwordexpiration: "2024-02-19 23:59:59"
+    passwordexpiration: "2025-02-19 23:59:59"
     group: cmordant
     groups:
       - wheel

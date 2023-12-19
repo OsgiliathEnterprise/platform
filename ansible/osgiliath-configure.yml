@@ -19,7 +19,7 @@
 #      become_method: sudo
 #      become_user: root
 
-- name: install freeipa roles & configure users
+- name: install freeipa roles
   hosts:
     - ipaservers
   roles:

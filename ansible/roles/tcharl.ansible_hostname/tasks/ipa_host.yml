@@ -1,0 +1,36 @@
+- name: Facts | get current hostname
+  ansible.builtin.command: "hostname"
+  register: ipahost_machine_hostname
+  changed_when: false
+
+- name: Facts | compute client hostname
+  ansible.builtin.debug:
+    msg: "{{ hostname | default(ipahost_machine_hostname.stdout) }}"
+  register: ipahost_computed_host
+
+- name: Facts | retrieve client machine ip
+  ansible.builtin.setup:
+    gather_subset:
+      - network
+  register: ipahost_current_host_facts
+
+- name: Facts | compute client ip if preferred_nic is not set
+  ansible.builtin.debug:
+    msg: "{{ ipahost_current_host_facts.ansible_facts['ansible_' + preferred_nic | replace('-', '_')].ipv4.address if preferred_nic is defined else ipahost_current_host_facts.ansible_facts.ansible_default_ipv4.address | default(ipahost_current_host_facts.ansible_facts.ansible_all_ipv4_addresses[0]) }}"
+  register: ipahost_current_host_ip
+
+- name: Facts | debug dns zone creation
+  ansible.builtin.debug:
+    msg: "echo '{{ ipahost_current_host_ip.msg | ansible.utils.ipsubnet(8) }}'"
+    verbosity: 2
+
+- name: Ipa_host | ensure host is created in IPA
+  freeipa.ansible_freeipa.ipadnszone:
+    ipaadmin_password: "{{ company_realm_password }}"
+    name: "{{ ipahost_computed_host }}"
+    ip_address:
+      - "{{ ipahost_current_host_ip.msg }}"
+    state: present
+  failed_when: False # TODO too lazy to find a good regex that
+  no_log: "{{ secure_logs }}"
+  delegate_to: "{{ groups[idm_group][0] }}"

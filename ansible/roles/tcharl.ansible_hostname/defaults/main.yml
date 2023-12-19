@@ -8,3 +8,5 @@ hostname: "{{ inventory_hostname_short }}"
 hostname_reboot: yes
 handle_ipv4: yes
 handle_ipv6: False
+idm_client_group: 'ipaclients'
+idm_group: 'ipaservers' # do not change: convention from the ipa roles

@@ -10,6 +10,10 @@
   ansible.builtin.package:
     name: "{{ hostname_requirements }}"
     state: present
+  become: true
+  when:
+    - hostname_requirements is defined
+    - hostname_requirements | length > 0
 
 - name: Set hostname
   ansible.builtin.hostname:
@@ -60,3 +64,8 @@
   when:
     - handle_ipv6
     - ansible_facts['virtualization_type'] is not defined or ansible_facts['virtualization_type'] not in ['container']
+
+- name: Ensure host IPA clients
+  ansible.builtin.include_tasks: ipa_host.yml
+  when:
+   - idm_client_group in group_names

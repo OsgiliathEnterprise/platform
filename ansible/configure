@@ -20,7 +20,10 @@ CWD="$(pwd)"
 for f in roles/*; do
     if [[ -d "$f" && $f != "roles/community" ]]; then
         cd $f
-        . ./configure
+        . ./configure | true
+        poetry install | true
+        ansible-galaxy install -r requirements-monorepo.yml -p $CWD/community | true
+        ansible-galaxy collection install -r requirements-collections.yml -p $CWD/community-collections | true
         cd $CWD
     fi
 done

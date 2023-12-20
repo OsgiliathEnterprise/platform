@@ -18,11 +18,12 @@
 - name: Set hostname
   ansible.builtin.hostname:
     name: "{{ hostname }}"
+    use: systemd
   notify:
     - Reboot
     - Gather facts
   when:
-    - ansible_facts['virtualization_type'] is not defined or ansible_facts['virtualization_type'] not in ['container']
+    - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
     - hostname is defined
 
 - name: Gather facts on newly created machines
@@ -68,4 +69,4 @@
 - name: Ensure host IPA clients
   ansible.builtin.include_tasks: ipa_host.yml
   when:
-   - idm_client_group in group_names
+    - idm_client_group in group_names

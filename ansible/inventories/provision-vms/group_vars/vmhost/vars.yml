@@ -18,7 +18,8 @@ libvirt_host_networks:
 local_systemusers_user_list:
   - name: libvirt
     group: libvirt
-    groups: wheel
+    groups:
+     - wheel
 virtualization_guest_boxes:
   - name: 'idm.internal.osgiliath.net'
     url: https://app.vagrantup.com/fedora/boxes/39-cloud-base/versions/39.20231031.1/providers/libvirt/amd64/vagrant.box

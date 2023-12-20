@@ -1,3 +1,5 @@
+---
+
 - name: Facts | get current hostname
   ansible.builtin.command: "hostname"
   register: ipahost_machine_hostname
@@ -31,6 +33,6 @@
     ip_address:
       - "{{ ipahost_current_host_ip.msg }}"
     state: present
-  failed_when: False # TODO too lazy to find a good regex that
+  failed_when: False    # TODO too lazy to find a good regex that
   no_log: "{{ secure_logs }}"
   delegate_to: "{{ groups[idm_group][0] }}"

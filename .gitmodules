@@ -94,3 +94,6 @@
 [submodule "docker-compose/mailcow-dockerized"]
 	path = docker-compose/mailcow-dockerized
 	url = git@github.com:OsgiliathEnterprise/mailcow-dockerized.git
+[submodule "vagrant/vagrant-cachier"]
+	path = vagrant/vagrant-cachier
+	url = git@github.com:fgrehm/vagrant-cachier.git

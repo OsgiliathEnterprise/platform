@@ -1,3 +1,4 @@
 ../vagrant
 .vault_pass.txt
 test.yml
+update-all.yml

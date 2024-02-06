@@ -1,0 +1,8 @@
+---
+- name: configure hosts
+  hosts:
+    - all
+  roles:
+    - role: test-role
+      become: Yes
+...

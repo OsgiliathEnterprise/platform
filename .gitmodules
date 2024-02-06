@@ -73,9 +73,9 @@
 [submodule "ansible/roles/oss/ansible-bind"]
 	path = ansible/roles/oss/ansible-bind
 	url = git@github.com:OsgiliathEnterprise/ansible-bind.git
-[submodule "ansible/roles/oss/tcharl.ansible_hostname"]
-	path = ansible/roles/oss/tcharl.ansible_hostname
-	url = git@github.com:OsgiliathEnterprise/ansible-role-hostname.git
+[submodule "ansible/roles/tcharl.ansible_hostname"]
+	path = ansible/roles/tcharl.ansible_hostname
+	url = git@github.com:OsgiliathEnterprise/ansible_hostname.git
 [submodule "ansible/roles/oss/tcharl.ansible_libvirt_vm"]
 	path = ansible/roles/oss/tcharl.ansible_libvirt_vm
 	url = git@github.com:OsgiliathEnterprise/ansible-role-libvirt-vm.git

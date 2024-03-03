@@ -11,12 +11,11 @@ firewalld_zones:
         to_ansible_host: "master.osgiliath.net"
         to_port: 6443
     nics:
-#      - docker0
       - end0
-reverse_proxy_firewall_zone: docker
+reverse_proxy_firewall_zone: public
 virtual_hosts:
   - name: idm.osgiliath.net
-    upstream: "idm.internal.osgiliath.net"
+    upstream: "192.168.1.133:443" # Internal IP of the target TODO: improve using docker host network resolution
     referer_suffix: "/ipa/ui"
     proto: https
     container: False

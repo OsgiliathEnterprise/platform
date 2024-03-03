@@ -1,9 +1,6 @@
 [submodule "packer/bento"]
 	path = packer/bento
 	url = git@github.com:OsgiliathEnterprise/bento.git
-[submodule "ansible/roles/tcharl.acme_ingress"]
-	path = ansible/roles/tcharl.acme_ingress
-	url = git@github.com:OsgiliathEnterprise/acme_ingress.git
 [submodule "ansible/roles/tcharl.reverse_proxy"]
 	path = ansible/roles/tcharl.reverse_proxy
 	url = git@github.com:OsgiliathEnterprise/reverse_proxy.git

@@ -8,10 +8,7 @@ kube_firewall_zone: 'public'
 containerd_config_cgroup_driver_systemd: True
 nfs_mountpoints:
   - host: host.internal.osgiliath.net
-    host_ansible_host: host.osgiliath.net
     mountpoints:
      - remote: /var/shared
-       local: /var/hpvolumes
        csi_mount: Yes
        insecure: True
-       min_ip_to_share: 192.168.1.128

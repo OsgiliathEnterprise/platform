@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-brew cask install vagrant
-## x86_64
-. configure-virtualbox

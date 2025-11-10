@@ -1,9 +1,0 @@
----
-firewalld_zones:
-  - name: public
-    nics:
-      - enp7s0
-    masquerade: true
-    enabled_services:
-      - service: cockpit
-hostname_reboot: false

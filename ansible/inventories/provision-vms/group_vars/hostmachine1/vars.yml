@@ -4,4 +4,6 @@ firewalld_zones:
     nics:
       - enp7s0
     masquerade: true
+    enabled_services:
+      - service: cockpit
 hostname_reboot: false

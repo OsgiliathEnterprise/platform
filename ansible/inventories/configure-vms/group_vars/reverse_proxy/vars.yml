@@ -12,7 +12,7 @@ firewalld_zones:
         to_port: 6443
     nics:
       - end0
-reverse_proxy_firewall_zone: public
+reverse_proxy_firewall_zone: docker
 virtual_hosts:
   - name: idm.osgiliath.net
     upstream: "192.168.1.133:443" # Internal IP of the target TODO: improve using docker host network resolution
@@ -34,6 +34,7 @@ virtual_hosts:
       - "proxy_set_header Upgrade $http_upgrade"
       - 'proxy_set_header Connection "upgrade"'
       - 'proxy_ssl_trusted_certificate /etc/cockpit/ws-certs.d/0-self-signed.cert'
+# TODO you'll have to copy the self signed cert of the upstream to the reverse proxy (same folder) to make it work
       - 'gzip off'
     proto: https
     container: False

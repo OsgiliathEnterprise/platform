@@ -3,8 +3,6 @@ target/
 venv
 pom.xml.releaseBackup
 release.properties
-ansible/test.yml
-ansible/roles/test-role
 ansible/roles/community
 ansible/roles/community-collections
 ansible/.vagrant

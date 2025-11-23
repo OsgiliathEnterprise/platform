@@ -1,2 +1,0 @@
-brew install --cask parallels-virtualization-sdk
-packer init packer-parallels-plugin-install.pkr.hcl

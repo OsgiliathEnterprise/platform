@@ -1,0 +1,9 @@
+---
+- name: Execute test # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
+  hosts: # use this order: master should be created before node
+    - kube_master
+    - kube_node
+  roles:
+    - role: tcharl.test_role
+  become: Yes
+...

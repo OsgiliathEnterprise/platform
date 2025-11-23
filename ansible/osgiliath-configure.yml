@@ -83,6 +83,7 @@
    - kube_node
   roles:
     - role: tcharl.ansible_orchestration
+  become: Yes
 
 - name: configure helm on kubernetes master # Execute master and nodes at the same time: one fact is created by the master and reused by nodes
   hosts: # use this order: master should be created before node

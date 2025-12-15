@@ -4,7 +4,7 @@ ipa_users_group_list:
   - name: docker
   - name: wheel
   - name: libvirt # virtual machine server
-
+allow_dns_zone_overlap: True
 ipa_users_user_list:
   - name: cmordant
     first: Charlie

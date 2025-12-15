@@ -1,6 +1,0 @@
-../vagrant
-.vault_pass.txt
-test.yml
-update-all.yml
-osgiliath-configure-thin.yml
-roles/tcharl.test_role

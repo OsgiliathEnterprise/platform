@@ -1,5 +1,0 @@
----
-
-- import_playbook: osgiliath-provision.yml
-
-- import_playbook: osgiliath-configure.yml

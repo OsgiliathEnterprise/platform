@@ -1,4 +1,0 @@
-#Box compatibility matrix
-[[main-title]]
-
-As of now, the only suppported Hypervisor by our boxes is VirtualBox (Qemu over kvm coming soon) and packages are based on Fedora 31. +

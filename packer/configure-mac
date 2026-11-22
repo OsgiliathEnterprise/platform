@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-brew install packer
-. configure-mac-virtualbox # unfortunately, qemu/libvirt do not work...
